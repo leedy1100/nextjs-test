@@ -1,11 +1,18 @@
-import Image from 'next/image'
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        dooy
+    <main className="">
+      <div className="flex space-x-4 p-4">
+        <div className="w-[200px] bg-slate-300 text-black text-center border-2 border-slate-500">
+          <Link href="/flex" className="w-full">
+            Flex 샘플
+          </Link>
+        </div>
+        <div className="w-[200px] bg-slate-300 text-black text-center border-2 border-slate-500">
+          <Link href="/grid">Grid 샘플</Link>
+        </div>
       </div>
     </main>
-  )
+  );
 }
