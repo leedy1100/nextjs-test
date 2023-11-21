@@ -1,4 +1,4 @@
-import Item from "@/components/Item";
+import Item from "@/components/ui/Item";
 import Link from "next/link";
 import React from "react";
 

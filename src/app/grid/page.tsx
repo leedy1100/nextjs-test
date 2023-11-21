@@ -1,4 +1,4 @@
-import Item from "@/components/Item";
+import Item from "@/components/ui/Item";
 import Link from "next/link";
 import React from "react";
 
@@ -20,7 +20,7 @@ export default function Grid() {
   ];
   const itemArr2 = ["D", "O", "O", "Y"];
   return (
-    <div>
+    <section>
       <Link href="/">Main 이동</Link>
       <div className="mt-10 ">
         <h1 className="font-bold text-white text-xl bg-slate-400">grid 샘플</h1>
@@ -91,6 +91,6 @@ export default function Grid() {
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

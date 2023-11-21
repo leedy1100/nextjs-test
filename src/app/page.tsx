@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="">
+    <section className="">
       <div className="flex space-x-4 p-4">
         <div className="w-[200px] bg-slate-300 text-black text-center border-2 border-slate-500">
           <Link href="/flex" className="w-full">
@@ -13,6 +13,6 @@ export default function Home() {
           <Link href="/grid">Grid 샘플</Link>
         </div>
       </div>
-    </main>
+    </section>
   );
 }
