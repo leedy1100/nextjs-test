@@ -79,8 +79,26 @@ export default function Flex() {
             <Item key={i} text={v} />
           ))}
         </div>
+        <p>flex justify-between</p>
+        <div className="flex justify-between bg-yellow-300 p-4 text-center gap-2">
+          {itemArr.map((v, i) => (
+            <Item key={i} text={v} />
+          ))}
+        </div>
+        <p>flex justify-around</p>
+        <div className="flex justify-around bg-yellow-300 p-4 text-center gap-2">
+          {itemArr.map((v, i) => (
+            <Item key={i} text={v} />
+          ))}
+        </div>
+        <p>flex justify-evenly</p>
+        <div className="flex justify-evenly bg-yellow-300 p-4 text-center gap-2">
+          {itemArr.map((v, i) => (
+            <Item key={i} text={v} />
+          ))}
+        </div>
         <p>
-          flex space-between
+          flex space -between
           <span className="text-blue-400">(tailwind 표현: space-x-4)</span>
         </p>
         <div className="flex space-x-4 bg-yellow-300 p-4 text-center gap-2">
@@ -168,6 +186,51 @@ export default function Flex() {
           {itemArr.map((v, i) => (
             <Item key={i} text={v} st="w-[500px]" />
           ))}
+        </div>
+        <div className="mt-10">
+          <h1 className="font-bold text-white text-xl bg-slate-400">
+            flex 그 외
+          </h1>
+          <p>{`flex > grow`}</p>
+          <div className="flex bg-yellow-300 p-4 text-center gap-2">
+            <div className={`w-[100px] bg-green-500 border-2 border-black`}>
+              D
+            </div>
+            <div
+              className={`w-[100px] grow bg-green-500 border-2 border-black`}
+            >
+              O
+            </div>
+            <div className={`w-[100px] bg-green-500 border-2 border-black`}>
+              O
+            </div>
+            <div className={`w-[100px] bg-green-500 border-2 border-black`}>
+              Y
+            </div>
+          </div>
+          <p>{`flex > grow-0`}</p>
+          <div className="flex bg-yellow-300 p-4 text-center gap-2">
+            <div
+              className={`w-[100px] grow bg-green-500 border-2 border-black`}
+            >
+              D
+            </div>
+            <div
+              className={`w-[100px] grow-0 bg-green-500 border-2 border-black`}
+            >
+              O
+            </div>
+            <div
+              className={`w-[100px] grow bg-green-500 border-2 border-black`}
+            >
+              O
+            </div>
+            <div
+              className={`w-[100px] grow bg-green-500 border-2 border-black`}
+            >
+              Y
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -7,8 +7,8 @@ type Props = {
 
 export default function Item({ text, st = "h-[50px]" }: Props) {
   return (
-    <div className={`w-[100px] bg-green-500 border-2 border-black ${st}`}>
-      {text}
+    <div className={`table w-[100px] bg-green-500 border-2 border-black ${st}`}>
+      <span className="table-cell align-middle">{text}</span>
     </div>
   );
 }
