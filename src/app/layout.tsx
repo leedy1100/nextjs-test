@@ -7,13 +7,22 @@ import Footer from "@/components/Footer";
 import classNames from "classnames";
 import RecoilRootWrapper from "@/provider/RecoilRootWrapper";
 import ThemeProvider from "@/provider/ThemeProvider";
-import SidebarProvider from "@/provider/SidebarProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "dooy",
   description: "dooy next app",
+  generator: "Next.js",
+  manifest: "/manifest.json",
+  keywords: ["nextjs", "nextjs13", "next13", "pwa", "next-pwa"],
+  themeColor: [{ media: "(prefers-color-scheme: dark)", color: "#fff" }],
+  viewport:
+    "minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, viewport-fit=cover",
+  icons: [
+    { rel: "apple-touch-icon", url: "icons/icon-128x128.png" },
+    { rel: "icon", url: "icons/icon-128x128.png" },
+  ],
 };
 
 export default function RootLayout({
@@ -35,7 +44,7 @@ export default function RootLayout({
             >
               <Sidebar />
               <div className="h-screen overflow-auto">
-                <main className="mb-[112px] bg-slate-50">{children}</main>
+                <main className="mb-[112px">{children}</main>
                 <Footer />
               </div>
             </div>
