@@ -11,8 +11,8 @@ export default function Sidebar() {
       className={classNames({
         "absolute w-full h-full z-20": true,
         "border-r-2 bg-white dark:bg-black": true,
-        "-translate-x-[100rem] duration-300": !useSidebarState,
-        "duration-300": useSidebarState,
+        "-translate-x-[1024px]": useSidebarState,
+        "duration-300": !useSidebarState,
         "lg:translate-x-0 lg:duration-0": true,
         "lg:relative": true,
       })}
