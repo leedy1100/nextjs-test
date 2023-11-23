@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="">
+      <body className="grid grid-rows-header">
         <RecoilRootWrapper>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
@@ -34,8 +34,8 @@ export default function RootLayout({
               })}
             >
               <Sidebar />
-              <div className="flex flex-col h-screen overflow-auto">
-                <main className="lg:mb-[112px]">{children}</main>
+              <div className="h-screen overflow-auto">
+                <main className="mb-[112px] bg-slate-50">{children}</main>
                 <Footer />
               </div>
             </div>

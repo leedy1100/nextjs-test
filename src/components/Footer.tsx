@@ -5,8 +5,7 @@ export default function Footer() {
   return (
     <footer
       className={classNames({
-        "relative w-full h-14 mb-[112px] bg-white dark:bg-black": true,
-        "lg:absolute lg:bottom-0 lg:mb-0": true,
+        "absolute bottom-0 w-full h-14 bg-white border-2 dark:bg-black": true,
       })}
     >
       Footer
