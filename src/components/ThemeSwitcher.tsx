@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { HiSun } from "react-icons/hi";
-import { HiOutlineMoon } from "react-icons/hi";
+import { HiMiniMoon } from "react-icons/hi2";
 import classNames from "classnames";
 
 export const ThemeSwitcher = () => {
@@ -19,13 +19,19 @@ export const ThemeSwitcher = () => {
 
   return (
     <button
-      className={`w-fit absolute right-5 top-2 p-2 rounded-md bg-slate-200 dark:bg-[#212933]`}
+      className={`rounded-full duration-300 ${
+        theme === "light" && "rotate-90"
+      }`}
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "light" ? (
-        <HiSun className="w-8 h-8" />
+        <p className="rounded-full m-2 p-2 hover:bg-slate-100">
+          <HiSun className="w-7 h-7" />
+        </p>
       ) : (
-        <HiOutlineMoon className="w-8 h-8" />
+        <p className="rounded-full m-2 p-2 hover:bg-[#292638]">
+          <HiMiniMoon className="w-6 h-6" />
+        </p>
       )}
     </button>
   );

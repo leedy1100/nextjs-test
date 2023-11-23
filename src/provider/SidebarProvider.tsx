@@ -14,8 +14,8 @@ export default function SidebarProvider({ children }: SidebarProps) {
     <div
       className={classNames({
         grid: true,
-        "grid-cols-sidebar": useSidebarState,
-        "grid-cols-sidebar-collapsed": !useSidebarState,
+        "grid-cols-sidebar": true,
+        "grid-cols-sidebar-collapsed": !true,
       })}
     >
       {children}
