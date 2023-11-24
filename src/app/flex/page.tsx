@@ -164,7 +164,7 @@ export default function Flex() {
         </p>
         <div className="flex flex-wrap bg-yellow-300 p-4 text-center gap-2">
           {itemArr.map((v, i) => (
-            <Item key={i} text={v} st="w-[500px]" />
+            <Item key={i} text={v} st="w-[100px]" />
           ))}
         </div>
         <p>
@@ -173,7 +173,7 @@ export default function Flex() {
         </p>
         <div className="flex bg-yellow-300 p-4 text-center gap-2">
           {itemArr.map((v, i) => (
-            <Item key={i} text={v} st="w-[500px]" />
+            <Item key={i} text={v} st="w-[100px]" />
           ))}
         </div>
         <p>
@@ -184,7 +184,7 @@ export default function Flex() {
         </p>
         <div className="flex flex-wrap-reverse bg-yellow-300 p-4 text-center gap-2">
           {itemArr.map((v, i) => (
-            <Item key={i} text={v} st="w-[500px]" />
+            <Item key={i} text={v} st="w-[100px]" />
           ))}
         </div>
         <div className="mt-10">

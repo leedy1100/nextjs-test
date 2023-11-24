@@ -12,16 +12,15 @@ export default function Sidebar() {
     <div>
       <nav
         className={classNames({
-          "absolute w-3/4 h-full z-50 left-1/4": true,
-          "border-l-2 bg-white ": true,
+          "absolute w-4/5 h-full z-50 left-[20%] bg-white overflow-auto": true,
           "translate-x-[720px] duration-500": useSidebarState,
           "duration-500": !useSidebarState,
           "md:translate-x-0 md:duration-0": true,
           "md:hidden": true,
         })}
       >
-        <div className="w-full h-full p-10 dark:bg-black">
-          <ul className="text-xl text-black dark:text-slate-200 font-medium">
+        <div className="w-full h-full p-10 shadow-inner dark:bg-black">
+          <ul className="text-lg text-black dark:text-slate-200 font-medium">
             <Link
               href="/flex"
               onClick={() => setSidebarState(!useSidebarState)}
@@ -38,13 +37,13 @@ export default function Sidebar() {
                 Grid
               </li>
             </Link>
-            <Link href="/" onClick={() => setSidebarState(!useSidebarState)}>
+            <Link href="/etc" onClick={() => setSidebarState(!useSidebarState)}>
               <li className="mb-6 hover:text-blurple dark:hover:text-white">
                 Etc
               </li>
             </Link>
           </ul>
-          <hr></hr>
+          <hr className="border-[1.2px]"></hr>
           <div>
             <ThemeSwitcher />
           </div>
@@ -54,7 +53,7 @@ export default function Sidebar() {
         className={`${
           useSidebarState
             ? "hidden"
-            : "absolute w-screen h-[calc(100vh-45px)] z-40 opacity-30 bg-black left-0 bottom-0"
+            : "absolute w-screen h-[calc(100vh-72px)] z-40 opacity-30 bg-black left-0 bottom-0"
         }`}
         onClick={() => setSidebarState(!useSidebarState)}
       ></div>
