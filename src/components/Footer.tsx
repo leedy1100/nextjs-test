@@ -5,10 +5,12 @@ export default function Footer() {
   return (
     <footer
       className={classNames({
-        "absolute bottom-0 w-full h-14 bg-white border-2 dark:bg-black": true,
+        "h-14 bg-white border-2 dark:bg-black": true,
       })}
     >
       Footer
+      <hr></hr>
+      Footer!!
     </footer>
   );
 }

@@ -172,9 +172,9 @@ export default function Flex() {
           <span className="text-blue-400">(tailwind 표현: flex-nowrap)</span>
         </p>
         <div className="flex bg-yellow-300 p-4 text-center gap-2">
-          {/* {itemArr.map((v, i) => (
+          {itemArr.map((v, i) => (
             <Item key={i} text={v} st="w-[500px]" />
-          ))} */}
+          ))}
         </div>
         <p>
           flex flex-wrap-reverse

@@ -31,21 +31,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="grid grid-rows-header">
+      <body className="">
         <RecoilRootWrapper>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
-            <div
-              className={classNames({
-                grid: true,
-                "md:grid-cols-sidebar": true,
-              })}
-            >
-              <Sidebar />
-              <div className="h-screen overflow-auto">
-                <main className="mb-[112px]">{children}</main>
-                <Footer />
-              </div>
+            <Sidebar />
+            <div className="">
+              <main className="">{children}</main>
+              <Footer />
             </div>
           </ThemeProvider>
         </RecoilRootWrapper>
