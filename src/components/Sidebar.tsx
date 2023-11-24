@@ -53,7 +53,7 @@ export default function Sidebar() {
         className={`${
           useSidebarState
             ? "hidden"
-            : "absolute w-screen h-[calc(100vh-72px)] z-40 opacity-30 bg-black left-0 bottom-0"
+            : "absolute w-screen h-screen z-40 opacity-30 bg-black left-0"
         }`}
         onClick={() => setSidebarState(!useSidebarState)}
       ></div>
