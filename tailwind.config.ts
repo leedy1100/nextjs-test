@@ -22,6 +22,7 @@ const config: Config = {
       },
       colors: {
         blurple: "#0952cc",
+        darkblue: "#333044",
       },
     },
   },

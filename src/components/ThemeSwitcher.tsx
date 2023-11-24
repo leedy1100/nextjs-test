@@ -29,7 +29,7 @@ export const ThemeSwitcher = () => {
           <HiSun className="w-7 h-7" />
         </p>
       ) : (
-        <p className="rounded-full m-2 p-2 hover:bg-[#292638]">
+        <p className="rounded-full m-2 p-2 hover:bg-darkblue">
           <HiMiniMoon className="w-6 h-6" />
         </p>
       )}
