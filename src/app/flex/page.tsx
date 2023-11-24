@@ -193,41 +193,33 @@ export default function Flex() {
           </h1>
           <p>{`flex > grow`}</p>
           <div className="flex bg-yellow-300 p-4 text-center gap-2">
-            <div className={`w-[100px] bg-green-500 border-2 border-black`}>
+            <div className={`w-[25px] bg-green-500 border-2 border-black`}>
               D
             </div>
-            <div
-              className={`w-[100px] grow bg-green-500 border-2 border-black`}
-            >
+            <div className={`w-[25px] grow bg-green-500 border-2 border-black`}>
               O
             </div>
-            <div className={`w-[100px] bg-green-500 border-2 border-black`}>
+            <div className={`w-[25px] bg-green-500 border-2 border-black`}>
               O
             </div>
-            <div className={`w-[100px] bg-green-500 border-2 border-black`}>
+            <div className={`w-[25px] bg-green-500 border-2 border-black`}>
               Y
             </div>
           </div>
           <p>{`flex > grow-0`}</p>
           <div className="flex bg-yellow-300 p-4 text-center gap-2">
-            <div
-              className={`w-[100px] grow bg-green-500 border-2 border-black`}
-            >
+            <div className={`w-[25px] grow bg-green-500 border-2 border-black`}>
               D
             </div>
             <div
-              className={`w-[100px] grow-0 bg-green-500 border-2 border-black`}
+              className={`w-[25px] grow-0 bg-green-500 border-2 border-black`}
             >
               O
             </div>
-            <div
-              className={`w-[100px] grow bg-green-500 border-2 border-black`}
-            >
+            <div className={`w-[25px] grow bg-green-500 border-2 border-black`}>
               O
             </div>
-            <div
-              className={`w-[100px] grow bg-green-500 border-2 border-black`}
-            >
+            <div className={`w-[25px] grow bg-green-500 border-2 border-black`}>
               Y
             </div>
           </div>
