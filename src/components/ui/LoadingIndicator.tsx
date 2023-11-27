@@ -5,7 +5,7 @@ export default function LoadingIndicator() {
   return (
     <ContentLoader
       speed={2}
-      viewBox="0 0 625 235"
+      viewBox="0 0 630 235"
       backgroundColor="#f0f0f0"
       foregroundColor="#dedede"
     >

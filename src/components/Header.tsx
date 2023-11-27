@@ -36,7 +36,7 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="sticky h-[72px] md:h-[96px] md:shadow top-0 bg-white dark:bg-black">
+    <header className="sticky h-[72px] md:h-[96px] z-40 md:shadow top-0 bg-white dark:bg-black">
       <div className="flex justify-between items-center px-6 h-full">
         <div className="flex justify-between md:justify-start items-center w-full gap-6">
           <div
