@@ -6,7 +6,7 @@ type RecoilRootWrapperProps = {
   children: React.ReactNode;
 };
 
-export default function RecoilRootWrapper({
+export default function RecoilRootContext({
   children,
 }: RecoilRootWrapperProps) {
   return <RecoilRoot>{children}</RecoilRoot>;

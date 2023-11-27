@@ -1,7 +1,7 @@
 {
   "name": "dooy",
   "short_name": "dooy",
-  "theme_color": "#1976d2",
+  "theme_color": "#ffe066",
   "background_color": "#fafafa",
   "display": "standalone",
   "scope": "./",

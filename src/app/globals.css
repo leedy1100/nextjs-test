@@ -33,9 +33,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ced4da
+  background-color: #ced4da;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #e9ecef
+  background-color: #e9ecef;
+}
+
+::-webkit-tap-highlight { 
+  color:transparent;
 }
