@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
@@ -11,6 +11,8 @@ import "swiper/css/scrollbar";
 import RandomImage from "./RandomImage";
 import useSWR from "swr";
 import LoadingIndicator from "./ui/LoadingIndicator";
+import debounce from "debounce";
+import SmLoadingIndicator from "./ui/SmLoadingIndicator";
 
 export default function ProductSwiper() {
   const items = [
@@ -66,6 +68,11 @@ export default function ProductSwiper() {
     },
   ];
 
+  const [widthState, setWidthState] = useState<number>(0);
+  const handleResize = debounce(() => {
+    setWidthState(window.innerWidth);
+  }, 200);
+
   SwiperCore.use([Navigation, Scrollbar, A11y]);
 
   const { data, error, isLoading } = useSWR("https://picsum.photos/200", {
@@ -74,16 +81,34 @@ export default function ProductSwiper() {
     revalidateOnReconnect: false,
   });
 
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      // cleanup
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    setWidthState(window.innerWidth);
+  }, []);
   return (
-    <div className=" w-full h-full ">
+    <div className="">
       {isLoading ? (
-        <LoadingIndicator />
+        <div>
+          <div className="hidden md:block">
+            <LoadingIndicator />
+          </div>
+          <div className="block md:hidden">
+            <SmLoadingIndicator />
+          </div>
+        </div>
       ) : (
         !error && (
           <Swiper
             rewind={true}
             navigation={true}
-            slidesPerView={3}
+            slidesPerView={widthState > 767 ? 3 : 1}
             spaceBetween={30}
             modules={[Navigation]}
           >
