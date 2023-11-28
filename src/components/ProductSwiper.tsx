@@ -17,7 +17,7 @@ export default function ProductSwiper() {
     {
       id: 1,
       text: "테스트 테스트 1",
-      desc: "내용 입니다 내용 입니다 내용 입니다 내용 입니다 내용 입니다 내용 입니다 내용 입니다 내용 입니다 내용 입니다 내용 입니다",
+      desc: "내용 입니다 ",
     },
     {
       id: 2,
@@ -85,19 +85,12 @@ export default function ProductSwiper() {
             navigation={true}
             slidesPerView={3}
             spaceBetween={30}
-            pagination={{
-              clickable: true,
-            }}
-            // autoplay={{
-            //   delay: 2500,
-            //   disableOnInteraction: false, // 사용자 상호작용시 슬라이더 일시 정지 비활성
-            // }}
-            modules={[Pagination]}
+            modules={[Navigation]}
           >
             {items.map((item) => (
               <SwiperSlide key={item.id}>
                 <RandomImage url={data.url} />
-                <p className="h-24 md:h-[150px] m-4 text-sm md:text-base">
+                <p className="max-h-24 m-4 text-sm md:text-base">
                   {item.text} / {item.desc}
                 </p>
               </SwiperSlide>
