@@ -1,6 +1,5 @@
 import CtrlState from "@/components/CtrlState";
 import ProductSwiper from "@/components/ProductSwiper";
-import { CountStore } from "@/store/store";
 
 export default function Home() {
   return (
