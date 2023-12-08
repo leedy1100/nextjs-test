@@ -5,6 +5,7 @@ import Link from "next/link";
 import React from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { ThemeSwitcher } from "./ThemeSwitcher";
+import { menu } from "@/constants/menu";
 
 export default function Sidebar() {
   const [useSidebarState, setSidebarState] = useRecoilState(sidebarState);
@@ -21,27 +22,17 @@ export default function Sidebar() {
       >
         <div className="w-full h-full p-10 shadow-inner dark:bg-black">
           <ul className="text-lg text-black dark:text-slate-200 font-medium">
-            <Link
-              href="/flex"
-              onClick={() => setSidebarState(!useSidebarState)}
-            >
-              <li className="mb-6 hover:text-blurple dark:hover:text-white">
-                Flex
-              </li>
-            </Link>
-            <Link
-              href="/grid"
-              onClick={() => setSidebarState(!useSidebarState)}
-            >
-              <li className="mb-6 hover:text-blurple dark:hover:text-white">
-                Grid
-              </li>
-            </Link>
-            <Link href="/etc" onClick={() => setSidebarState(!useSidebarState)}>
-              <li className="mb-6 hover:text-blurple dark:hover:text-white">
-                Etc
-              </li>
-            </Link>
+            {menu.map((v) => (
+              <Link
+                key={v.url}
+                href={v.url}
+                onClick={() => setSidebarState(!useSidebarState)}
+              >
+                <li className="mb-6 hover:text-blurple dark:hover:text-white">
+                  {v.name}
+                </li>
+              </Link>
+            ))}
           </ul>
           <hr className="border-[1.2px]"></hr>
           <div>

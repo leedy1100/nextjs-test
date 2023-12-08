@@ -1,5 +1,6 @@
+import CtrlState from "@/components/CtrlState";
 import ProductSwiper from "@/components/ProductSwiper";
-import Link from "next/link";
+import { CountStore } from "@/store/store";
 
 export default function Home() {
   return (
@@ -7,6 +8,7 @@ export default function Home() {
       <div className="">
         <ProductSwiper />
       </div>
+      <CtrlState />
     </section>
   );
 }

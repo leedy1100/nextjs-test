@@ -22,7 +22,8 @@
     "react-spinners": "^0.13.8",
     "recoil": "^0.7.7",
     "swiper": "^11.0.5",
-    "swr": "^2.2.4"
+    "swr": "^2.2.4",
+    "zustand": "^4.4.7"
   },
   "devDependencies": {
     "@types/node": "^20",

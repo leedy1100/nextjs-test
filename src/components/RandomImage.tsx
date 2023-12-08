@@ -10,8 +10,8 @@ export default function RandomImage({ url }: Props) {
     <Image
       src={url}
       alt="Random Picture"
-      width={400}
-      height={400}
+      width={200}
+      height={200}
       className="rounded-xl w-full h-full"
     />
   );

@@ -9,6 +9,7 @@ import Link from "next/link";
 import { allowScroll, preventScroll } from "@/utils/modal";
 import Image from "next/image";
 import debounce from "debounce";
+import { menu } from "@/constants/menu";
 
 export default function Header() {
   const [useSidebarState, setSidebarState] = useRecoilState(sidebarState);
@@ -53,15 +54,11 @@ export default function Header() {
             </Link>
           </div>
           <div className="hidden md:flex gap-4 font-bold tracking-widest">
-            <Link className="" href="/flex">
-              Flex
-            </Link>
-            <Link className="" href="grid">
-              Grid
-            </Link>
-            <Link className="" href="/etc">
-              Etc
-            </Link>
+            {menu.map((v) => (
+              <Link key={v.url} href={v.url}>
+                {v.name}
+              </Link>
+            ))}
           </div>
           <div className="md:hidden">
             <button
