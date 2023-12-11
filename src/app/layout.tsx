@@ -4,7 +4,6 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
-import RecoilRootContext from "@/context/RecoilRootContext";
 import ThemeContext from "@/context/ThemeContext";
 import SWRConfigContext from "@/context/SWRConfigContext";
 
@@ -38,18 +37,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="">
-        <RecoilRootContext>
-          <SWRConfigContext>
-            <ThemeContext attribute="class" defaultTheme="system" enableSystem>
-              <Header />
-              <Sidebar />
-              <div className="">
-                <main className="m-4">{children}</main>
-                <Footer />
-              </div>
-            </ThemeContext>
-          </SWRConfigContext>
-        </RecoilRootContext>
+        <SWRConfigContext>
+          <ThemeContext attribute="class" defaultTheme="system" enableSystem>
+            <Header />
+            <Sidebar />
+            <div className="">
+              <main className="m-4">{children}</main>
+              <Footer />
+            </div>
+          </ThemeContext>
+        </SWRConfigContext>
       </body>
     </html>
   );

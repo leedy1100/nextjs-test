@@ -6,10 +6,25 @@ const withPWA = require("next-pwa")({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // next.js config
+  reactStrictMode: true,
+  swcMinify: true,
+  compiler: { styledComponents: true },
   images: {
-    domains: ["fastly.picsum.photos", "picsum.photos"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fastly.picsum.photos",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
-  disable: process.env.NODE_ENV === "local",
 };
 
 module.exports = withPWA(nextConfig);

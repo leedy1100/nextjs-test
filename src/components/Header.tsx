@@ -3,30 +3,27 @@ import React, { useEffect } from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { HiBars3 } from "react-icons/hi2";
 import { HiOutlineXMark } from "react-icons/hi2";
-import { useRecoilState } from "recoil";
-import { sidebarState } from "@/state/state";
 import Link from "next/link";
 import { allowScroll, preventScroll } from "@/utils/modal";
 import Image from "next/image";
 import debounce from "debounce";
 import { menu } from "@/constants/menu";
+import { useSideBarStore } from "@/store/store";
 
 export default function Header() {
-  const [useSidebarState, setSidebarState] = useRecoilState(sidebarState);
-  const toggleSidebar = () => {
-    setSidebarState(!useSidebarState);
-  };
+  const sidebarState = useSideBarStore.use.sidebar();
+  const { toggleSidebar, resetSidebar } = useSideBarStore.use.actions();
 
   const handleResize = debounce(() => {
     if (window.innerWidth > 767) {
-      setSidebarState(true);
+      resetSidebar();
     }
   }, 200);
 
   useEffect(() => {
-    if (!useSidebarState) preventScroll();
-    if (useSidebarState) allowScroll();
-  }, [useSidebarState]);
+    if (!sidebarState) preventScroll();
+    if (sidebarState) allowScroll();
+  }, [sidebarState]);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -42,7 +39,7 @@ export default function Header() {
         <div className="flex justify-between md:justify-start items-center w-full gap-6">
           <div
             className="rounded-full bg-slate-50 dark:bg-slate-200"
-            onClick={() => setSidebarState(true)}
+            onClick={() => resetSidebar()}
           >
             <Link href="/">
               <Image
@@ -65,7 +62,7 @@ export default function Header() {
               className="p-2 hover:bg-slate-100 hover:dark:bg-darkblue rounded-full"
               onClick={() => toggleSidebar()}
             >
-              {useSidebarState ? (
+              {sidebarState ? (
                 <HiBars3 className="w-6 h-6" />
               ) : (
                 <HiOutlineXMark className="w-6 h-6" />

@@ -1,4 +1,3 @@
-import CtrlState from "@/components/CtrlState";
 import ProductSwiper from "@/components/ProductSwiper";
 
 export default function Home() {
@@ -7,7 +6,6 @@ export default function Home() {
       <div className="">
         <ProductSwiper />
       </div>
-      <CtrlState />
     </section>
   );
 }
