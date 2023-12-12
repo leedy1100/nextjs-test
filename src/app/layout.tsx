@@ -4,8 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
-import ThemeContext from "@/context/ThemeContext";
-import SWRConfigContext from "@/context/SWRConfigContext";
+import ThemeProvider from "@/provider/ThemeProvider";
+import SWRProvider from "@/provider/SWRProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -37,16 +37,16 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="">
-        <SWRConfigContext>
-          <ThemeContext attribute="class" defaultTheme="system" enableSystem>
+        <SWRProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
             <Sidebar />
             <div className="">
               <main className="m-4">{children}</main>
               <Footer />
             </div>
-          </ThemeContext>
-        </SWRConfigContext>
+          </ThemeProvider>
+        </SWRProvider>
       </body>
     </html>
   );

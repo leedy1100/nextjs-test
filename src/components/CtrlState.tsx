@@ -4,16 +4,20 @@ import React, { useEffect, useState } from "react";
 import CountButton from "./ui/CountButton";
 
 export default function CtrlState() {
-  // const [tempCnt, setTempCnt] = useState(0);
+  const [tempCnt, setTempCnt] = useState(0);
 
-  const { count, text } = useBoundStore();
+  const { cnt, text } = useBoundStore();
 
-  const cnt = useCountStore.use.count();
-  const { increaseCount, resetCount } = useCountStore.use.actions();
+  const count = useCountStore.use.count();
+  const storage = useCountStore.use.storage();
+  const increaseCount = useCountStore.use.increaseCount();
+  const resetCount = useCountStore.use.resetCount();
+  const getStorage = useCountStore.use.getStorage();
+  const openAlert = useCountStore.use.openAlert();
 
-  // useEffect(() => {
-  //   setTempCnt(cnt);
-  // }, [cnt]);
+  useEffect(() => {
+    setTempCnt(count);
+  }, [count]);
   return (
     <div>
       <div className="flex flex-col gap-2">
@@ -21,7 +25,7 @@ export default function CtrlState() {
         <CountButton onClick={() => increaseCount()} text="count 증가" />
         <CountButton onClick={() => resetCount()} text="count 리셋" />
       </div>
-      <div>count 건 : {cnt}</div>
+      <div>count 건 : {tempCnt}</div>
       <div className="flex flex-col gap-2">
         <p className="mt-4 text-lg font-bold">no store actions</p>
         <CountButton onClick={() => inc()} text={`${text} 증가`} />
@@ -32,7 +36,19 @@ export default function CtrlState() {
         />
       </div>
       <div>
-        {text} 건 : {count}
+        {text} 건 : {cnt}
+      </div>
+      <div className="flex flex-col gap-2">
+        <p className="mt-4 text-lg font-bold">local storage</p>
+        <CountButton
+          onClick={() => getStorage()}
+          text={`localstorage 불러오기`}
+        />
+      </div>
+      <div>local storage : {storage}</div>
+      <div className="flex flex-col gap-2">
+        <p className="mt-4 text-lg font-bold">alert</p>
+        <CountButton onClick={() => openAlert()} text={`Open Alert`} />
       </div>
     </div>
   );

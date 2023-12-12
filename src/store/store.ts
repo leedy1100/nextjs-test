@@ -1,5 +1,5 @@
 import { create, StoreApi, UseBoundStore } from "zustand";
-import { devtools, persist } from "zustand/middleware";
+import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
 
 type WithSelectors<S> = S extends { getState: () => infer T }
@@ -20,48 +20,65 @@ const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(
 
 type CountState = {
   count: number;
+  storage: string | null;
 };
 
-type CountAction = {
-  actions: {
-    increaseCount: () => void;
-    resetCount: () => void;
-  };
+type CountActions = {
+  // actions: {
+  // };
+  openAlert: () => void;
+  increaseCount: () => void;
+  resetCount: () => void;
+  getStorage: () => void;
 };
+
+const countStorageKey = "count-store";
 
 const initialCount = {
   count: 0,
+  storage: "",
 };
 
-const countStore = create<CountState & CountAction>()(
+const countStore = create<CountState & CountActions>()(
   devtools(
-    immer((set) => ({
-      ...initialCount,
-      actions: {
+    persist(
+      immer((set) => ({
+        ...initialCount,
+        openAlert: () => {
+          alert("test");
+        },
         increaseCount: () =>
           set((state: { count: number }) => {
             state.count += 1;
           }),
         resetCount: () => set(initialCount),
-      },
-    }))
+        getStorage: () =>
+          set((state) => {
+            state.storage = localStorage.getItem(countStorageKey);
+          }),
+      })),
+      {
+        name: countStorageKey,
+        storage: createJSONStorage(() => localStorage),
+      }
+    )
   )
 );
 
 type BoundState = {
-  count: number;
+  cnt: number;
   text: string;
 };
 
 // no action example
 export const useBoundStore = create<BoundState>(() => ({
-  count: 0,
+  cnt: 0,
   text: "no action",
 }));
 
 export const inc = () =>
-  useBoundStore.setState((state: { count: number }) => ({
-    count: state.count + 1,
+  useBoundStore.setState((state: { cnt: number }) => ({
+    cnt: state.cnt + 1,
   }));
 
 export const setText = (text: string) => useBoundStore.setState({ text });

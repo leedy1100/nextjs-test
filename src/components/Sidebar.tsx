@@ -8,7 +8,7 @@ import { useSideBarStore } from "@/store/store";
 
 export default function Sidebar() {
   const sidebarState = useSideBarStore.use.sidebar();
-  const { toggleSidebar, resetSidebar } = useSideBarStore.use.actions();
+  const { resetSidebar } = useSideBarStore.use.actions();
 
   return (
     <div>
