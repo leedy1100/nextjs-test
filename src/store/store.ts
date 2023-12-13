@@ -1,3 +1,4 @@
+import { subscribe } from "@/constants/menu";
 import { create, StoreApi, UseBoundStore } from "zustand";
 import { createJSONStorage, devtools, persist } from "zustand/middleware";
 import { immer } from "zustand/middleware/immer";
@@ -39,7 +40,7 @@ const initialCount = {
   storage: "",
 };
 
-const countStore = create<CountState & CountActions>()(
+export const useCountStoreBase = create<CountState & CountActions>()(
   devtools(
     persist(
       immer((set) => ({
@@ -113,5 +114,56 @@ const sideBarStore = create<sidebarState & sidebarAction>()(
   )
 );
 
-export const useCountStore = createSelectors(countStore);
 export const useSideBarStore = createSelectors(sideBarStore);
+
+const initialSubscribe = {
+  subList: subscribe,
+};
+
+type SubscribeState = {
+  subList: SubscribeMenuInfo[];
+};
+
+export const subscribeStore = create<SubscribeState>()(
+  devtools(
+    immer((set) => ({
+      ...initialSubscribe,
+    }))
+  )
+);
+
+const mySubStorageKey = "subscribe-storage";
+const initialMySub = {
+  subList: [],
+};
+
+type MySubAction = {
+  subscribe: (name: string) => void;
+  subscribeDelete: (name: string) => void;
+};
+
+export const mySubStore = create<SubscribeState & MySubAction>()(
+  devtools(
+    persist(
+      immer((set) => ({
+        ...initialMySub,
+        subscribe: (name: string) =>
+          set((state) => {
+            subscribe.forEach((sub) => {
+              if (sub.name === name) {
+                let item = { ...sub, subscribe: true };
+                state.subList.push(item);
+              }
+            });
+          }),
+        subscribeDelete: (name: string) =>
+          set((state) => {
+            state.subList = state.subList.filter((sub) => sub.name !== name);
+          }),
+      })),
+      {
+        name: mySubStorageKey,
+      }
+    )
+  )
+);

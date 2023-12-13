@@ -1,8 +1,8 @@
 {
   "name": "dooy",
   "short_name": "dooy",
-  "theme_color": "#ffe066",
-  "background_color": "#fafafa",
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

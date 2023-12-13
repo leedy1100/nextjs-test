@@ -5,10 +5,12 @@ import React from "react";
 import { ThemeSwitcher } from "./ThemeSwitcher";
 import { menu } from "@/constants/menu";
 import { useSideBarStore } from "@/store/store";
+import { usePathname } from "next/navigation";
 
 export default function Sidebar() {
   const sidebarState = useSideBarStore.use.sidebar();
   const { resetSidebar } = useSideBarStore.use.actions();
+  const pathname = usePathname();
 
   return (
     <div>
@@ -23,13 +25,20 @@ export default function Sidebar() {
       >
         <div className="w-full h-full p-10 shadow-inner dark:bg-black">
           <ul className="text-lg text-black dark:text-slate-200 font-medium">
-            {menu.map((v) => (
-              <Link key={v.url} href={v.url} onClick={() => resetSidebar()}>
-                <li className="mb-6 hover:text-blurple dark:hover:text-white">
-                  {v.name}
-                </li>
-              </Link>
-            ))}
+            {menu.map(
+              (v) =>
+                v.visible && (
+                  <Link key={v.url} href={v.url} onClick={() => resetSidebar()}>
+                    <li
+                      className={`mb-6 hover:underline underline-offset-4 decoration-2 ${
+                        pathname === v.url && "font-black"
+                      }`}
+                    >
+                      {v.name}
+                    </li>
+                  </Link>
+                )
+            )}
           </ul>
           <hr className="border-[1.2px]"></hr>
           <div>

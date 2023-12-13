@@ -9,10 +9,12 @@ import Image from "next/image";
 import debounce from "debounce";
 import { menu } from "@/constants/menu";
 import { useSideBarStore } from "@/store/store";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const sidebarState = useSideBarStore.use.sidebar();
   const { toggleSidebar, resetSidebar } = useSideBarStore.use.actions();
+  const pathname = usePathname();
 
   const handleResize = debounce(() => {
     if (window.innerWidth > 767) {
@@ -51,11 +53,20 @@ export default function Header() {
             </Link>
           </div>
           <div className="hidden md:flex gap-4 font-bold tracking-widest">
-            {menu.map((v) => (
-              <Link key={v.url} href={v.url}>
-                {v.name}
-              </Link>
-            ))}
+            {menu.map(
+              (v) =>
+                v.visible && (
+                  <Link
+                    key={v.url}
+                    href={v.url}
+                    className={`hover:underline underline-offset-4 decoration-2 ${
+                      pathname === v.url && "font-black"
+                    }`}
+                  >
+                    {v.name}
+                  </Link>
+                )
+            )}
           </div>
           <div className="md:hidden">
             <button

@@ -1,23 +1,28 @@
 "use client";
-import { inc, setText, useBoundStore, useCountStore } from "@/store/store";
+import { useCountStoreBase, inc, setText, useBoundStore } from "@/store/store";
 import React, { useEffect, useState } from "react";
 import CountButton from "./ui/CountButton";
 
 export default function CtrlState() {
   const [tempCnt, setTempCnt] = useState(0);
+  const [tempStorage, setTempStorage] = useState<string | null>();
+
+  const { count, storage, increaseCount, resetCount, getStorage, openAlert } =
+    useCountStoreBase();
 
   const { cnt, text } = useBoundStore();
 
-  const count = useCountStore.use.count();
-  const storage = useCountStore.use.storage();
-  const increaseCount = useCountStore.use.increaseCount();
-  const resetCount = useCountStore.use.resetCount();
-  const getStorage = useCountStore.use.getStorage();
-  const openAlert = useCountStore.use.openAlert();
+  // const count = useCountStore.use.count();
+  // const storage = useCountStore.use.storage();
+  // const increaseCount = useCountStore.use.increaseCount();
+  // const resetCount = useCountStore.use.resetCount();
+  // const getStorage = useCountStore.use.getStorage();
+  // const openAlert = useCountStore.use.openAlert();
 
   useEffect(() => {
     setTempCnt(count);
-  }, [count]);
+    setTempStorage(storage);
+  }, [count, storage]);
   return (
     <div>
       <div className="flex flex-col gap-2">
@@ -45,7 +50,7 @@ export default function CtrlState() {
           text={`localstorage 불러오기`}
         />
       </div>
-      <div>local storage : {storage}</div>
+      <div>local storage : {tempStorage}</div>
       <div className="flex flex-col gap-2">
         <p className="mt-4 text-lg font-bold">alert</p>
         <CountButton onClick={() => openAlert()} text={`Open Alert`} />
