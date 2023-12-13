@@ -3,5 +3,6 @@ type SubscribeMenuInfo = {
   image: string;
   color: string;
   subscribe?: boolean;
+  fee?: number;
   visible: boolean;
 };

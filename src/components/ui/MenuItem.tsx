@@ -3,7 +3,7 @@ import React from "react";
 import Image from "next/image";
 import { HiMiniPlus, HiMiniMinus } from "react-icons/hi2";
 import { mySubStore } from "@/store/store";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 type Props = {
   name: string;
@@ -31,6 +31,11 @@ export default function MenuItem({
   };
   const { subList, subscribeDelete } = mySubStore();
   const pathname = usePathname();
+  const router = useRouter();
+
+  const goSubscribeInfo = (name: string) => {
+    router.push(`/subscribe/my/${name}`);
+  };
 
   const subScribeBtn = () => {
     let subYn = false;
@@ -52,7 +57,7 @@ export default function MenuItem({
       return (
         <button
           className="rounded-full active:shadow"
-          onClick={() => action(name)}
+          onClick={() => goSubscribeInfo(name)}
         >
           <HiMiniPlus className="w-6 h-6" />
         </button>
