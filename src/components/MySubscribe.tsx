@@ -2,7 +2,8 @@
 import { mySubStore } from "@/store/store";
 import React, { useCallback, useEffect, useState } from "react";
 import MenuItem from "./ui/MenuItem";
-import AnimatedNumbers from "react-animated-numbers";
+// import AnimatedNumbers from "react-animated-numbers";
+import dynamic from "next/dynamic";
 
 export default function MySubscribe() {
   const [subItems, setSubItems] = useState<SubscribeMenuInfo[]>();
@@ -15,6 +16,10 @@ export default function MySubscribe() {
     });
     return total;
   }, [subItems]);
+
+  const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), {
+    ssr: false,
+  });
 
   useEffect(() => {
     setSubItems(subList);
