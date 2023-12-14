@@ -3,7 +3,7 @@ import React from "react";
 
 export default function page() {
   return (
-    <div>
+    <div className="w-full">
       <p className="mb-4">My Subscribe</p>
       <MySubscribe />
     </div>

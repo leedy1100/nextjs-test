@@ -1,11 +1,10 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import MenuItem from "./ui/MenuItem";
 import { mySubStore, subscribeStore } from "@/store/store";
 
 export default function Subscribe() {
   const { subList } = subscribeStore();
-  const { subscribe } = mySubStore();
 
   return (
     <div className="flex flex-col w-full">
@@ -19,9 +18,7 @@ export default function Subscribe() {
                   key={sub.name}
                   image={sub.image}
                   name={sub.name}
-                  subscribe={sub?.subscribe}
                   color={sub.color}
-                  action={subscribe}
                 />
               )
           )}

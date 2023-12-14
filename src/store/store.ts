@@ -138,7 +138,7 @@ const initialMySub = {
 };
 
 type MySubAction = {
-  subscribe: (name: string) => void;
+  subscribeAdd: (name: string, fee: string) => void;
   subscribeDelete: (name: string) => void;
 };
 
@@ -147,11 +147,11 @@ export const mySubStore = create<SubscribeState & MySubAction>()(
     persist(
       immer((set) => ({
         ...initialMySub,
-        subscribe: (name: string) =>
+        subscribeAdd: (name: string, fee: string) =>
           set((state) => {
             subscribe.forEach((sub) => {
               if (sub.name === name) {
-                let item = { ...sub, subscribe: true };
+                let item = { ...sub, subscribe: true, fee: Number(fee) };
                 state.subList.push(item);
               }
             });
