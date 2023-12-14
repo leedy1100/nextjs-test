@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { memo } from "react";
 import Image from "next/image";
 import { HiMiniPlus, HiMiniMinus } from "react-icons/hi2";
 import { mySubStore } from "@/store/store";
@@ -16,7 +16,12 @@ type colorItemType = {
   [key: string]: string;
 };
 
-export default function MenuItem({ image, name, subscribe, color }: Props) {
+export default memo(function MenuItem({
+  image,
+  name,
+  subscribe,
+  color,
+}: Props) {
   const colorItem: colorItemType = {
     red1: "bg-[#e03131]",
     red2: "bg-[#f03e3e]",
@@ -65,4 +70,4 @@ export default function MenuItem({ image, name, subscribe, color }: Props) {
       {subScribeBtn()}
     </div>
   );
-}
+});

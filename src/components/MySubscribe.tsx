@@ -28,7 +28,7 @@ export default function MySubscribe() {
     <div className="flex flex-col justify-center">
       <div className="flex justify-center items-end m-4 font-bold text-xl text-center">
         <div className="text-sm text-neutral-500 mr-2">Total</div>
-        <div>
+        <div className="leading-6">
           <AnimatedNumbers
             includeComma
             className={""}
@@ -39,11 +39,11 @@ export default function MySubscribe() {
             animateToNumber={totalFeeMySub()}
             fontStyle={{
               fontSize: 20,
-              color: "black",
+              color: "",
             }}
           />
         </div>
-        <div className="text-sm text-neutral-500">KRW</div>
+        <div className="text-sm text-neutral-500 ml-1">KRW</div>
       </div>
       <hr className="mb-8 border-slate-300" />
       <div className="flex flex-col gap-4">

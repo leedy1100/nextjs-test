@@ -48,7 +48,7 @@ export default function SubscribeInfo() {
           onChange={(e) => onChangeFee(e.target.value)}
           value={fee.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         />
-        <p className="absolute text-center mr-4">원</p>
+        <p className="absolute text-center text-sm font-bold mr-4">KRW</p>
       </div>
       <div className="p-4 text-center">
         <button
