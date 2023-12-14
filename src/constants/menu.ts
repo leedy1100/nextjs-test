@@ -7,10 +7,10 @@ type Menu = {
 export const menu: Menu = [
   { name: "Flex", url: "/flex", visible: false },
   { name: "Grid", url: "/grid", visible: false },
-  { name: "Etc", url: "/etc", visible: true },
-  { name: "Zustand", url: "/state/zustand", visible: true },
+  { name: "Zustand", url: "/state/zustand", visible: false },
   { name: "Subscribe", url: "/subscribe", visible: true },
   { name: "My", url: "/subscribe/my", visible: true },
+  { name: "Etc", url: "/etc", visible: true },
 ];
 
 export const subscribe = [
