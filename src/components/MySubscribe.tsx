@@ -6,7 +6,7 @@ import MenuItem from "./ui/MenuItem";
 import dynamic from "next/dynamic";
 
 export default function MySubscribe() {
-  const [subItems, setSubItems] = useState<SubscribeMenuInfo[]>();
+  const [subItems, setSubItems] = useState<SubscribeMenuInfo[]>([]);
   const { subList } = mySubStore();
 
   const totalFeeMySub = useCallback(() => {
@@ -47,7 +47,7 @@ export default function MySubscribe() {
       </div>
       <hr className="mb-8 border-slate-300" />
       <div className="flex flex-col gap-4">
-        {subItems &&
+        {subItems.length > 0 ? (
           subItems.map(
             (sub) =>
               sub.visible && (
@@ -57,9 +57,13 @@ export default function MySubscribe() {
                   name={sub.name}
                   subscribe={sub.subscribe}
                   color={sub.color}
+                  fee={sub.fee}
                 />
               )
-          )}
+          )
+        ) : (
+          <div className="text-center m-4">구독 중인 서비스가 없습니다.</div>
+        )}
       </div>
     </div>
   );

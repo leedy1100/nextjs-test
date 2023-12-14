@@ -10,6 +10,7 @@ type Props = {
   image?: string;
   subscribe?: boolean;
   color: string;
+  fee?: number;
 };
 
 type colorItemType = {
@@ -21,6 +22,7 @@ export default memo(function MenuItem({
   name,
   subscribe,
   color,
+  fee,
 }: Props) {
   const colorItem: colorItemType = {
     red1: "bg-[#e03131]",
@@ -38,9 +40,9 @@ export default memo(function MenuItem({
     });
 
     if (subYn || subscribe) {
-      return <HiMiniMinus className="w-6 h-6" />;
+      return <HiMiniMinus className="w-6 h-6 text-white dark:text-white" />;
     } else {
-      return <HiMiniPlus className="w-6 h-6" />;
+      return <HiMiniPlus className="w-6 h-6 text-white dark:text-white" />;
     }
   };
 
@@ -67,6 +69,9 @@ export default memo(function MenuItem({
         <Image src={image ?? ""} alt="" width={30} height={30} />
       </div>
       <div className="w-[calc(100%-104px)] text-white">{name}</div>
+      <div className="mx-4 text-white dark:text-white">
+        {fee?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+      </div>
       {subScribeBtn()}
     </div>
   );
