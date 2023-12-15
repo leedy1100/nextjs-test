@@ -83,7 +83,7 @@ export default function SubscribeModal() {
         </p>
         <div className="relative flex justify-end items-center">
           <input
-            className="flex justify-start items-center p-2 outline-none border-2 border-neutral-400 rounded-full"
+            className="flex justify-start items-center py-2 ps-2 pe-14 outline-none border-2 border-neutral-500 rounded-full placeholder:text-slate-500 focus:outline-sky-300 outline-4 opacity-50"
             placeholder="0"
             type="tel"
             onChange={(e) => onChangeFee(e.target.value)}
