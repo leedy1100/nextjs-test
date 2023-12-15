@@ -7,7 +7,7 @@ import { HiXMark } from "react-icons/hi2";
 import { useTheme } from "next-themes";
 
 export default function SubscribeModal() {
-  const { theme, setTheme } = useTheme();
+  const { theme } = useTheme();
   const { modalOpen, serviceName, setModalOpen } = subscribeStore();
   const { subscribeAdd } = mySubStore();
   const router = useRouter();

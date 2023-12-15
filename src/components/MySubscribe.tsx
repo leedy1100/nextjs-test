@@ -2,7 +2,6 @@
 import { mySubStore } from "@/store/store";
 import React, { useCallback, useEffect, useState } from "react";
 import MenuItem from "./ui/MenuItem";
-// import AnimatedNumbers from "react-animated-numbers";
 import dynamic from "next/dynamic";
 
 export default function MySubscribe() {

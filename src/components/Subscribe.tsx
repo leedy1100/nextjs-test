@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import MenuItem from "./ui/MenuItem";
 import { subscribeStore } from "@/store/store";
+import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 
 export default function Subscribe() {
   const { subList } = subscribeStore();
@@ -26,12 +27,15 @@ export default function Subscribe() {
     <div>
       <div className="flex flex-col w-full">
         <div className="flex justify-center mb-8">
-          <input
-            className="flex justify-start items-center p-2 outline-none border-2 border-neutral-500 rounded-full text-sm placeholder:italic placeholder:text-slate-400"
-            placeholder="검색"
-            value={search}
-            onChange={(e) => itemsFilter(e.target.value)}
-          />
+          <div className="relative">
+            <HiMiniMagnifyingGlass className="absolute w-6 h-6 m-2" />
+            <input
+              className="flex justify-start items-center py-2 px-9 outline-none border-2 border-neutral-500 rounded-full text-sm placeholder:text-slate-500 focus:outline-sky-300 outline-4 opacity-50"
+              placeholder="검색"
+              value={search}
+              onChange={(e) => itemsFilter(e.target.value)}
+            />
+          </div>
         </div>
         <div className="flex flex-col gap-4">
           {subItems &&

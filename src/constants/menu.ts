@@ -44,4 +44,16 @@ export const subscribe = [
     color: "blue2",
     visible: true,
   },
+  {
+    name: "Spotify",
+    image: "/assets/images/subscribe/spotify.svg",
+    color: "green1",
+    visible: true,
+  },
+  {
+    name: "Millie",
+    image: "/assets/images/subscribe/millie.jpg",
+    color: "yellow1",
+    visible: true,
+  },
 ];

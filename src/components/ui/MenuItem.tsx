@@ -29,7 +29,9 @@ export default memo(function MenuItem({
     red2: "bg-[#f03e3e]",
     blue1: "bg-[#364fc7]",
     blue2: "bg-[#142878]",
-    gray1: "bg-[#adb5bd]",
+    gray1: "bg-[#ced4da]",
+    green1: "bg-[#1ed760]",
+    yellow1: "bg-[#FFE95F]",
   };
 
   const { modalOpen, setModalOpen, selectName } = subscribeStore();
@@ -63,7 +65,7 @@ export default memo(function MenuItem({
       className={`flex justify-start items-center w-full rounded-full ${colorItem[color]} p-4 active:opacity-70 cursor-pointer`}
       onClick={() => actionBtn(name)}
     >
-      <div className="w-16 pl-2 ">
+      <div className="flex justify-center items-center w-10 rounded-full mx-2  ">
         <Image src={image ?? ""} alt="" width={30} height={30} />
       </div>
       <div className="w-[calc(100%-104px)] text-white">{name}</div>
