@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { HiXMark } from "react-icons/hi2";
 import { useTheme } from "next-themes";
+import classNames from "classnames";
 
 export default function SubscribeModal() {
   const { theme } = useTheme();
@@ -81,15 +82,20 @@ export default function SubscribeModal() {
         <p className="m-4">
           <span className="font-bold text-lg">{serviceName}</span> 구독료
         </p>
-        <div className="relative flex justify-end items-center">
+        <div className="relative flex justify-end items-center text-sm">
           <input
-            className="flex justify-start items-center py-2 ps-2 pe-14 outline-none border-2 border-neutral-500 rounded-full placeholder:text-slate-500 focus:outline-sky-300 outline-4 opacity-50"
+            className={classNames({
+              "flex justify-start items-center": true,
+              "py-2 ps-2 pe-14": true,
+              "rounded-full outline-none border-2 border-neutral-500": true,
+              " focus:outline-sky-300 outline-4 opacity-50": true,
+            })}
             placeholder="0"
             type="tel"
             onChange={(e) => onChangeFee(e.target.value)}
             value={fee.replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
           />
-          <p className="absolute text-center text-sm font-bold mr-4">KRW</p>
+          <p className="absolute text-center font-bold mr-4">KRW</p>
         </div>
         <div className="p-4 text-center">
           <button
