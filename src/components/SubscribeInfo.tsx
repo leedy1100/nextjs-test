@@ -1,10 +1,11 @@
 "use client";
-import { mySubStore } from "@/store/store";
+import { mySubStore, subscribeStore } from "@/store/store";
 import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 export default function SubscribeInfo() {
   const { subscribeAdd } = mySubStore();
+  const { modalOpen, setModalOpen, selectName } = subscribeStore();
 
   const [fee, setFee] = useState<string>("");
   const [subscribeName, setSubscribeName] = useState<string>("");
@@ -53,7 +54,9 @@ export default function SubscribeInfo() {
       <div className="p-4 text-center">
         <button
           className="text-xs font-bold text-slate-400 underline underline-offset-2 hover:text-slate-700"
-          onClick={() => addMySubscribe()}
+          onClick={() => {
+            setModalOpen(modalOpen);
+          }}
         >
           등록하기
         </button>

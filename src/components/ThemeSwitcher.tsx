@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { HiSun } from "react-icons/hi";
 import { HiMiniMoon } from "react-icons/hi2";
-import classNames from "classnames";
 
 export const ThemeSwitcher = () => {
   const [mounted, setMounted] = useState(false);

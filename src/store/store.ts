@@ -122,12 +122,35 @@ const initialSubscribe = {
 
 type SubscribeState = {
   subList: SubscribeMenuInfo[];
+  serviceName: string;
+  modalOpen: boolean;
 };
 
-export const subscribeStore = create<SubscribeState>()(
+type SubscribeAction = {
+  selectName: (name: string) => void;
+  resetName: () => void;
+  setModalOpen: (open: boolean) => void;
+};
+
+export const subscribeStore = create<SubscribeState & SubscribeAction>()(
   devtools(
     immer((set) => ({
       ...initialSubscribe,
+      serviceName: "",
+      modalOpen: false,
+      selectName: (name) =>
+        set((state) => {
+          state.serviceName = name;
+          state.modalOpen = true;
+        }),
+      resetName: () =>
+        set((state) => {
+          state.serviceName = "";
+        }),
+      setModalOpen: (open) =>
+        set((state) => {
+          state.modalOpen = !open;
+        }),
     }))
   )
 );
@@ -147,6 +170,8 @@ export const mySubStore = create<SubscribeState & MySubAction>()(
     persist(
       immer((set) => ({
         ...initialMySub,
+        serviceName: "",
+        modalOpen: false,
         subscribeAdd: (name: string, fee: string) =>
           set((state) => {
             subscribe.forEach((sub) => {

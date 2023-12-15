@@ -62,7 +62,9 @@ export default function MySubscribe() {
               )
           )
         ) : (
-          <div className="text-center m-4">구독 중인 서비스가 없습니다.</div>
+          <div className="text-xs text-center text-neutral-400 font-bold m-4">
+            구독 중인 서비스가 없습니다.
+          </div>
         )}
       </div>
     </div>

@@ -32,4 +32,16 @@ export const subscribe = [
     color: "blue1",
     visible: true,
   },
+  {
+    name: "Coupang",
+    image: "/assets/images/subscribe/coupang.svg",
+    color: "gray1",
+    visible: true,
+  },
+  {
+    name: "Disney+",
+    image: "/assets/images/subscribe/disney.svg",
+    color: "blue2",
+    visible: true,
+  },
 ];
