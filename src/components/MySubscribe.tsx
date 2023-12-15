@@ -34,7 +34,7 @@ export default function MySubscribe() {
             className={""}
             transitions={(index) => ({
               type: "spring",
-              duration: index,
+              duration: index + 0.2,
             })}
             animateToNumber={totalFeeMySub()}
             fontStyle={{

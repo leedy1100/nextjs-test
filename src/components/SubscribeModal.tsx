@@ -45,17 +45,19 @@ export default function SubscribeModal() {
     },
     content: {
       width: "360px",
-      height: "90%",
+      height: "80%",
       zIndex: "30000",
       position: "absolute",
       top: "50%",
       left: "50%",
       transform: "translate(-50%, -50%)",
-      borderRadius: "10px",
-      boxShadow: "2px 2px 2px rgba(0, 0, 0, 0.25)",
+      borderRadius: "15px",
       backgroundColor: theme === "light" ? "white" : "black",
       justifyContent: "center",
       overflow: "auto",
+      border: theme === "light" ? "none" : "block",
+      borderColor: "#343a40",
+      borderWidth: "2px",
     },
   };
 
@@ -72,7 +74,7 @@ export default function SubscribeModal() {
     >
       <div className="flex justify-end">
         <button onClick={() => setModalOpen(modalOpen)}>
-          <HiXMark className="w-6 h-6 p-1 rounded-full hover:bg-slate-100 hover:dark:text-black" />
+          <HiXMark className="w-8 h-8 p-1 rounded-full hover:bg-slate-100 hover:dark:bg-darkblue" />
         </button>
       </div>
       <div className="flex flex-col justify-center items-center">
@@ -91,7 +93,7 @@ export default function SubscribeModal() {
         </div>
         <div className="p-4 text-center">
           <button
-            className="text-xs underline underline-offset-2 hover:text-slate-400 hover:dark:text-slate-300"
+            className="text-xs underline underline-offset-2 hover:text-slate-400 dark:text-neutral-300 hover:dark:text-white"
             onClick={() => {
               subscribeAdd(serviceName, fee);
               completeAdd();

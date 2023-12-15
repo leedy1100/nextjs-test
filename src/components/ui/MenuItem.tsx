@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import Image from "next/image";
 import { HiMiniPlus, HiMiniMinus } from "react-icons/hi2";
 import { mySubStore, subscribeStore } from "@/store/store";
@@ -17,7 +17,7 @@ type colorItemType = {
   [key: string]: string;
 };
 
-export default function MenuItem({
+export default memo(function MenuItem({
   image,
   name,
   subscribe,
@@ -28,26 +28,15 @@ export default function MenuItem({
     red1: "bg-[#e03131]",
     red2: "bg-[#f03e3e]",
     blue1: "bg-[#364fc7]",
-    blue2: "bg-[#1864ab]",
+    blue2: "bg-[#142878]",
     gray1: "bg-[#adb5bd]",
   };
+
   const { modalOpen, setModalOpen, selectName } = subscribeStore();
   const { subList, subscribeDelete } = mySubStore();
   const pathname = usePathname();
 
   const [subYn, setSubYn] = useState(false);
-
-  const subScribeBtn = () => {
-    let subYn = false;
-    subList.forEach((s) => {
-      if (s.name === name) subYn = true;
-    });
-    if (subYn || subscribe) {
-      return <HiMiniMinus className="w-6 h-6 text-white dark:text-white" />;
-    } else {
-      return <HiMiniPlus className="w-6 h-6 text-white dark:text-white" />;
-    }
-  };
 
   const actionBtn = (name: string) => {
     let subYn = false;
@@ -81,7 +70,6 @@ export default function MenuItem({
       <div className="mx-4 text-white dark:text-white">
         {fee?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
       </div>
-      {/* {subScribeBtn()} */}
       {subYn ? (
         <HiMiniMinus className="w-6 h-6 text-white dark:text-white" />
       ) : (
@@ -89,4 +77,4 @@ export default function MenuItem({
       )}
     </div>
   );
-}
+});
