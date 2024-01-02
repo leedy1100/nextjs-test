@@ -1,8 +1,9 @@
 "use client";
+
 import { mySubStore } from "@/store/store";
 import React, { useCallback, useEffect, useState } from "react";
-import MenuItem from "./ui/MenuItem";
 import dynamic from "next/dynamic";
+import MenuItem from "./ui/MenuItem";
 
 export default function MySubscribe() {
   const [subItems, setSubItems] = useState<SubscribeMenuInfo[]>([]);
@@ -30,7 +31,6 @@ export default function MySubscribe() {
         <div className="">
           <AnimatedNumbers
             includeComma
-            className={""}
             transitions={(index) => ({
               type: "spring",
               duration: index + 0.2,
@@ -58,7 +58,7 @@ export default function MySubscribe() {
                   color={sub.color}
                   fee={sub.fee}
                 />
-              )
+              ),
           )
         ) : (
           <div className="text-xs text-center text-neutral-400 font-bold m-4">

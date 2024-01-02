@@ -1,4 +1,5 @@
 "use client";
+
 import { useCountStoreBase, inc, setText, useBoundStore } from "@/store/store";
 import React, { useEffect, useState } from "react";
 import CountButton from "./ui/CountButton";
@@ -47,13 +48,13 @@ export default function CtrlState() {
         <p className="mt-4 text-lg font-bold">local storage</p>
         <CountButton
           onClick={() => getStorage()}
-          text={`localstorage 불러오기`}
+          text="localstorage 불러오기"
         />
       </div>
       <div>local storage : {tempStorage}</div>
       <div className="flex flex-col gap-2">
         <p className="mt-4 text-lg font-bold">alert</p>
-        <CountButton onClick={() => openAlert()} text={`Open Alert`} />
+        <CountButton onClick={() => openAlert()} text="Open Alert" />
       </div>
     </div>
   );

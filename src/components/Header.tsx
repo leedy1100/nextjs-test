@@ -1,8 +1,6 @@
 "use client";
+
 import React, { useEffect } from "react";
-import { ThemeSwitcher } from "./ThemeSwitcher";
-import { HiBars3 } from "react-icons/hi2";
-import { HiOutlineXMark } from "react-icons/hi2";
 import Link from "next/link";
 import { allowScroll, preventScroll } from "@/utils/modal";
 import Image from "next/image";
@@ -10,6 +8,8 @@ import debounce from "debounce";
 import { menu } from "@/constants/menu";
 import { useSideBarStore } from "@/store/store";
 import { usePathname } from "next/navigation";
+import { HiBars3, HiOutlineXMark } from "react-icons/hi2";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Header() {
   const sidebarState = useSideBarStore.use.sidebar();
@@ -65,7 +65,7 @@ export default function Header() {
                   >
                     {v.name}
                   </Link>
-                )
+                ),
             )}
           </div>
           <div className="md:hidden">

@@ -8,11 +8,12 @@ type WithSelectors<S> = S extends { getState: () => infer T }
   : never;
 
 const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(
-  _store: S
+  _store: S,
 ) => {
-  let store = _store as WithSelectors<typeof _store>;
+  const store = _store as WithSelectors<typeof _store>;
   store.use = {};
-  for (let k of Object.keys(store.getState())) {
+  // eslint-disable-next-line no-restricted-syntax
+  for (const k of Object.keys(store.getState())) {
     (store.use as any)[k] = () => store((s) => s[k as keyof typeof s]);
   }
 
@@ -61,9 +62,9 @@ export const useCountStoreBase = create<CountState & CountActions>()(
       {
         name: countStorageKey,
         storage: createJSONStorage(() => localStorage),
-      }
-    )
-  )
+      },
+    ),
+  ),
 );
 
 type BoundState = {
@@ -84,11 +85,11 @@ export const inc = () =>
 
 export const setText = (text: string) => useBoundStore.setState({ text });
 
-type sidebarState = {
+type SidebarState = {
   sidebar: boolean;
 };
 
-type sidebarAction = {
+type SidebarAction = {
   actions: {
     toggleSidebar: () => void;
     resetSidebar: () => void;
@@ -99,7 +100,7 @@ const initialSide = {
   sidebar: true,
 };
 
-const sideBarStore = create<sidebarState & sidebarAction>()(
+const sideBarStore = create<SidebarState & SidebarAction>()(
   devtools(
     immer((set) => ({
       ...initialSide,
@@ -110,8 +111,8 @@ const sideBarStore = create<sidebarState & sidebarAction>()(
           }),
         resetSidebar: () => set(initialSide),
       },
-    }))
-  )
+    })),
+  ),
 );
 
 export const useSideBarStore = createSelectors(sideBarStore);
@@ -151,8 +152,8 @@ export const subscribeStore = create<SubscribeState & SubscribeAction>()(
         set((state) => {
           state.modalOpen = !open;
         }),
-    }))
-  )
+    })),
+  ),
 );
 
 const mySubStorageKey = "subscribe-storage";
@@ -176,7 +177,7 @@ export const mySubStore = create<SubscribeState & MySubAction>()(
           set((state) => {
             subscribe.forEach((sub) => {
               if (sub.name === name) {
-                let item = { ...sub, subscribe: true, fee: Number(fee) };
+                const item = { ...sub, subscribe: true, fee: Number(fee) };
                 state.subList.push(item);
               }
             });
@@ -188,7 +189,7 @@ export const mySubStore = create<SubscribeState & MySubAction>()(
       })),
       {
         name: mySubStorageKey,
-      }
-    )
-  )
+      },
+    ),
+  ),
 );

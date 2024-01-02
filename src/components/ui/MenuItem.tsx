@@ -1,4 +1,5 @@
 "use client";
+
 import React, { memo, useEffect, useState } from "react";
 import Image from "next/image";
 import { HiMiniPlus, HiMiniMinus } from "react-icons/hi2";
@@ -7,24 +8,24 @@ import { usePathname } from "next/navigation";
 
 type Props = {
   name: string;
-  image?: string;
+  image: string;
   subscribe?: boolean;
   color: string;
   fee?: number;
 };
 
-type colorItemType = {
+type ColorItemType = {
   [key: string]: string;
 };
 
 export default memo(function MenuItem({
   image,
   name,
-  subscribe,
+  subscribe = false,
   color,
   fee,
 }: Props) {
-  const colorItem: colorItemType = {
+  const colorItem: ColorItemType = {
     red1: "bg-[#e03131]",
     red2: "bg-[#f03e3e]",
     blue1: "bg-[#364fc7]",
@@ -40,23 +41,24 @@ export default memo(function MenuItem({
 
   const [subYn, setSubYn] = useState(false);
 
-  const actionBtn = (name: string) => {
-    let subYn = false;
+  const actionBtn = (nm: string) => {
+    let subcrbYn = false;
     subList.forEach((s) => {
-      if (s.name === name) subYn = true;
+      if (s.name === nm) subcrbYn = true;
     });
-    if (subYn || subscribe) {
+    if (subcrbYn || subscribe) {
       const deleteConfirm = confirm("내 구독 목록에서 삭제하시겠습니까?");
-      if (deleteConfirm) subscribeDelete(name);
+      if (deleteConfirm) subscribeDelete(nm);
     }
-    if (!subYn && pathname === "/subscribe") {
-      selectName(name);
+    if (!subcrbYn && pathname === "/subscribe") {
+      selectName(nm);
       setModalOpen(modalOpen);
     }
   };
 
   useEffect(() => {
     const serviceNm = subList.filter((s) => s.name === name);
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     serviceNm.length > 0 ? setSubYn(true) : setSubYn(false);
   }, [name, subList]);
 

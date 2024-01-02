@@ -1,4 +1,5 @@
 "use client";
+
 import { mySubStore, subscribeStore } from "@/store/store";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -15,8 +16,8 @@ export default function SubscribeModal() {
 
   const [fee, setFee] = useState<string>("");
 
-  const onChangeFee = (fee: string) => {
-    const tempFee = fee.split(",").join("");
+  const onChangeFee = (f: string) => {
+    const tempFee = f.split(",").join("");
 
     const regExp = /^[0-9]*$/;
     if (regExp.test(tempFee)) {
@@ -25,8 +26,7 @@ export default function SubscribeModal() {
   };
 
   const completeAdd = () => {
-    const goMypage = confirm("마이 페이지로 이동하시겠습니까?");
-    if (goMypage) {
+    if (window.confirm("마이 페이지로 이동하시겠습니까?")) {
       setModalOpen(modalOpen);
       router.push("/subscribe/my");
     } else {

@@ -1,10 +1,11 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import { HiSun } from "react-icons/hi";
 import { HiMiniMoon } from "react-icons/hi2";
 
-export const ThemeSwitcher = () => {
+export default function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
   const { theme, setTheme } = useTheme();
 
@@ -34,4 +35,4 @@ export const ThemeSwitcher = () => {
       )}
     </button>
   );
-};
+}

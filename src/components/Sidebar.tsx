@@ -1,11 +1,12 @@
 "use client";
+
 import classNames from "classnames";
 import Link from "next/link";
 import React from "react";
-import { ThemeSwitcher } from "./ThemeSwitcher";
 import { menu } from "@/constants/menu";
 import { useSideBarStore } from "@/store/store";
 import { usePathname } from "next/navigation";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Sidebar() {
   const sidebarState = useSideBarStore.use.sidebar();
@@ -37,10 +38,10 @@ export default function Sidebar() {
                       {v.name}
                     </li>
                   </Link>
-                )
+                ),
             )}
           </ul>
-          <hr className="border-[1.2px]"></hr>
+          <hr className="border-[1.2px]" />
           <div>
             <ThemeSwitcher />
           </div>
@@ -53,7 +54,9 @@ export default function Sidebar() {
             : "absolute w-screen h-screen z-40 opacity-30 bg-black left-0"
         }`}
         onClick={() => resetSidebar()}
-      ></div>
+      >
+        {" "}
+      </div>
     </div>
   );
 }

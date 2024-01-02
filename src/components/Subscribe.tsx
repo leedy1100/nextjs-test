@@ -1,9 +1,10 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
-import MenuItem from "./ui/MenuItem";
 import { subscribeStore } from "@/store/store";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import classNames from "classnames";
+import MenuItem from "./ui/MenuItem";
 
 export default function Subscribe() {
   const { subList } = subscribeStore();
@@ -14,7 +15,7 @@ export default function Subscribe() {
     setSearch(sch);
     if (sch) {
       setSubItems(
-        subList.filter((s) => s.name.toLowerCase().includes(sch.toLowerCase()))
+        subList.filter((s) => s.name.toLowerCase().includes(sch.toLowerCase())),
       );
     } else {
       setSubItems([...subList]);
@@ -54,7 +55,7 @@ export default function Subscribe() {
                     name={sub.name}
                     color={sub.color}
                   />
-                )
+                ),
             )}
         </div>
       </div>

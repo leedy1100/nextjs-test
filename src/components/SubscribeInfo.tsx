@@ -1,35 +1,29 @@
 "use client";
-import { mySubStore, subscribeStore } from "@/store/store";
-import { usePathname, useRouter } from "next/navigation";
+
+import { subscribeStore } from "@/store/store";
+import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 export default function SubscribeInfo() {
-  const { subscribeAdd } = mySubStore();
-  const { modalOpen, setModalOpen, selectName } = subscribeStore();
+  const { modalOpen, setModalOpen } = subscribeStore();
 
   const [fee, setFee] = useState<string>("");
   const [subscribeName, setSubscribeName] = useState<string>("");
 
   const pathname = usePathname();
-  const router = useRouter();
 
   const serviceName = () => {
     const pathArr = pathname.replace(/%20/g, " ").split("/");
     setSubscribeName(pathArr[pathArr.length - 1]);
   };
 
-  const onChangeFee = (fee: string) => {
-    const tempFee = fee.split(",").join("");
+  const onChangeFee = (f: string) => {
+    const tempFee = f.split(",").join("");
 
     const regExp = /^[0-9]*$/;
     if (regExp.test(tempFee)) {
       setFee(tempFee);
     }
-  };
-
-  const addMySubscribe = () => {
-    subscribeAdd(subscribeName, fee);
-    router.push("/subscribe/my");
   };
 
   useEffect(() => {

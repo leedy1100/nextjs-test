@@ -10,7 +10,7 @@ export default function Footer() {
     >
       <div className="m-4">
         <p className="my-4 text-sm">Footer contents</p>
-        <hr></hr>
+        <hr />
         <p className="mt-4 text-xs text-slate-500 dark:text-slate-300">
           © 2023 dooy. All rights reserved.
         </p>

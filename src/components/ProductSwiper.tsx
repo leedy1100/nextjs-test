@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore from "swiper";
@@ -8,11 +9,11 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
-import RandomImage from "./RandomImage";
 import useSWR from "swr";
-import LoadingIndicator from "./ui/LoadingIndicator";
 import debounce from "debounce";
+import LoadingIndicator from "./ui/LoadingIndicator";
 import SmLoadingIndicator from "./ui/SmLoadingIndicator";
+import RandomImage from "./RandomImage";
 
 export default function ProductSwiper() {
   const items = [
@@ -106,8 +107,8 @@ export default function ProductSwiper() {
       ) : (
         !error && (
           <Swiper
-            rewind={true}
-            navigation={true}
+            rewind
+            navigation
             slidesPerView={widthState > 767 ? 3 : 1}
             spaceBetween={30}
             modules={[Navigation]}

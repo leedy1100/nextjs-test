@@ -1,3 +1,26 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier"
+  ],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/button-has-type":"off",
+    "jsx-a11y/control-has-associated-label":"off",
+    "no-restricted-globals":"off",
+    "no-alert":"off",
+    "jsx-a11y/click-events-have-key-events":"off",
+    "jsx-a11y/no-static-element-interactions":"off",
+    "@typescript-eslint/no-unused-vars":"off",
+    "react/require-default-props":"off",
+    "react/jsx-props-no-spreading":"off",
+    "no-param-reassign":"off",
+    "react/no-array-index-key":"off",
+    "prefer-arrow-callback":"off"
+  }
 }
