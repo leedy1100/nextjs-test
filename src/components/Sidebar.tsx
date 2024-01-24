@@ -17,8 +17,8 @@ export default function Sidebar() {
     <div>
       <nav
         className={classNames({
-          "absolute w-4/5 h-full z-50 left-[20%] bg-white overflow-auto": true,
-          "translate-x-[720px] duration-300": sidebarState,
+          "absolute w-4/5 h-full z-50 bg-white overflow-auto": true,
+          "translate-x-[-720px] duration-300": sidebarState,
           "duration-300": !sidebarState,
           "md:translate-x-0 md:duration-0": true,
           "md:hidden": true,

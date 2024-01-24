@@ -24,11 +24,11 @@ export default function ThemeSwitcher() {
       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
     >
       {theme === "light" ? (
-        <p className="rounded-full m-2 p-2 hover:bg-slate-100">
+        <p className="rounded-full">
           <HiSun className="w-7 h-7" />
         </p>
       ) : (
-        <p className="rounded-full m-2 p-2 hover:bg-darkblue">
+        <p className="rounded-full">
           <HiMiniMoon className="w-6 h-6" />
         </p>
       )}

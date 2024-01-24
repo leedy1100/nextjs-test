@@ -8,6 +8,7 @@ import debounce from "debounce";
 import { menu } from "@/constants/menu";
 import useSideBarStore from "@/store/sideBarStore";
 import { usePathname } from "next/navigation";
+import { HiBell } from "react-icons/hi2";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Header() {
@@ -36,8 +37,8 @@ export default function Header() {
 
   return (
     <header className="sticky h-[72px] md:h-[96px] z-40 md:shadow top-0 bg-white dark:bg-black">
-      <div className="flex justify-between items-center px-6 h-full">
-        <div className="flex justify-between md:justify-start items-center w-full gap-6">
+      <div className="flex justify-between items-center px-6 h-full gap-4">
+        <div className="flex justify-between md:justify-start items-center w-full">
           <div
             className="rounded-full bg-slate-50 dark:bg-slate-200"
             onClick={() => resetSidebar()}
@@ -70,6 +71,13 @@ export default function Header() {
         </div>
         <div className="hidden md:block ">
           <ThemeSwitcher />
+        </div>
+        <div>
+          <span className="relative flex h-2 w-2 left-[18px] top-[6px]">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500" />
+          </span>
+          <HiBell className="w-7 h-7 mb-3 cursor-pointer" />
         </div>
       </div>
     </header>
