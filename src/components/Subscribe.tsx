@@ -1,8 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { subscribeStore } from "@/store/store";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
+import { subscribeStore } from "@/store/subscribeStore";
 import classNames from "classnames";
 import MenuItem from "./ui/MenuItem";
 

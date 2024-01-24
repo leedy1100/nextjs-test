@@ -88,7 +88,7 @@ export default function ProductSwiper() {
       // cleanup
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [handleResize]);
 
   useEffect(() => {
     setWidthState(window.innerWidth);

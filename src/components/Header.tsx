@@ -6,14 +6,13 @@ import { allowScroll, preventScroll } from "@/utils/modal";
 import Image from "next/image";
 import debounce from "debounce";
 import { menu } from "@/constants/menu";
-import { useSideBarStore } from "@/store/store";
+import useSideBarStore from "@/store/sideBarStore";
 import { usePathname } from "next/navigation";
-import { HiBars3, HiOutlineXMark } from "react-icons/hi2";
 import ThemeSwitcher from "./ThemeSwitcher";
 
 export default function Header() {
   const sidebarState = useSideBarStore.use.sidebar();
-  const { toggleSidebar, resetSidebar } = useSideBarStore.use.actions();
+  const { resetSidebar } = useSideBarStore.use.actions();
   const pathname = usePathname();
 
   const handleResize = debounce(() => {
@@ -33,7 +32,7 @@ export default function Header() {
       // cleanup
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [handleResize]);
 
   return (
     <header className="sticky h-[72px] md:h-[96px] z-40 md:shadow top-0 bg-white dark:bg-black">
@@ -67,18 +66,6 @@ export default function Header() {
                   </Link>
                 ),
             )}
-          </div>
-          <div className="md:hidden">
-            <button
-              className="p-2 hover:bg-slate-100 hover:dark:bg-darkblue rounded-full"
-              onClick={() => toggleSidebar()}
-            >
-              {sidebarState ? (
-                <HiBars3 className="w-6 h-6" />
-              ) : (
-                <HiOutlineXMark className="w-6 h-6" />
-              )}
-            </button>
           </div>
         </div>
         <div className="hidden md:block ">

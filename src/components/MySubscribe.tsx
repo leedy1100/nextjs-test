@@ -1,6 +1,6 @@
 "use client";
 
-import { mySubStore } from "@/store/store";
+import { mySubStore } from "@/store/subscribeStore";
 import React, { useCallback, useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import MenuItem from "./ui/MenuItem";

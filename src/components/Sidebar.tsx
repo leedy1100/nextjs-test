@@ -3,8 +3,8 @@
 import classNames from "classnames";
 import Link from "next/link";
 import React from "react";
+import useSideBarStore from "@/store/sideBarStore";
 import { menu } from "@/constants/menu";
-import { useSideBarStore } from "@/store/store";
 import { usePathname } from "next/navigation";
 import ThemeSwitcher from "./ThemeSwitcher";
 

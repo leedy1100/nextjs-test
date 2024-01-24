@@ -1,6 +1,6 @@
 "use client";
 
-import { mySubStore, subscribeStore } from "@/store/store";
+import { mySubStore, subscribeStore } from "@/store/subscribeStore";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Modal from "react-modal";

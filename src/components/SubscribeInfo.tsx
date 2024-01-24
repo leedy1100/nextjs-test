@@ -1,21 +1,19 @@
 "use client";
 
-import { subscribeStore } from "@/store/store";
+import { subscribeStore } from "@/store/subscribeStore";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 export default function SubscribeInfo() {
   const { modalOpen, setModalOpen } = subscribeStore();
 
   const [fee, setFee] = useState<string>("");
-  const [subscribeName, setSubscribeName] = useState<string>("");
-
   const pathname = usePathname();
 
-  const serviceName = () => {
+  const serviceName = useMemo(() => {
     const pathArr = pathname.replace(/%20/g, " ").split("/");
-    setSubscribeName(pathArr[pathArr.length - 1]);
-  };
+    return pathArr[pathArr.length - 1];
+  }, [pathname]);
 
   const onChangeFee = (f: string) => {
     const tempFee = f.split(",").join("");
@@ -26,14 +24,10 @@ export default function SubscribeInfo() {
     }
   };
 
-  useEffect(() => {
-    serviceName();
-  }, []);
-
   return (
     <div className="flex flex-col justify-center items-center">
       <p>
-        <span className="font-bold text-lg">{subscribeName}</span> 구독료
+        <span className="font-bold text-lg">{serviceName}</span> 구독료
       </p>
       <div className="relative flex justify-end items-center">
         <input

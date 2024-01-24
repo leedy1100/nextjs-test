@@ -3,7 +3,7 @@
 import React, { memo, useEffect, useState } from "react";
 import Image from "next/image";
 import { HiMiniPlus, HiMiniMinus } from "react-icons/hi2";
-import { mySubStore, subscribeStore } from "@/store/store";
+import { mySubStore, subscribeStore } from "@/store/subscribeStore";
 import { usePathname } from "next/navigation";
 
 type Props = {

@@ -1,6 +1,7 @@
 "use client";
 
-import { useCountStoreBase, inc, setText, useBoundStore } from "@/store/store";
+import useCountStoreBase from "@/store/countStore";
+import { inc, setText, useBoundStore } from "@/store/boundStore";
 import React, { useEffect, useState } from "react";
 import CountButton from "./ui/CountButton";
 
