@@ -5,12 +5,12 @@ type Menu = {
 }[];
 
 export const menu: Menu = [
-  { name: "Flex", url: "/flex", visible: false },
-  { name: "Grid", url: "/grid", visible: false },
-  { name: "Zustand", url: "/state/zustand", visible: false },
-  { name: "Subscribe", url: "/subscribe", visible: true },
-  { name: "My", url: "/subscribe/my", visible: true },
-  { name: "Etc", url: "/etc", visible: true },
+  { name: "Flex", url: "/flex", visible: true },
+  { name: "Grid", url: "/grid", visible: true },
+  { name: "Zustand", url: "/state/zustand", visible: true },
+  { name: "Subscribe", url: "/subscribe", visible: false },
+  { name: "My", url: "/subscribe/my", visible: false },
+  { name: "Etc", url: "/etc", visible: false },
 ];
 
 export const subscribe = [

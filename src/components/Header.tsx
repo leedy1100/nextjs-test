@@ -36,11 +36,11 @@ export default function Header() {
   }, [handleResize]);
 
   return (
-    <header className="sticky h-[72px] md:h-[96px] z-40 md:shadow top-0 bg-white dark:bg-black">
+    <header className="fixed w-full h-[72px] md:h-[96px] z-40 md:shadow top-0 bg-white dark:bg-black">
       <div className="flex justify-between items-center px-6 h-full gap-4">
         <div className="flex justify-between md:justify-start items-center w-full">
           <div
-            className="rounded-full bg-slate-50 dark:bg-slate-200"
+            className="rounded-full bg-slate-50 dark:bg-slate-200 mr-4"
             onClick={() => resetSidebar()}
           >
             <Link href="/">

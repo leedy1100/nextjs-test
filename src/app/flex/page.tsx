@@ -1,11 +1,39 @@
 import Item from "@/components/ui/Item";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 import Link from "next/link";
 import React from "react";
 
 export default function Flex() {
   const itemArr = ["D", "O", "O", "Y"];
+  const longItemArr = [
+    "D",
+    "O",
+    "O",
+    "Y",
+    "D",
+    "O",
+    "O",
+    "Y",
+    "D",
+    "O",
+    "O",
+    "Y",
+    "D",
+    "O",
+    "O",
+    "Y",
+    "D",
+    "O",
+    "O",
+    "Y",
+    "D",
+    "O",
+    "O",
+    "Y",
+  ];
   return (
     <section className="">
+      <ScrollProgress />
       <Link href="/">Main 이동</Link>
       <div className="mt-10">
         <h1 className="font-bold text-white text-xl bg-slate-400">flex 방향</h1>
@@ -163,7 +191,7 @@ export default function Flex() {
           <span className="text-blue-400">(tailwind 표현: flex-wrap)</span>
         </p>
         <div className="flex flex-wrap bg-yellow-300 p-4 text-center gap-2">
-          {itemArr.map((v, i) => (
+          {longItemArr.map((v, i) => (
             <Item key={i} text={v} st="w-[100px]" />
           ))}
         </div>
@@ -172,7 +200,7 @@ export default function Flex() {
           <span className="text-blue-400">(tailwind 표현: flex-nowrap)</span>
         </p>
         <div className="flex bg-yellow-300 p-4 text-center gap-2">
-          {itemArr.map((v, i) => (
+          {longItemArr.map((v, i) => (
             <Item key={i} text={v} st="w-[100px]" />
           ))}
         </div>
@@ -183,7 +211,7 @@ export default function Flex() {
           </span>
         </p>
         <div className="flex flex-wrap-reverse bg-yellow-300 p-4 text-center gap-2">
-          {itemArr.map((v, i) => (
+          {longItemArr.map((v, i) => (
             <Item key={i} text={v} st="w-[100px]" />
           ))}
         </div>
