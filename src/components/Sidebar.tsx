@@ -17,7 +17,7 @@ export default function Sidebar() {
     <div>
       <nav
         className={classNames({
-          "absolute w-4/5 h-full z-50 bg-white overflow-auto": true,
+          "fixed w-4/5 h-screen z-50 bg-white overflow-auto": true,
           "translate-x-[-720px] duration-300": sidebarState,
           "duration-300": !sidebarState,
           "md:translate-x-0 md:duration-0": true,
@@ -51,7 +51,7 @@ export default function Sidebar() {
         className={`${
           sidebarState
             ? "hidden"
-            : "absolute w-screen h-screen z-40 opacity-30 bg-black left-0"
+            : "fixed w-screen h-screen z-40 opacity-30 bg-black left-0"
         }`}
         onClick={() => resetSidebar()}
       >

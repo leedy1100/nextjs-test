@@ -10,7 +10,7 @@ export default function PresenceComponent() {
   const handleClick = () => {
     setVisible(!isVisible);
   };
-  console.log(isVisible);
+
   return (
     <div className="flex flex-wrap gap-4">
       <button
