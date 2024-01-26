@@ -8,7 +8,6 @@ import ThemeProvider from "@/provider/ThemeProvider";
 import SWRProvider from "@/provider/SWRProvider";
 import SubscribeModal from "@/components/SubscribeModal";
 import BottomNav from "@/components/BottomNav";
-import PageWrapper from "@/components/common/PageWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 

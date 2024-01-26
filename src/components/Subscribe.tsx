@@ -86,7 +86,7 @@ export default function Subscribe() {
             <motion.div
               className="fixed z-50 w-screen h-screen left-0 top-0"
               layoutId={selectedId}
-              transition={{ duration: 0.1 }}
+              transition={{ duration: 0.25 }}
             >
               {filterSubscribe.map((s) => (
                 <SubscribeInfo
