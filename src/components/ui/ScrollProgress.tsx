@@ -8,7 +8,7 @@ export default function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-[72px] md:top-[96px] left-0 right-0 w-full h-2 bg-blue-500 origin-[0%]"
+      className="fixed top-[72px] md:top-[96px] left-0 right-0 w-full h-1 bg-black dark:bg-white origin-[0%]"
       style={{ scaleX: scrollYProgress }}
     />
   );

@@ -1,15 +1,19 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { HiMiniMagnifyingGlass } from "react-icons/hi2";
 import { subscribeStore } from "@/store/subscribeStore";
 import classNames from "classnames";
+import { AnimatePresence, motion } from "framer-motion";
 import MenuItem from "./ui/MenuItem";
+import SubscribeInfo from "./SubscribeInfo";
 
 export default function Subscribe() {
   const { subList } = subscribeStore();
   const [subItems, setSubItems] = useState<SubscribeMenuInfo[]>();
+  const [subItem, setSubItem] = useState<SubscribeMenuInfo[]>();
   const [search, setSearch] = useState<string>("");
+  const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const itemsFilter = (sch: string) => {
     setSearch(sch);
@@ -22,11 +26,24 @@ export default function Subscribe() {
     }
   };
 
+  const filterSubscribe = useMemo(
+    () => subList.filter((s) => s.name === selectedId),
+    [subList, selectedId],
+  );
+
   useEffect(() => {
     setSubItems(subList);
   }, [subList]);
+
+  useEffect(() => {
+    if (selectedId) document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [selectedId]);
+
   return (
-    <div>
+    <div className="">
       <div className="flex flex-col w-full">
         <div className="flex justify-center mb-8">
           <div className="relative">
@@ -49,16 +66,52 @@ export default function Subscribe() {
             subItems.map(
               (sub) =>
                 sub.visible && (
-                  <MenuItem
+                  <motion.div
                     key={sub.name}
-                    image={sub.image}
-                    name={sub.name}
-                    color={sub.color}
-                  />
+                    className="mx-8"
+                    layoutId={sub.name}
+                    onClick={() => setSelectedId(sub.name)}
+                  >
+                    <MenuItem
+                      image={sub.image}
+                      name={sub.name}
+                      color={sub.color}
+                    />
+                  </motion.div>
                 ),
             )}
         </div>
+        <AnimatePresence initial={false}>
+          {selectedId && (
+            <motion.div
+              className="fixed z-50 w-screen h-screen left-0 top-0"
+              layoutId={selectedId}
+              transition={{ duration: 0.1 }}
+            >
+              {filterSubscribe.map((s) => (
+                <SubscribeInfo
+                  key="modal"
+                  color={s.color}
+                  name={s.name}
+                  fee={s.fee}
+                  click={() => setSelectedId(null)}
+                />
+              ))}
+              <motion.button onClick={() => setSelectedId(null)} />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
+      {/* <div
+        className={`${
+          !selectedId
+            ? "hidden"
+            : "fixed w-screen h-screen z-40 opacity-30 bg-black top-0 left-0"
+        }`}
+        onClick={() => setSelectedId(null)}
+      >
+        {" "}
+      </div> */}
     </div>
   );
 }
