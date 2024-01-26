@@ -81,7 +81,7 @@ export default function Subscribe() {
                 ),
             )}
         </div>
-        <AnimatePresence initial={false}>
+        <AnimatePresence>
           {selectedId && (
             <motion.div
               className="fixed z-50 w-screen h-screen left-0 top-0"

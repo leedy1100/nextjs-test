@@ -8,7 +8,7 @@ type Props = {
   color: string;
   name: string;
   fee?: number;
-  click: () => void;
+  click?: () => void;
 };
 
 type ColorItemType = {
