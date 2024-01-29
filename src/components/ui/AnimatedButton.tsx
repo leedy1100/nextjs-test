@@ -36,12 +36,12 @@ const animations = {
     },
   },
   spring: {
-    whileTap: { scale: 0.9 },
-    transition: { type: "spring", stiffness: 400, damping: 10 },
+    whileTap: { scale: 0.99 },
+    transition: { type: "spring", stiffness: 400, damping: 30 },
   },
   pulse: {
-    whileTap: { scale: 1.1 },
-    transition: { type: "spring", stiffness: 400, damping: 10 },
+    whileTap: { scale: 1.01 },
+    transition: { type: "spring", stiffness: 400, damping: 30 },
   },
   wiggle: {
     whileTap: { x: [0, 5, -5, 5, -5, 0] },
@@ -62,7 +62,7 @@ export default function AnimatedButton({
 }: Props) {
   return (
     <motion.button
-      className={`w-[150px] p-4 bg-blue-500 text-white flex items-center justify-center ${
+      className={`w-[150px] p-4 bg-[#228be6] active:bg-[#1864ab] text-white flex items-center justify-center ${
         shape === "circle" ? "rounded-full" : "rounded-xl"
       }`}
       {...animations[animationType]}

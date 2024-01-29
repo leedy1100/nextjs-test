@@ -14,7 +14,7 @@ export default function PresenceComponent() {
   return (
     <div className="flex flex-wrap gap-4">
       <button
-        className="w-[300px] h-[56px] bg-green-300 rounded-full"
+        className="w-[300px] h-[56px] bg-[#63e6be] active:bg-[#12b886] rounded-full"
         onClick={handleClick}
       >
         {isVisible ? "Hide" : "Show"}

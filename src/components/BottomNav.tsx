@@ -16,7 +16,7 @@ export default function BottomNav() {
   const { toggleSidebar, resetSidebar } = useSideBarStore.use.actions();
   const pathname = usePathname();
   return (
-    <div className="fixed bottom-0 w-full h-20 z-10 pt-2 bg-white dark:bg-black flex justify-around items-start shadow-inner md:hidden dark:border-t-2 dark:border-darkblue">
+    <div className="fixed bottom-0 w-full h-16 z-10 pt-2 bg-white dark:bg-black flex justify-around items-start shadow-inner md:hidden dark:border-t-2 dark:border-darkblue">
       <div className="flex flex-col justify-center items-center">
         <button onClick={() => toggleSidebar()}>
           <HiMiniBars3 className="w-8 h-8" />
