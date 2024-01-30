@@ -36,11 +36,11 @@ const animations = {
     },
   },
   spring: {
-    whileTap: { scale: 0.99 },
+    whileTap: { scale: 0.95 },
     transition: { type: "spring", stiffness: 400, damping: 30 },
   },
   pulse: {
-    whileTap: { scale: 1.01 },
+    whileTap: { scale: 1.05 },
     transition: { type: "spring", stiffness: 400, damping: 30 },
   },
   wiggle: {
