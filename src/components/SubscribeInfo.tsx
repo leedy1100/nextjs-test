@@ -1,8 +1,10 @@
 "use client";
 
-import { subscribeStore } from "@/store/subscribeStore";
-import React, { useState } from "react";
+import { mySubStore } from "@/store/subscribeStore";
+import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 import { HiMiniXCircle } from "react-icons/hi2";
+import AnimatedButton from "./ui/AnimatedButton";
 
 type Props = {
   color: string;
@@ -26,8 +28,9 @@ const colorItem: ColorItemType = {
 };
 
 export default function SubscribeInfo({ color, name, fee = 0, click }: Props) {
-  const { modalOpen, setModalOpen } = subscribeStore();
+  const { subscribeAdd } = mySubStore();
   const [inputFee, setInputFee] = useState<number>(fee);
+  const refFee = useRef<HTMLInputElement>(null);
 
   const onChangeFee = (f: string) => {
     const regExp = /^[0-9]*$/;
@@ -37,8 +40,19 @@ export default function SubscribeInfo({ color, name, fee = 0, click }: Props) {
     setInputFee(Number(f.split(",").join("")));
   };
 
+  const addMySubscribe = () => {
+    subscribeAdd(name, inputFee.toString() ?? fee.toString());
+    click?.call(null);
+  };
+
+  useEffect(() => {
+    if (refFee.current) {
+      refFee.current.focus();
+    }
+  }, []);
+
   return (
-    <div className={`w-full h-full text-white ${colorItem[color]}`}>
+    <div className={`w-full h-full rounded-xl text-white ${colorItem[color]}`}>
       <div className="flex justify-end">
         <button className="rounded-full p-2" onClick={click}>
           <HiMiniXCircle className="w-8 h-8" />
@@ -50,26 +64,25 @@ export default function SubscribeInfo({ color, name, fee = 0, click }: Props) {
         </p>
         <div className="relative flex justify-end items-center">
           <input
-            className="flex justify-start items-center p-2 w-full outline-none border-2 border-slate-300 rounded-full text-black"
+            className="flex justify-start items-center p-2 m-4 w-full outline-none border-2 border-slate-300 rounded-full text-black"
             placeholder="0"
             type="tel"
             onChange={(e) => onChangeFee(e.target.value)}
             value={inputFee?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            ref={refFee}
           />
-          <p className="absolute text-center text-sm font-bold mr-4 text-black">
+          <p className="absolute text-center text-sm font-bold mr-8 text-black">
             KRW
           </p>
         </div>
-        <div className="p-4 text-center">
-          <button
-            className="text-xs font-bold text-slate-400 underline underline-offset-2 hover:text-slate-700"
-            onClick={() => {
-              setModalOpen(modalOpen);
-            }}
-          >
-            등록하기
-          </button>
-        </div>
+        <AnimatedButton
+          animationType="spring"
+          shape="circle"
+          text="등록하기"
+          onClick={() => {
+            addMySubscribe();
+          }}
+        />
       </div>
     </div>
   );

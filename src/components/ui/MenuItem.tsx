@@ -1,6 +1,6 @@
 "use client";
 
-import React, { memo, useEffect, useState } from "react";
+import React, { useEffect, useMemo } from "react";
 import Image from "next/image";
 import { HiMiniPlus, HiMiniMinus } from "react-icons/hi2";
 import { mySubStore } from "@/store/subscribeStore";
@@ -12,6 +12,8 @@ type Props = {
   subscribe?: boolean;
   color: string;
   fee?: number;
+  click?: () => void;
+  isDisable?: boolean;
 };
 
 type ColorItemType = {
@@ -28,28 +30,29 @@ const colorItem: ColorItemType = {
   yellow1: "bg-[#FFE95F]",
 };
 
-export default memo(function MenuItem({
+export default function MenuItem({
   image,
   name,
   subscribe = false,
   color,
   fee,
+  click,
+  isDisable,
 }: Props) {
-  const { subList, subscribeDelete } = mySubStore();
+  const { subList } = mySubStore();
 
-  const [subYn, setSubYn] = useState(false);
-
-  useEffect(() => {
+  const isSub = useMemo(() => {
     const serviceNm = subList.filter((s) => s.name === name);
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-    serviceNm.length > 0 ? setSubYn(true) : setSubYn(false);
+    return serviceNm.length > 0;
   }, [name, subList]);
 
   return (
-    <motion.div
-      className={`flex justify-start items-center w-full rounded-xl ${colorItem[color]} p-4 cursor-pointer`}
+    <motion.button
+      className={`flex justify-center items-start w-full min-w-[292px] rounded-xl ${colorItem[color]} p-4 cursor-pointer`}
       whileTap={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 400, damping: 30 }}
+      onClick={click}
+      disabled={isDisable ?? isSub}
     >
       <div className="flex justify-center items-center w-10 rounded-full mx-2  ">
         <Image src={image ?? ""} alt="" width={30} height={30} />
@@ -58,11 +61,11 @@ export default memo(function MenuItem({
       <div className="mx-4 text-white dark:text-white">
         {fee?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
       </div>
-      {subYn ? (
+      {isSub ? (
         <HiMiniMinus className="w-6 h-6 text-white dark:text-white" />
       ) : (
         <HiMiniPlus className="w-6 h-6 text-white dark:text-white" />
       )}
-    </motion.div>
+    </motion.button>
   );
-});
+}

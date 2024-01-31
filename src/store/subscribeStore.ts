@@ -10,13 +10,11 @@ const initialSubscribe = {
 type SubscribeState = {
   subList: SubscribeMenuInfo[];
   serviceName: string;
-  modalOpen: boolean;
 };
 
 type SubscribeAction = {
   selectName: (name: string) => void;
   resetName: () => void;
-  setModalOpen: (open: boolean) => void;
 };
 
 export const subscribeStore = create<SubscribeState & SubscribeAction>()(
@@ -28,15 +26,10 @@ export const subscribeStore = create<SubscribeState & SubscribeAction>()(
       selectName: (name) =>
         set((state) => {
           state.serviceName = name;
-          state.modalOpen = true;
         }),
       resetName: () =>
         set((state) => {
           state.serviceName = "";
-        }),
-      setModalOpen: (open) =>
-        set((state) => {
-          state.modalOpen = !open;
         }),
     })),
   ),

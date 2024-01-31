@@ -26,9 +26,8 @@ export default function Subscribe() {
     }
   };
 
-  const filterSubscribe = useMemo(
-    () => subList.filter((s) => s.name === selectedId),
-    [subList, selectedId],
+  const filterSubscribe = subList.filter(
+    (s: { name: string | null }) => s.name === selectedId,
   );
 
   useEffect(() => {
@@ -43,75 +42,67 @@ export default function Subscribe() {
   }, [selectedId]);
 
   return (
-    <div className="">
-      <div className="flex flex-col w-full">
-        <div className="flex justify-center mb-8">
-          <div className="relative">
-            <HiMiniMagnifyingGlass className="absolute w-6 h-6 m-2" />
-            <input
-              className={classNames({
-                "flex justify-start items-center rounded-full": true,
-                "py-2 px-9": true,
-                "outline-none border-2 border-neutral-500 text-sm": true,
-                " focus:outline-sky-300 outline-4 opacity-50": true,
-              })}
-              placeholder="검색"
-              value={search}
-              onChange={(e) => itemsFilter(e.target.value)}
-            />
-          </div>
+    <div className="flex flex-col justify-center">
+      <div className="flex justify-center mb-8">
+        <div className="relative">
+          <HiMiniMagnifyingGlass className="absolute w-6 h-6 m-2" />
+          <input
+            className={classNames({
+              "flex justify-start items-center rounded-full": true,
+              "py-2 px-9": true,
+              "outline-none border-2 border-neutral-500 text-sm": true,
+              " focus:outline-sky-300 outline-4 opacity-50": true,
+            })}
+            placeholder="검색"
+            value={search}
+            onChange={(e) => itemsFilter(e.target.value)}
+          />
         </div>
-        <div className="flex flex-col gap-4">
+      </div>
+      <div className="flex justify-center">
+        <div className="flex flex-wrap justify-center md:justify-start gap-4 max-w-[600px]">
           {subItems &&
             subItems.map(
               (sub) =>
                 sub.visible && (
-                  <motion.div
-                    key={sub.name}
-                    className="mx-8"
-                    layoutId={sub.name}
-                    onClick={() => setSelectedId(sub.name)}
-                  >
+                  <motion.div key={sub.name} className="" layoutId={sub.name}>
                     <MenuItem
                       image={sub.image}
                       name={sub.name}
                       color={sub.color}
+                      click={() => setSelectedId(sub.name)}
                     />
                   </motion.div>
                 ),
             )}
         </div>
-        <AnimatePresence>
-          {selectedId && (
-            <motion.div
-              className="fixed z-50 w-screen h-screen left-0 top-0"
-              layoutId={selectedId}
-              transition={{ duration: 0.25 }}
-            >
-              {filterSubscribe.map((s) => (
-                <SubscribeInfo
-                  key="modal"
-                  color={s.color}
-                  name={s.name}
-                  fee={s.fee}
-                  click={() => setSelectedId(null)}
-                />
-              ))}
-              <motion.button onClick={() => setSelectedId(null)} />
-            </motion.div>
-          )}
-        </AnimatePresence>
       </div>
-      {/* <div
-        className={`${
-          !selectedId
-            ? "hidden"
-            : "fixed w-screen h-screen z-40 opacity-30 bg-black top-0 left-0"
-        }`}
-        onClick={() => setSelectedId(null)}
-      >
-        {" "}
-      </div> */}
+      <AnimatePresence>
+        {selectedId && (
+          <motion.div
+            className="fixed z-50 w-1/2 h-1/2 left-1/4 top-1/4"
+            layoutId={selectedId}
+            transition={{ duration: 0.3 }}
+            exit={{ opacity: 0 }}
+          >
+            {filterSubscribe.map((s) => (
+              <SubscribeInfo
+                key={s.name}
+                color={s.color}
+                name={s.name}
+                fee={s.fee}
+                click={() => setSelectedId(null)}
+              />
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+      {selectedId && (
+        <div
+          className="fixed w-screen h-screen bg-black opacity-50 left-0 top-0 "
+          onClick={() => setSelectedId(null)}
+        />
+      )}
     </div>
   );
 }

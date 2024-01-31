@@ -1,15 +1,14 @@
 "use client";
 
 import { mySubStore } from "@/store/subscribeStore";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import MenuItem from "./ui/MenuItem";
 
 export default function MySubscribe() {
   const [subItems, setSubItems] = useState<SubscribeMenuInfo[]>([]);
-  const { subList } = mySubStore();
-
-  const totalFeeMySub = useCallback(() => {
+  const { subList, subscribeDelete } = mySubStore();
+  const totalFeeMySub = useMemo(() => {
     let total = 0;
     subItems?.forEach((subItem) => {
       if (subItem.fee) total += subItem.fee;
@@ -20,6 +19,12 @@ export default function MySubscribe() {
   const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), {
     ssr: false,
   });
+
+  const deleteConfirm = (name: string) => {
+    if (confirm(`${name} 구독을 취소하시겠습니까?`)) {
+      subscribeDelete(name);
+    }
+  };
 
   useEffect(() => {
     setSubItems(subList);
@@ -35,7 +40,7 @@ export default function MySubscribe() {
               type: "spring",
               duration: index + 0.2,
             })}
-            animateToNumber={totalFeeMySub()}
+            animateToNumber={totalFeeMySub}
             fontStyle={{
               fontSize: 30,
               color: "",
@@ -57,6 +62,8 @@ export default function MySubscribe() {
                   subscribe={sub.subscribe}
                   color={sub.color}
                   fee={sub.fee}
+                  isDisable={false}
+                  click={() => deleteConfirm(sub.name)}
                 />
               ),
           )

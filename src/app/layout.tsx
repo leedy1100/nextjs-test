@@ -6,7 +6,6 @@ import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
 import ThemeProvider from "@/provider/ThemeProvider";
 import SWRProvider from "@/provider/SWRProvider";
-import SubscribeModal from "@/components/SubscribeModal";
 import BottomNav from "@/components/BottomNav";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -48,7 +47,6 @@ export default function RootLayout({
               <Footer />
               <BottomNav />
             </div>
-            <SubscribeModal />
           </ThemeProvider>
         </SWRProvider>
       </body>

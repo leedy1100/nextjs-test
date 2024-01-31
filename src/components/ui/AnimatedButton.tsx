@@ -13,6 +13,7 @@ type Props = {
     | "visibleWiggle";
   shape?: "circle" | "square";
   text?: string;
+  onClick?: () => void;
 };
 
 // 애니메이션 효과
@@ -59,13 +60,15 @@ export default function AnimatedButton({
   animationType,
   shape = "square",
   text = "AnimatedButton",
+  onClick,
 }: Props) {
   return (
     <motion.button
-      className={`w-[150px] p-4 bg-[#228be6] active:bg-[#1864ab] text-white flex items-center justify-center ${
+      className={`w-[150px] p-4 bg-[#f8f9fa] active:bg-[#e9ecef] text-neutral-500 font-bold flex items-center justify-center ${
         shape === "circle" ? "rounded-full" : "rounded-xl"
       }`}
       {...animations[animationType]}
+      onClick={onClick}
     >
       {text}
     </motion.button>
