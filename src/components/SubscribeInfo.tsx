@@ -52,7 +52,9 @@ export default function SubscribeInfo({ color, name, fee = 0, click }: Props) {
   }, []);
 
   return (
-    <div className={`w-full h-full rounded-xl text-white ${colorItem[color]}`}>
+    <div
+      className={`w-full h-[400px] rounded-xl text-white ${colorItem[color]}`}
+    >
       <div className="flex justify-end">
         <button className="rounded-full p-2" onClick={click}>
           <HiMiniXCircle className="w-8 h-8" />

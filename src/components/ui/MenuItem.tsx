@@ -48,7 +48,7 @@ export default function MenuItem({
 
   return (
     <motion.button
-      className={`flex justify-center items-start w-full min-w-[292px] rounded-xl ${colorItem[color]} p-4 cursor-pointer`}
+      className={`flex justify-center items-center w-full min-w-[292px] rounded-xl ${colorItem[color]} p-4 cursor-pointer`}
       whileTap={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 400, damping: 30 }}
       onClick={click}

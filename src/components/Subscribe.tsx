@@ -11,7 +11,6 @@ import SubscribeInfo from "./SubscribeInfo";
 export default function Subscribe() {
   const { subList } = subscribeStore();
   const [subItems, setSubItems] = useState<SubscribeMenuInfo[]>();
-  const [subItem, setSubItem] = useState<SubscribeMenuInfo[]>();
   const [search, setSearch] = useState<string>("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
@@ -79,30 +78,30 @@ export default function Subscribe() {
       </div>
       <AnimatePresence>
         {selectedId && (
-          <motion.div
-            className="fixed z-50 w-1/2 h-1/2 left-1/4 top-1/4"
-            layoutId={selectedId}
-            transition={{ duration: 0.3 }}
-            exit={{ opacity: 0 }}
-          >
-            {filterSubscribe.map((s) => (
-              <SubscribeInfo
-                key={s.name}
-                color={s.color}
-                name={s.name}
-                fee={s.fee}
-                click={() => setSelectedId(null)}
-              />
-            ))}
-          </motion.div>
+          <div>
+            <motion.div
+              className="fixed z-[60] w-4/5 h-[40%] top-[15%] left-[10%]"
+              layoutId={selectedId}
+              transition={{ duration: 0.2 }}
+              exit={{ opacity: 0 }}
+            >
+              {filterSubscribe.map((s) => (
+                <SubscribeInfo
+                  key={s.name}
+                  color={s.color}
+                  name={s.name}
+                  fee={s.fee}
+                  click={() => setSelectedId(null)}
+                />
+              ))}
+            </motion.div>
+            <div
+              className="fixed w-screen h-screen z-50 bg-black opacity-50 left-0 top-0"
+              onClick={() => setSelectedId(null)}
+            />
+          </div>
         )}
       </AnimatePresence>
-      {selectedId && (
-        <div
-          className="fixed w-screen h-screen bg-black opacity-50 left-0 top-0 "
-          onClick={() => setSelectedId(null)}
-        />
-      )}
     </div>
   );
 }
