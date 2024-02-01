@@ -43,7 +43,7 @@ export default function Subscribe() {
   return (
     <div className="flex flex-col justify-center">
       <div className="flex justify-center mb-8">
-        <div className="relative">
+        <div className="">
           <HiMiniMagnifyingGlass className="absolute w-6 h-6 m-2" />
           <input
             className={classNames({
@@ -80,7 +80,7 @@ export default function Subscribe() {
         {selectedId && (
           <div>
             <motion.div
-              className="absolute z-[60] w-4/5 h-1/2 top-1/4 left-[10%]"
+              className="fixed z-[60] w-4/5 top-[15%] md:top-1/4 left-[10%]"
               layoutId={selectedId}
               transition={{ duration: 0.2 }}
               exit={{ opacity: 0 }}

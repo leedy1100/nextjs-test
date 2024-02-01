@@ -48,7 +48,7 @@ export default function MenuItem({
 
   return (
     <motion.button
-      className={`flex justify-center items-center w-[150px] p-2 md:w-full md:min-w-[292px] md:p-4 rounded-xl ${colorItem[color]} cursor-pointer`}
+      className={`flex justify-center items-center p-2 w-full min-w-[292px] rounded-xl ${colorItem[color]} cursor-pointer`}
       whileTap={{ scale: 1.05 }}
       transition={{ type: "spring", stiffness: 400, damping: 30 }}
       onClick={click}
@@ -57,9 +57,7 @@ export default function MenuItem({
       <div className="flex justify-center items-center w-10 rounded-full mx-2  ">
         <Image src={image ?? ""} alt="" width={30} height={30} />
       </div>
-      <div className="w-[calc(100%-104px)] text-white hidden md:block">
-        {name}
-      </div>
+      <div className="w-[calc(100%-104px)] text-white">{name}</div>
       <div className="mx-4 text-white dark:text-white">
         {fee?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
       </div>
