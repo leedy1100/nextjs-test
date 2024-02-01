@@ -30,10 +30,10 @@ const animations = {
     whileTap: { y: ["0px", "-10px", "0px"] },
     transition: { duration: 0.3 },
     onHoverStart: () => {
-      console.log("Hover started");
+      // console.log("Hover started");
     },
     onHoverEnd: () => {
-      console.log("Hover ended");
+      // console.log("Hover ended");
     },
   },
   spring: {

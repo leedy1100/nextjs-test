@@ -80,7 +80,7 @@ export default function Subscribe() {
         {selectedId && (
           <div>
             <motion.div
-              className="fixed z-[60] w-4/5 h-[40%] top-[15%] left-[10%]"
+              className="absolute z-[60] w-4/5 h-1/2 top-1/4 left-[10%]"
               layoutId={selectedId}
               transition={{ duration: 0.2 }}
               exit={{ opacity: 0 }}
