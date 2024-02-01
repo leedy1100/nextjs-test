@@ -42,7 +42,7 @@ export default function RootLayout({
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             <Header />
             <Sidebar />
-            <div className="mt-[80px] md:mt-[104px]">
+            <div className="mt-[72px] md:mt-[96px]">
               <main className="m-4">{children}</main>
               <Footer />
               <BottomNav />
