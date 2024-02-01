@@ -8,7 +8,7 @@ export default function page() {
     <PageWrapper>
       <div>
         <div className="flex justify-center items-center gap-4">
-          <p className="text-center">구독이 너무 많은거 아닌겨? 이?</p>
+          <p className="text-center text-neutral-400">내 지갑 루팡 목록</p>
           <Image
             src={"/assets/images/surprise_cat.gif" ?? ""}
             alt=""

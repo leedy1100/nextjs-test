@@ -50,28 +50,30 @@ export default function MySubscribe() {
         <div className="text-sm  ml-1">KRW</div>
       </div>
       <hr className="mb-8 border-slate-300" />
-      <div className="flex flex-col gap-4">
-        {subItems.length > 0 ? (
-          subItems.map(
-            (sub) =>
-              sub.visible && (
-                <MenuItem
-                  key={sub.name}
-                  image={sub.image}
-                  name={sub.name}
-                  subscribe={sub.subscribe}
-                  color={sub.color}
-                  fee={sub.fee}
-                  isDisable={false}
-                  click={() => deleteConfirm(sub.name)}
-                />
-              ),
-          )
-        ) : (
-          <div className="text-xs text-center text-neutral-400 font-bold m-4">
-            구독 중인 서비스가 없습니다.
-          </div>
-        )}
+      <div className="flex justify-center items-center">
+        <div className="flex flex-col gap-4 max-w-[600px]">
+          {subItems.length > 0 ? (
+            subItems.map(
+              (sub) =>
+                sub.visible && (
+                  <MenuItem
+                    key={sub.name}
+                    image={sub.image}
+                    name={sub.name}
+                    subscribe={sub.subscribe}
+                    color={sub.color}
+                    fee={sub.fee}
+                    isDisable={false}
+                    click={() => deleteConfirm(sub.name)}
+                  />
+                ),
+            )
+          ) : (
+            <div className="text-xs text-center text-neutral-400 font-bold m-4">
+              구독 중인 서비스가 없습니다.
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
