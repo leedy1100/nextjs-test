@@ -22,6 +22,6 @@
     "no-param-reassign":"off",
     "react/no-array-index-key":"off",
     "prefer-arrow-callback":"off",
-    "lines-around-directive":"off"
+    "lines-around-directive":"off",
   }
 }

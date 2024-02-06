@@ -11,6 +11,7 @@ export const menu: Menu = [
   { name: "Subscribe", url: "/subscribe", visible: false },
   { name: "My", url: "/subscribe/my", visible: false },
   { name: "Etc", url: "/etc", visible: false },
+  { name: "Notification", url: "/noti", visible: true },
 ];
 
 export const subscribe = [

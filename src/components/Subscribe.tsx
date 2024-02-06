@@ -34,8 +34,15 @@ export default function Subscribe() {
   }, [subList]);
 
   useEffect(() => {
-    if (selectedId) document.body.style.overflow = "hidden";
+    if (selectedId) {
+      document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${window.scrollY}px`;
+    }
     return () => {
+      const scrollY = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
       document.body.style.overflow = "unset";
     };
   }, [selectedId]);
