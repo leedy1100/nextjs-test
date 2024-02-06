@@ -51,8 +51,13 @@ export default function FirebaseMessage() {
     });
   };
 
-  const copyText = () => {
-    navigator.clipboard.writeText(pushToken);
+  const copyText = async () => {
+    try {
+      await navigator.clipboard.writeText(pushToken);
+      alert("Text copied to clipboard");
+    } catch (err) {
+      alert("Failed to copy text: " + err);
+    }
   };
 
   useEffect(() => {
