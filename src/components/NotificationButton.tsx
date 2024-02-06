@@ -9,11 +9,11 @@ export default function NotificationButton() {
     if (!("Notification" in window)) {
       alert("This browser does not support system notifications");
     } else if (Notification.permission === "granted") {
-      new Notification("web notification test!");
+      const notification = new Notification("web notification test!");
     } else if (Notification.permission !== "denied") {
       Notification.requestPermission().then(function (permission) {
         if (permission === "granted") {
-          new Notification("web notification test!");
+          const notification = new Notification("web notification test!");
         }
       });
     }
