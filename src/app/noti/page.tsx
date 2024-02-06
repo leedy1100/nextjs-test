@@ -4,13 +4,13 @@ import React from "react";
 
 export default function page() {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-4">
       <div>
-        <h1>Notification</h1>
+        <h1 className="font-bold">Notification</h1>
         <NotificationButton />
       </div>
       <div>
-        <h1>FCM Notification</h1>
+        <h1 className="font-bold">FCM Notification</h1>
         <FirebaseMessage />
       </div>
     </div>

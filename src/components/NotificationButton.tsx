@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import React from "react";
 
 export default function NotificationButton() {
@@ -20,7 +21,14 @@ export default function NotificationButton() {
 
   return (
     <div>
-      <button onClick={notify}>Notify me!</button>
+      <motion.button
+        className="text-xs rounded-full p-2 bg-neutral-400 text-white"
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        onClick={notify}
+      >
+        Notify me!
+      </motion.button>
     </div>
   );
 }

@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getMessaging, onMessage, getToken } from "firebase/messaging";
+import { motion } from "framer-motion";
 
 export default function FirebaseMessage() {
+  const [pushToken, setPushToken] = useState("");
   const onMessageFCM = async () => {
     // 브라우저에 알림 권한을 요청합니다.
     const permission = await Notification.requestPermission();
@@ -32,6 +34,7 @@ export default function FirebaseMessage() {
         if (currentToken) {
           // 정상적으로 토큰이 발급되면 콘솔에 출력합니다.
           console.log(currentToken);
+          setPushToken(currentToken);
         } else {
           console.log(
             "No registration token available. Request permission to generate one.",
@@ -54,7 +57,12 @@ export default function FirebaseMessage() {
 
   return (
     <div>
-      <h1>hello world</h1>
+      <motion.input
+        className="text-xs rounded-full p-2 bg-neutral-400 text-white"
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+        value={pushToken}
+      />
     </div>
   );
 }
