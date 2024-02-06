@@ -51,19 +51,24 @@ export default function FirebaseMessage() {
     });
   };
 
+  const copyText = () => {
+    navigator.clipboard.writeText(pushToken);
+  };
+
   useEffect(() => {
     onMessageFCM();
   }, []);
 
   return (
     <div>
-      <motion.input
+      <motion.button
         className="text-xs rounded-full p-2 bg-neutral-400 text-white"
         whileTap={{ scale: 0.95 }}
         transition={{ type: "spring", stiffness: 400, damping: 30 }}
-        onChange={() => {}}
-        value={pushToken}
-      />
+        onClick={() => copyText()}
+      >
+        PUSH TOKEN COPY
+      </motion.button>
     </div>
   );
 }
