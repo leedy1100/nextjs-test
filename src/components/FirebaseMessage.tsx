@@ -4,8 +4,10 @@ import React, { useEffect, useState } from "react";
 import { initializeApp } from "firebase/app";
 import { getMessaging, onMessage, getToken } from "firebase/messaging";
 import { motion } from "framer-motion";
+import { set } from "firebase/database";
 
 export default function FirebaseMessage() {
+  const [isNotificationEnabled, setNotificationEnabled] = useState(false);
   const [pushToken, setPushToken] = useState("");
   const onMessageFCM = async () => {
     // 브라우저에 알림 권한을 요청합니다.
@@ -56,12 +58,36 @@ export default function FirebaseMessage() {
       await navigator.clipboard.writeText(pushToken);
       alert("Text copied to clipboard");
     } catch (err) {
-      alert("Failed to copy text: " + err);
+      alert(`Failed to copy text: ${err}`);
+    }
+  };
+
+  const toggleNotifications = async () => {
+    if (isNotificationEnabled) {
+      // Here you can implement the logic to disable notifications
+      console.log("Notifications are disabled");
+      setNotificationEnabled(false);
+    } else {
+      const permission = await Notification.requestPermission();
+      console.log(permission);
+      if (permission === "granted") {
+        console.log("Notification permission granted.");
+        setNotificationEnabled(true);
+      } else {
+      }
     }
   };
 
   useEffect(() => {
     onMessageFCM();
+    if (!("Notification" in window)) {
+      console.log("This browser does not support notifications.");
+      return;
+    }
+
+    if (Notification.permission === "granted") {
+      setNotificationEnabled(true);
+    }
   }, []);
 
   return (
@@ -73,6 +99,18 @@ export default function FirebaseMessage() {
         onClick={() => copyText()}
       >
         PUSH TOKEN COPY
+      </motion.button>
+      <motion.button
+        className={`text-xs rounded-full p-2 ${
+          isNotificationEnabled ? "bg-green-300" : "bg-neutral-400"
+        } text-white`}
+        onClick={toggleNotifications}
+        whileTap={{ scale: 0.95 }}
+        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+      >
+        {isNotificationEnabled
+          ? "Disable Notifications"
+          : "Enable Notifications"}
       </motion.button>
     </div>
   );
