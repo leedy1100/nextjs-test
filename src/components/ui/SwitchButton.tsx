@@ -11,8 +11,8 @@ type Props = {
 export default function SwitchButton({ isOn, toggleNotifications }: Props) {
   return (
     <div
-      className={`flex justify-start items-center w-16 h-10 bg-neutral-300 rounded-full p-1 cursor-pointer ${
-        isOn && "justify-end bg-[#c0eb75]"
+      className={`flex justify-start items-center w-16 h-10 rounded-full p-1 cursor-pointer ${
+        isOn ? "justify-end bg-[#c0eb75]" : "bg-neutral-300"
       }`}
       onClick={toggleNotifications}
     >

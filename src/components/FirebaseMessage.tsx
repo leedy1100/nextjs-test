@@ -63,26 +63,28 @@ export default function FirebaseMessage() {
     }
   };
 
-  const toggleNotifications = async () => {
+  const toggleNotifications = () => {
     if (isNotificationEnabled) {
       // Here you can implement the logic to disable notifications
       console.log("Notifications are disabled");
       setNotificationEnabled(false);
     } else {
-      const permission = await Notification.requestPermission();
-
-      if (permission === "granted") {
-        console.log("Notification permission granted.");
-        setNotificationEnabled(true);
-      }
+      console.log("notifications are enabled");
+      Notification.requestPermission().then((permission) => {
+        console.log(permission);
+        if (permission === "granted") {
+          console.log("Notification permission granted.");
+          setNotificationEnabled(true);
+        }
+      });
     }
   };
 
   useEffect(() => {
     onMessageFCM();
+
     if (!("Notification" in window)) {
       console.log("This browser does not support notifications.");
-      return;
     }
 
     if (Notification.permission === "granted") {
