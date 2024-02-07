@@ -5,6 +5,7 @@ import { initializeApp } from "firebase/app";
 import { getMessaging, onMessage, getToken } from "firebase/messaging";
 import { motion } from "framer-motion";
 import { set } from "firebase/database";
+import SwitchButton from "./ui/SwitchButton";
 
 export default function FirebaseMessage() {
   const [isNotificationEnabled, setNotificationEnabled] = useState(false);
@@ -69,11 +70,10 @@ export default function FirebaseMessage() {
       setNotificationEnabled(false);
     } else {
       const permission = await Notification.requestPermission();
-      console.log(permission);
+
       if (permission === "granted") {
         console.log("Notification permission granted.");
         setNotificationEnabled(true);
-      } else {
       }
     }
   };
@@ -91,7 +91,7 @@ export default function FirebaseMessage() {
   }, []);
 
   return (
-    <div>
+    <div className="flex h-10 gap-4">
       <motion.button
         className="text-xs rounded-full p-2 bg-neutral-400 text-white"
         whileTap={{ scale: 0.95 }}
@@ -100,18 +100,10 @@ export default function FirebaseMessage() {
       >
         PUSH TOKEN COPY
       </motion.button>
-      <motion.button
-        className={`text-xs rounded-full p-2 ${
-          isNotificationEnabled ? "bg-green-300" : "bg-neutral-400"
-        } text-white`}
-        onClick={toggleNotifications}
-        whileTap={{ scale: 0.95 }}
-        transition={{ type: "spring", stiffness: 400, damping: 30 }}
-      >
-        {isNotificationEnabled
-          ? "Disable Notifications"
-          : "Enable Notifications"}
-      </motion.button>
+      <SwitchButton
+        isOn={isNotificationEnabled}
+        toggleNotifications={toggleNotifications}
+      />
     </div>
   );
 }
