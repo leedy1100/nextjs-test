@@ -5,7 +5,6 @@ import React from "react";
 
 export default function NotificationButton() {
   const notify = () => {
-    console.log(Notification.permission);
     if (!("Notification" in window)) {
       alert("This browser does not support system notifications");
     } else if (Notification.permission === "granted") {

@@ -82,6 +82,10 @@ export default function ProductSwiper() {
     revalidateOnReconnect: false,
   });
 
+  const errorApi = () => {
+    throw new Error("API 호출 실패");
+  };
+
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => {
@@ -91,6 +95,7 @@ export default function ProductSwiper() {
   }, [handleResize]);
 
   useEffect(() => {
+    errorApi();
     setWidthState(window.innerWidth);
   }, []);
   return (

@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import localFont from "next/font/local";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Footer from "@/components/Footer";
@@ -8,7 +8,9 @@ import ThemeProvider from "@/provider/ThemeProvider";
 import SWRProvider from "@/provider/SWRProvider";
 import BottomNav from "@/components/BottomNav";
 
-const inter = Inter({ subsets: ["latin"] });
+export const pretendard = localFont({
+  src: "./fonts/PretendardVariable.woff2",
+});
 
 export const metadata: Metadata = {
   title: "dooy",
@@ -36,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={pretendard.className}>
       <body className="">
         <SWRProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
