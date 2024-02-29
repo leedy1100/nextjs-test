@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
 
 export async function middleware(req: NextRequest) {
   const { pathname, search, origin, basePath } = req.nextUrl;
@@ -11,5 +11,5 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/"],
+  matcher: ['/'],
 };

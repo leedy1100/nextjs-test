@@ -1,12 +1,12 @@
-"use client";
+'use client';
 
-import React from "react";
-import { FixedSizeList as List } from "react-window";
+import React from 'react';
+import { FixedSizeList as List } from 'react-window';
 
 export default function OptimizationTable() {
   const obj = {
-    name: "홍길동",
-    age: "20",
+    name: '홍길동',
+    age: '20',
   };
   const dummyData = Array(1000).fill(obj);
 

@@ -1,7 +1,7 @@
-import { subscribe } from "@/constants/menu";
-import { create } from "zustand";
-import { devtools, persist } from "zustand/middleware";
-import { immer } from "zustand/middleware/immer";
+import { subscribe } from '@/constants/menu';
+import { create } from 'zustand';
+import { devtools, persist } from 'zustand/middleware';
+import { immer } from 'zustand/middleware/immer';
 
 const initialSubscribe = {
   subList: subscribe,
@@ -19,23 +19,23 @@ type SubscribeAction = {
 
 export const subscribeStore = create<SubscribeState & SubscribeAction>()(
   devtools(
-    immer((set) => ({
+    immer(set => ({
       ...initialSubscribe,
-      serviceName: "",
+      serviceName: '',
       modalOpen: false,
-      selectName: (name) =>
-        set((state) => {
+      selectName: name =>
+        set(state => {
           state.serviceName = name;
         }),
       resetName: () =>
-        set((state) => {
-          state.serviceName = "";
+        set(state => {
+          state.serviceName = '';
         }),
     })),
   ),
 );
 
-const mySubStorageKey = "subscribe-storage";
+const mySubStorageKey = 'subscribe-storage';
 const initialMySub = {
   subList: [],
 };
@@ -48,13 +48,13 @@ type MySubAction = {
 export const mySubStore = create<SubscribeState & MySubAction>()(
   devtools(
     persist(
-      immer((set) => ({
+      immer(set => ({
         ...initialMySub,
-        serviceName: "",
+        serviceName: '',
         modalOpen: false,
         subscribeAdd: (name: string, fee: string) =>
-          set((state) => {
-            subscribe.forEach((sub) => {
+          set(state => {
+            subscribe.forEach(sub => {
               if (sub.name === name) {
                 const item = { ...sub, subscribe: true, fee: Number(fee) };
                 state.subList.push(item);
@@ -62,8 +62,8 @@ export const mySubStore = create<SubscribeState & MySubAction>()(
             });
           }),
         subscribeDelete: (name: string) =>
-          set((state) => {
-            state.subList = state.subList.filter((sub) => sub.name !== name);
+          set(state => {
+            state.subList = state.subList.filter(sub => sub.name !== name);
           }),
       })),
       {

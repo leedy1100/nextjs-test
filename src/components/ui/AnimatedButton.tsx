@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
 type Props = {
   animationType:
-    | "bounce"
-    | "shiver"
-    | "float"
-    | "spring"
-    | "pulse"
-    | "wiggle"
-    | "visibleWiggle";
-  shape?: "circle" | "square";
+    | 'bounce'
+    | 'shiver'
+    | 'float'
+    | 'spring'
+    | 'pulse'
+    | 'wiggle'
+    | 'visibleWiggle';
+  shape?: 'circle' | 'square';
   text?: string;
   onClick?: () => void;
 };
@@ -19,7 +19,7 @@ type Props = {
 // 애니메이션 효과
 const animations = {
   bounce: {
-    whileTap: { y: ["0px", "10px", "0px"] },
+    whileTap: { y: ['0px', '10px', '0px'] },
     transition: { duration: 0.3 },
   },
   shiver: {
@@ -27,7 +27,7 @@ const animations = {
     transition: { duration: 0.2 },
   },
   float: {
-    whileTap: { y: ["0px", "-10px", "0px"] },
+    whileTap: { y: ['0px', '-10px', '0px'] },
     transition: { duration: 0.3 },
     onHoverStart: () => {
       // console.log("Hover started");
@@ -38,11 +38,11 @@ const animations = {
   },
   spring: {
     whileTap: { scale: 0.95 },
-    transition: { type: "spring", stiffness: 400, damping: 30 },
+    transition: { type: 'spring', stiffness: 400, damping: 30 },
   },
   pulse: {
     whileTap: { scale: 1.05 },
-    transition: { type: "spring", stiffness: 400, damping: 30 },
+    transition: { type: 'spring', stiffness: 400, damping: 30 },
   },
   wiggle: {
     whileTap: { x: [0, 5, -5, 5, -5, 0] },
@@ -58,14 +58,14 @@ const animations = {
 
 export default function AnimatedButton({
   animationType,
-  shape = "square",
-  text = "AnimatedButton",
+  shape = 'square',
+  text = 'AnimatedButton',
   onClick,
 }: Props) {
   return (
     <motion.button
       className={`w-[150px] p-4 bg-[#f8f9fa] active:bg-[#e9ecef] text-neutral-500 font-bold flex items-center justify-center ${
-        shape === "circle" ? "rounded-full" : "rounded-xl"
+        shape === 'circle' ? 'rounded-full' : 'rounded-xl'
       }`}
       {...animations[animationType]}
       onClick={onClick}

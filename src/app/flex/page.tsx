@@ -1,28 +1,28 @@
-import PageWrapper from "@/components/common/PageWrapper";
-import Item from "@/components/ui/Item";
-import ScrollProgress from "@/components/ui/ScrollProgress";
-import Link from "next/link";
-import React from "react";
+import PageWrapper from '@/components/common/PageWrapper';
+import Item from '@/components/ui/Item';
+import ScrollProgress from '@/components/ui/ScrollProgress';
+import Link from 'next/link';
+import React from 'react';
 
 export default function Flex() {
-  const itemArr = ["D", "O", "O", "Y"];
+  const itemArr = ['D', 'O', 'O', 'Y'];
   const longItemArr = [
-    "D",
-    "O",
-    "O",
-    "Y",
-    "D",
-    "O",
-    "O",
-    "Y",
-    "D",
-    "O",
-    "O",
-    "Y",
-    "D",
-    "O",
-    "O",
-    "Y",
+    'D',
+    'O',
+    'O',
+    'Y',
+    'D',
+    'O',
+    'O',
+    'Y',
+    'D',
+    'O',
+    'O',
+    'Y',
+    'D',
+    'O',
+    'O',
+    'Y',
   ];
   return (
     <PageWrapper>

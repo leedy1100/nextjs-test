@@ -1,5 +1,5 @@
-import ProductSwiper from "@/components/ProductSwiper";
-import PageWrapper from "@/components/common/PageWrapper";
+import ProductSwiper from '@/components/ProductSwiper';
+import PageWrapper from '@/components/common/PageWrapper';
 
 export default function Home() {
   return (

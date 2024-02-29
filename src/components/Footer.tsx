@@ -1,11 +1,11 @@
-import classNames from "classnames";
-import React from "react";
+import classNames from 'classnames';
+import React from 'react';
 
 export default function Footer() {
   return (
     <footer
       className={classNames({
-        "h-[200px] border-t-2 bg-white dark:bg-black": true,
+        'h-[200px] border-t-2 bg-white dark:bg-black': true,
       })}
     >
       <div className="m-4">

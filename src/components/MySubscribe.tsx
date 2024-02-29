@@ -1,22 +1,22 @@
-"use client";
+'use client';
 
-import { mySubStore } from "@/store/subscribeStore";
-import React, { useEffect, useMemo, useState } from "react";
-import dynamic from "next/dynamic";
-import MenuItem from "./ui/MenuItem";
+import { mySubStore } from '@/store/subscribeStore';
+import React, { useEffect, useMemo, useState } from 'react';
+import dynamic from 'next/dynamic';
+import MenuItem from './ui/MenuItem';
 
 export default function MySubscribe() {
   const [subItems, setSubItems] = useState<SubscribeMenuInfo[]>([]);
   const { subList, subscribeDelete } = mySubStore();
   const totalFeeMySub = useMemo(() => {
     let total = 0;
-    subItems?.forEach((subItem) => {
+    subItems?.forEach(subItem => {
       if (subItem.fee) total += subItem.fee;
     });
     return total;
   }, [subItems]);
 
-  const AnimatedNumbers = dynamic(() => import("react-animated-numbers"), {
+  const AnimatedNumbers = dynamic(() => import('react-animated-numbers'), {
     ssr: false,
   });
 
@@ -36,14 +36,14 @@ export default function MySubscribe() {
         <div className="">
           <AnimatedNumbers
             includeComma
-            transitions={(index) => ({
-              type: "spring",
+            transitions={index => ({
+              type: 'spring',
               duration: index + 0.2,
             })}
             animateToNumber={totalFeeMySub}
             fontStyle={{
               fontSize: 30,
-              color: "",
+              color: '',
             }}
           />
         </div>
@@ -54,7 +54,7 @@ export default function MySubscribe() {
         <div className="flex flex-col gap-4 max-w-[600px]">
           {subItems.length > 0 ? (
             subItems.map(
-              (sub) =>
+              sub =>
                 sub.visible && (
                   <MenuItem
                     key={sub.name}

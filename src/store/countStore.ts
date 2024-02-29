@@ -1,6 +1,6 @@
-import { create } from "zustand";
-import { createJSONStorage, devtools, persist } from "zustand/middleware";
-import { immer } from "zustand/middleware/immer";
+import { create } from 'zustand';
+import { createJSONStorage, devtools, persist } from 'zustand/middleware';
+import { immer } from 'zustand/middleware/immer';
 
 type CountState = {
   count: number;
@@ -16,20 +16,20 @@ type CountActions = {
   getStorage: () => void;
 };
 
-const countStorageKey = "count-store";
+const countStorageKey = 'count-store';
 
 const initialCount = {
   count: 0,
-  storage: "",
+  storage: '',
 };
 
 const useCountStoreBase = create<CountState & CountActions>()(
   devtools(
     persist(
-      immer((set) => ({
+      immer(set => ({
         ...initialCount,
         openAlert: () => {
-          alert("test");
+          alert('test');
         },
         increaseCount: () =>
           set((state: { count: number }) => {
@@ -37,7 +37,7 @@ const useCountStoreBase = create<CountState & CountActions>()(
           }),
         resetCount: () => set(initialCount),
         getStorage: () =>
-          set((state) => {
+          set(state => {
             state.storage = localStorage.getItem(countStorageKey);
           }),
       })),

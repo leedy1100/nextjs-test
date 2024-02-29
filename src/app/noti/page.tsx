@@ -1,6 +1,6 @@
-import FirebaseMessage from "@/components/FirebaseMessage";
-import NotificationButton from "@/components/NotificationButton";
-import React from "react";
+import FirebaseMessage from '@/components/FirebaseMessage';
+import NotificationButton from '@/components/NotificationButton';
+import React from 'react';
 
 export default function page() {
   return (

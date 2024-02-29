@@ -1,6 +1,6 @@
-import React from "react";
-import CtrlState from "@/components/CtrlState";
-import PageWrapper from "@/components/common/PageWrapper";
+import React from 'react';
+import CtrlState from '@/components/CtrlState';
+import PageWrapper from '@/components/common/PageWrapper';
 
 export default function page() {
   return (

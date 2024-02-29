@@ -1,6 +1,6 @@
-import { create, StoreApi, UseBoundStore } from "zustand";
-import { devtools } from "zustand/middleware";
-import { immer } from "zustand/middleware/immer";
+import { create, StoreApi, UseBoundStore } from 'zustand';
+import { devtools } from 'zustand/middleware';
+import { immer } from 'zustand/middleware/immer';
 
 type WithSelectors<S> = S extends { getState: () => infer T }
   ? S & { use: { [K in keyof T]: () => T[K] } }
@@ -13,7 +13,7 @@ const createSelectors = <S extends UseBoundStore<StoreApi<object>>>(
   store.use = {};
   // eslint-disable-next-line no-restricted-syntax
   for (const k of Object.keys(store.getState())) {
-    (store.use as any)[k] = () => store((s) => s[k as keyof typeof s]);
+    (store.use as any)[k] = () => store(s => s[k as keyof typeof s]);
   }
 
   return store;
@@ -36,7 +36,7 @@ const initialSide = {
 
 const sideBarStore = create<SidebarState & SidebarAction>()(
   devtools(
-    immer((set) => ({
+    immer(set => ({
       ...initialSide,
       actions: {
         toggleSidebar: () =>

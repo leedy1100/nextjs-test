@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import useSideBarStore from "@/store/sideBarStore";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
+import useSideBarStore from '@/store/sideBarStore';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React from 'react';
 import {
   HiMiniHome,
   HiMiniMagnifyingGlass,
   HiMiniBars3,
   HiMiniPlusCircle,
   HiMiniUserCircle,
-} from "react-icons/hi2";
+} from 'react-icons/hi2';
 
 export default function BottomNav() {
   const { toggleSidebar, resetSidebar } = useSideBarStore.use.actions();
@@ -25,7 +25,7 @@ export default function BottomNav() {
       </div>
       <div
         className={`flex flex-col justify-center items-center ${
-          pathname === "/subscribe" && "text-blue-600"
+          pathname === '/subscribe' && 'text-blue-600'
         }`}
       >
         <Link href="/subscribe">
@@ -35,7 +35,7 @@ export default function BottomNav() {
       </div>
       <div
         className={`flex flex-col justify-center items-center ${
-          pathname === "/" && "text-blue-600"
+          pathname === '/' && 'text-blue-600'
         }`}
       >
         <Link href="/">
@@ -45,7 +45,7 @@ export default function BottomNav() {
       </div>
       <div
         className={`flex flex-col justify-center items-center ${
-          pathname === "/etc" && "text-blue-600"
+          pathname === '/etc' && 'text-blue-600'
         }`}
       >
         <Link href="/etc">
@@ -55,7 +55,7 @@ export default function BottomNav() {
       </div>
       <div
         className={`flex flex-col justify-center items-center ${
-          pathname === "/subscribe/my" && "text-blue-600"
+          pathname === '/subscribe/my' && 'text-blue-600'
         }`}
       >
         <Link href="/subscribe/my">

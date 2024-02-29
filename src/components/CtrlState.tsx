@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import useCountStoreBase from "@/store/countStore";
-import { inc, setText, useBoundStore } from "@/store/boundStore";
-import React, { useEffect, useState } from "react";
-import CountButton from "./ui/CountButton";
+import useCountStoreBase from '@/store/countStore';
+import { inc, setText, useBoundStore } from '@/store/boundStore';
+import React, { useEffect, useState } from 'react';
+import CountButton from './ui/CountButton';
 
 export default function CtrlState() {
   const [tempCnt, setTempCnt] = useState(0);
@@ -38,7 +38,7 @@ export default function CtrlState() {
         <CountButton onClick={() => inc()} text={`${text} 증가`} />
         <input
           className="min-w-32 h-12 p-2 rounded-md border-2"
-          onChange={(e) => setText(e.target.value)}
+          onChange={e => setText(e.target.value)}
           value={text}
         />
       </div>

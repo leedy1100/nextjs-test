@@ -1,7 +1,7 @@
-import MySubscribe from "@/components/MySubscribe";
-import PageWrapper from "@/components/common/PageWrapper";
-import React from "react";
-import Image from "next/image";
+import MySubscribe from '@/components/MySubscribe';
+import PageWrapper from '@/components/common/PageWrapper';
+import React from 'react';
+import Image from 'next/image';
 
 export default function page() {
   return (
@@ -10,7 +10,7 @@ export default function page() {
         <div className="flex justify-center items-center gap-4">
           <p className="text-center text-neutral-400">내 지갑 루팡 목록</p>
           <Image
-            src={"/assets/images/surprise_cat.gif" ?? ""}
+            src={'/assets/images/surprise_cat.gif' ?? ''}
             alt=""
             width={60}
             height={60}

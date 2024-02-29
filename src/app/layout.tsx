@@ -1,35 +1,35 @@
-import type { Metadata, Viewport } from "next";
-import "./globals.css";
-import localFont from "next/font/local";
-import Header from "@/components/Header";
-import Sidebar from "@/components/Sidebar";
-import Footer from "@/components/Footer";
-import ThemeProvider from "@/provider/ThemeProvider";
-import SWRProvider from "@/provider/SWRProvider";
-import BottomNav from "@/components/BottomNav";
+import type { Metadata, Viewport } from 'next';
+import './globals.css';
+import localFont from 'next/font/local';
+import Header from '@/components/Header';
+import Sidebar from '@/components/Sidebar';
+import Footer from '@/components/Footer';
+import ThemeProvider from '@/provider/ThemeProvider';
+import SWRProvider from '@/provider/SWRProvider';
+import BottomNav from '@/components/BottomNav';
 
 export const pretendard = localFont({
-  src: "./fonts/PretendardVariable.woff2",
+  src: './fonts/PretendardVariable.woff2',
 });
 
 export const metadata: Metadata = {
-  title: "dooy",
-  description: "du yeong",
-  generator: "Next.js",
-  manifest: "/manifest.json",
-  keywords: ["nextjs", "nextjs14", "pwa", "next-pwa"],
+  title: 'dooy',
+  description: 'du yeong',
+  generator: 'Next.js',
+  manifest: '/manifest.json',
+  keywords: ['nextjs', 'nextjs14', 'pwa', 'next-pwa'],
   icons: [
-    { rel: "apple-touch-icon", url: "icons/icon-128x128.png" },
-    { rel: "icon", url: "icons/icon-128x128.png" },
+    { rel: 'apple-touch-icon', url: 'icons/icon-128x128.png' },
+    { rel: 'icon', url: 'icons/icon-128x128.png' },
   ],
 };
 
 export const viewport: Viewport = {
-  width: "device-width",
+  width: 'device-width',
   minimumScale: 1,
   initialScale: 1,
   maximumScale: 1,
-  viewportFit: "cover",
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({

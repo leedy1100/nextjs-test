@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import DefaultLoading from "@/components/ui/DefaultLoading";
+import DefaultLoading from '@/components/ui/DefaultLoading';
 
 export default function loading() {
   return (

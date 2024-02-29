@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import AnimatedButton from "./ui/AnimatedButton";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import AnimatedButton from './ui/AnimatedButton';
 
 export default function PresenceComponent() {
   const [isVisible, setVisible] = useState(true);
@@ -17,7 +17,7 @@ export default function PresenceComponent() {
         className="w-[300px] h-[56px] bg-[#63e6be] active:bg-[#12b886] rounded-full"
         onClick={handleClick}
       >
-        {isVisible ? "Hide" : "Show"}
+        {isVisible ? 'Hide' : 'Show'}
       </button>
       <AnimatePresence>
         {isVisible && (

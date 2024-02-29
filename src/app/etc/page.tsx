@@ -1,10 +1,10 @@
-"use client";
+'use client';
 
-import OptimizationTable from "@/components/OptimizationTable";
-import PresenceComponent from "@/components/PresenceComponent";
-import PageWrapper from "@/components/common/PageWrapper";
-import AnimatedButton from "@/components/ui/AnimatedButton";
-import React from "react";
+import OptimizationTable from '@/components/OptimizationTable';
+import PresenceComponent from '@/components/PresenceComponent';
+import PageWrapper from '@/components/common/PageWrapper';
+import AnimatedButton from '@/components/ui/AnimatedButton';
+import React from 'react';
 
 export default function page() {
   return (

@@ -1,25 +1,25 @@
-import PageWrapper from "@/components/common/PageWrapper";
-import Item from "@/components/ui/Item";
-import Link from "next/link";
-import React from "react";
+import PageWrapper from '@/components/common/PageWrapper';
+import Item from '@/components/ui/Item';
+import Link from 'next/link';
+import React from 'react';
 
 export default function Grid() {
   const itemArr = [
-    "D",
-    "O",
-    "O",
-    "Y",
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
+    'D',
+    'O',
+    'O',
+    'Y',
+    '1',
+    '2',
+    '3',
+    '4',
+    '5',
+    '6',
+    '7',
+    '8',
+    '9',
   ];
-  const itemArr2 = ["D", "O", "O", "Y"];
+  const itemArr2 = ['D', 'O', 'O', 'Y'];
   return (
     <PageWrapper>
       <section>

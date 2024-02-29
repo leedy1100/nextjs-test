@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import React, { useEffect } from "react";
-import Link from "next/link";
-import { allowScroll, preventScroll } from "@/utils/modal";
-import Image from "next/image";
-import debounce from "debounce";
-import { menu } from "@/constants/menu";
-import useSideBarStore from "@/store/sideBarStore";
-import { usePathname } from "next/navigation";
-import { HiBell } from "react-icons/hi2";
-import ThemeSwitcher from "./ThemeSwitcher";
+import React, { useEffect } from 'react';
+import Link from 'next/link';
+import { allowScroll, preventScroll } from '@/utils/modal';
+import Image from 'next/image';
+import debounce from 'debounce';
+import { menu } from '@/constants/menu';
+import useSideBarStore from '@/store/sideBarStore';
+import { usePathname } from 'next/navigation';
+import { HiBell } from 'react-icons/hi2';
+import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Header() {
   const sidebarState = useSideBarStore.use.sidebar();
@@ -28,10 +28,10 @@ export default function Header() {
   }, [sidebarState]);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
+    window.addEventListener('resize', handleResize);
     return () => {
       // cleanup
-      window.removeEventListener("resize", handleResize);
+      window.removeEventListener('resize', handleResize);
     };
   }, [handleResize]);
 
@@ -54,13 +54,13 @@ export default function Header() {
           </div>
           <div className="hidden md:flex gap-4 font-bold tracking-widest">
             {menu.map(
-              (v) =>
+              v =>
                 v.visible && (
                   <Link
                     key={v.url}
                     href={v.url}
                     className={`hover:underline underline-offset-4 decoration-2 ${
-                      pathname === v.url && "font-black"
+                      pathname === v.url && 'font-black'
                     }`}
                   >
                     {v.name}
