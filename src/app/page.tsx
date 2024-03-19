@@ -1,13 +1,11 @@
-import ProductSwiper from '@/components/ProductSwiper';
 import PageWrapper from '@/components/common/PageWrapper';
+import MainMap from '@/components/maps/MainMap';
 
 export default function Home() {
   return (
     <PageWrapper>
-      <section className="h-[1024px]">
-        <div className="">
-          <ProductSwiper />
-        </div>
+      <section className="">
+        <MainMap />
       </section>
     </PageWrapper>
   );

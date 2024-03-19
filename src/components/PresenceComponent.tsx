@@ -1,11 +1,13 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next'; // Move this import before the import of './ui/AnimatedButton'
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedButton from './ui/AnimatedButton';
 
 export default function PresenceComponent() {
   const [isVisible, setVisible] = useState(true);
+  const { t } = useTranslation();
 
   const handleClick = () => {
     setVisible(!isVisible);
@@ -33,7 +35,7 @@ export default function PresenceComponent() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
           >
-            This is a fade in/out component
+            {t('button')}
           </motion.button>
         )}
       </AnimatePresence>

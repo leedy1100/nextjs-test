@@ -9,9 +9,11 @@ import { menu } from '@/constants/menu';
 import useSideBarStore from '@/store/sideBarStore';
 import { usePathname } from 'next/navigation';
 import { HiBell } from 'react-icons/hi2';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import ThemeSwitcher from './ThemeSwitcher';
 
 export default function Header() {
+  const { data: session } = useSession();
   const sidebarState = useSideBarStore.use.sidebar();
   const { resetSidebar } = useSideBarStore.use.actions();
   const pathname = usePathname();
@@ -68,6 +70,26 @@ export default function Header() {
                 ),
             )}
           </div>
+        </div>
+        <div>{session?.user?.email?.split('@')[0]}</div>
+        <div>
+          {session ? (
+            <button
+              className="w-20 h-10 bg-red-500 text-white rounded-md"
+              onClick={() => {
+                signOut();
+              }}
+            >
+              Sign out
+            </button>
+          ) : (
+            <button
+              className="w-20 h-10 bg-red-500 text-white rounded-md"
+              onClick={() => signIn()}
+            >
+              Sign in
+            </button>
+          )}
         </div>
         <div className="hidden md:block ">
           <ThemeSwitcher />

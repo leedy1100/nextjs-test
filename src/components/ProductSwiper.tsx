@@ -95,7 +95,7 @@ export default function ProductSwiper() {
   }, [handleResize]);
 
   useEffect(() => {
-    errorApi();
+    // errorApi();
     setWidthState(window.innerWidth);
   }, []);
   return (

@@ -55,7 +55,14 @@ export default function MenuItem({
       disabled={isDisable ?? isSub}
     >
       <div className="flex justify-center items-center w-10 rounded-full mx-2  ">
-        <Image src={image ?? ''} alt="" width={30} height={30} />
+        <Image
+          src={image ?? ''}
+          alt=""
+          width={30}
+          height={30}
+          placeholder="blur"
+          blurDataURL={image ?? ''}
+        />
       </div>
       <div className="w-[calc(100%-104px)] text-white">{name}</div>
       <div className="mx-4 text-white dark:text-white">

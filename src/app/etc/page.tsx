@@ -1,9 +1,8 @@
-'use client';
-
 import OptimizationTable from '@/components/OptimizationTable';
 import PresenceComponent from '@/components/PresenceComponent';
 import PageWrapper from '@/components/common/PageWrapper';
 import AnimatedButton from '@/components/ui/AnimatedButton';
+import LanguageButton from '@/components/ui/LanguageButton';
 import React from 'react';
 
 export default function page() {
@@ -18,6 +17,7 @@ export default function page() {
           <AnimatedButton animationType="pulse" text="pulse" />
           <AnimatedButton animationType="wiggle" text="wiggle" />
           <AnimatedButton animationType="shiver" text="shiver" />
+          <LanguageButton />
           <PresenceComponent />
           <div>
             <h1 className="mb-2">Pretendard Font Weight</h1>

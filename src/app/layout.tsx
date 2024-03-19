@@ -7,6 +7,9 @@ import Footer from '@/components/Footer';
 import ThemeProvider from '@/provider/ThemeProvider';
 import SWRProvider from '@/provider/SWRProvider';
 import BottomNav from '@/components/BottomNav';
+import LanguageProvider from '@/provider/LanguageProvider';
+import MapsProvider from '@/provider/MapsProvider';
+import AuthProvider from '@/provider/AuthProvider';
 
 export const pretendard = localFont({
   src: './fonts/PretendardVariable.woff2',
@@ -32,6 +35,8 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 };
 
+const clientId = process.env.NAVER_MAPS_CLIENT_ID!;
+
 export default function RootLayout({
   children,
 }: {
@@ -39,19 +44,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={pretendard.className}>
-      <body className="">
-        <SWRProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <Header />
-            <Sidebar />
-            <div className="mt-[72px] md:mt-[96px]">
-              <main className="m-4">{children}</main>
-              <Footer />
-              <BottomNav />
-            </div>
-          </ThemeProvider>
-        </SWRProvider>
-      </body>
+      <AuthProvider>
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <SWRProvider>
+            <LanguageProvider>
+              <MapsProvider clientId={clientId}>
+                <body className="">
+                  <Header />
+                  <Sidebar />
+                  <div className="mt-[72px] md:mt-[96px]">
+                    <main className="m-4">{children}</main>
+                    <Footer />
+                  </div>
+                  <BottomNav />
+                </body>
+              </MapsProvider>
+            </LanguageProvider>
+          </SWRProvider>
+        </ThemeProvider>
+      </AuthProvider>
     </html>
   );
 }
