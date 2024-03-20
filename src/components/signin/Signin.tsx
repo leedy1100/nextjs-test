@@ -17,7 +17,7 @@ export default function Signin({ providers, callbackUrl }: Props) {
             id !== 'credentials' && (
               <button key={id} onClick={() => signIn(id, { callbackUrl })}>
                 <Image
-                  src={`/assets/images/sns/${name}.png`}
+                  src={`/assets/images/login/${name}.png`}
                   alt={name}
                   width={200}
                   height={100}
