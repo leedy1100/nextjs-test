@@ -71,11 +71,13 @@ export default function Header() {
             )}
           </div>
         </div>
-        <div className="flex items-center w-full gap-2">
-          <div>{session && `${session?.user?.email?.split('@')[0]}님`}</div>
+        <div className="flex justify-end items-center w-full gap-2">
+          <div className="text-sm">
+            {session && `${session?.user?.email?.split('@')[0]}님`}
+          </div>
           {session ? (
             <button
-              className="w-20 h-10 bg-red-500 text-white rounded-md"
+              className="w-24 h-10 bg-red-500 text-white rounded-md"
               onClick={() => {
                 signOut();
               }}
@@ -84,7 +86,7 @@ export default function Header() {
             </button>
           ) : (
             <button
-              className="w-20 h-10 bg-red-500 text-white rounded-md"
+              className="w-24 h-10 bg-red-500 text-white rounded-md"
               onClick={() => signIn()}
             >
               Sign in
