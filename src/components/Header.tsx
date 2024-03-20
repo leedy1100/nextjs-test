@@ -71,13 +71,13 @@ export default function Header() {
             )}
           </div>
         </div>
-        <div className="flex justify-end items-center w-full gap-2">
-          <div className="text-sm">
+        <div className="flex justify-end items-center min-w-[200px] gap-2 text-sm">
+          <div className="">
             {session && `${session?.user?.email?.split('@')[0]}님`}
           </div>
           {session && (
             <button
-              className="w-20 h-8 bg-neutral-400 text-sm text-white rounded-md"
+              className="min-w-[72px] h-8 bg-neutral-400 text-white rounded-md"
               onClick={() => {
                 signOut();
               }}

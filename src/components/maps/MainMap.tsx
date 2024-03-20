@@ -44,7 +44,7 @@ export default function MainMap() {
         height: 400,
       }}
     >
-      <div className="relative">
+      <div className="relative flex">
         <button
           className="w-20 h-12 m-2 rounded-full bg-lime-200 active:bg-lime-400 text-lime-600 shadow-xl font-bold"
           onClick={() => getGeoCode(addrNm.current?.value || '')}
