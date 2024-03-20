@@ -10,9 +10,7 @@ type Props = {
     callbackUrl: string;
   };
 };
-export default async function SigninPage({
-  searchParams: { callbackUrl },
-}: Props) {
+export default async function page({ searchParams: { callbackUrl } }: Props) {
   const session = await getServerSession(authOptions);
   if (session) {
     redirect('/');

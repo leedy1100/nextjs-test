@@ -3,13 +3,13 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { Container as MapDiv, NaverMap, Marker } from 'react-naver-maps';
 import axios from 'axios';
+import CtrlZoom from './utils/CtrlZoom';
 
 export default function MainMap() {
   const [coordinate, setCoordinate] = useState<{ lat: number; lng: number }>({
     lat: 37.5666103,
     lng: 126.9783882,
   });
-  const [zoom, setZoom] = useState<number>(17);
   const addrNm = useRef<HTMLInputElement>(null);
 
   const getGeoCode = useCallback(async (address: string) => {
@@ -27,7 +27,6 @@ export default function MainMap() {
       const { x, y } = response.data.addresses[0];
 
       setCoordinate({ lat: y, lng: x });
-      setZoom(18);
     } else {
       console.error('지오코딩 오류:', response.data.message);
     }
@@ -57,8 +56,9 @@ export default function MainMap() {
         ref={addrNm}
         placeholder="주소를 입력하세요"
       />
-      <NaverMap center={coordinate} zoom={zoom}>
+      <NaverMap center={coordinate} zoom={17}>
         <Marker position={coordinate} />
+        <CtrlZoom />
       </NaverMap>
     </MapDiv>
   );
