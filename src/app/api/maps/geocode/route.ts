@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function handler(req: NextRequest) {
+const handler = async (req: NextRequest) => {
   const searchParams = req.url.slice(req.url.indexOf('?'));
   const url = `https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode${searchParams}`;
   const naverResponse = await fetch(url, {
@@ -17,6 +17,6 @@ export async function handler(req: NextRequest) {
 
   const data = await naverResponse.json(); // Naver API 응답 받기
   return NextResponse.json(data); // 클라이언트에 응답 보내기
-}
+};
 
-export { handler as GET };
+export { handler as GET, handler as POST };

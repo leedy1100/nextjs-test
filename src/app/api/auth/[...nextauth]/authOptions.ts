@@ -7,7 +7,7 @@ const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
     NaverProvider({
-      clientId: process.env.NVER_LOGIN_CLIENT_ID!,
+      clientId: process.env.NAVER_LOGIN_CLIENT_ID!,
       clientSecret: process.env.NAVER_LOGIN_CLIENT_SECRET!,
     }),
     KakaoProvider({
