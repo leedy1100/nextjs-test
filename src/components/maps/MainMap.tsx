@@ -44,18 +44,20 @@ export default function MainMap() {
         height: 400,
       }}
     >
-      <button
-        className="relative w-20 h-12 rounded-full bg-lime-200 active:bg-lime-400 text-lime-600 m-2 shadow-xl font-bold"
-        onClick={() => getGeoCode(addrNm.current?.value || '')}
-      >
-        이동
-      </button>
-      <input
-        className="relative ml-2 p-2 rounded focus:outline outline-lime-200 outline-4"
-        onKeyDown={e => handleInput(e)}
-        ref={addrNm}
-        placeholder="주소를 입력하세요"
-      />
+      <div className="relative">
+        <button
+          className="w-20 h-12 m-2 rounded-full bg-lime-200 active:bg-lime-400 text-lime-600 shadow-xl font-bold"
+          onClick={() => getGeoCode(addrNm.current?.value || '')}
+        >
+          이동
+        </button>
+        <input
+          className="w-[300px] m-2 p-2 rounded focus:outline outline-lime-200 outline-4"
+          onKeyDown={e => handleInput(e)}
+          ref={addrNm}
+          placeholder="주소를 입력하세요"
+        />
+      </div>
       <NaverMap center={coordinate} zoom={17}>
         <Marker position={coordinate} />
         <CtrlZoom />
