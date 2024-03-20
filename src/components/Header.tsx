@@ -75,21 +75,14 @@ export default function Header() {
           <div className="text-sm">
             {session && `${session?.user?.email?.split('@')[0]}님`}
           </div>
-          {session ? (
+          {session && (
             <button
-              className="w-24 h-10 bg-red-500 text-white rounded-md"
+              className="w-20 h-8 bg-neutral-400 text-sm text-white rounded-md"
               onClick={() => {
                 signOut();
               }}
             >
-              Sign out
-            </button>
-          ) : (
-            <button
-              className="w-24 h-10 bg-red-500 text-white rounded-md"
-              onClick={() => signIn()}
-            >
-              Sign in
+              로그아웃
             </button>
           )}
         </div>
