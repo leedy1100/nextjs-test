@@ -3,11 +3,7 @@ import React from 'react';
 
 export default function Footer() {
   return (
-    <footer
-      className={classNames({
-        'h-[200px] border-t-2 bg-white dark:bg-black': true,
-      })}
-    >
+    <footer className="h-[200px] border-t-2 bg-white dark:bg-black hidden lg:block">
       <div className="m-4">
         <p className="my-4 text-sm">Footer contents</p>
         <hr />

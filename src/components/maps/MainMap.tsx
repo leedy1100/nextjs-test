@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Container as MapDiv, NaverMap, Marker } from 'react-naver-maps';
 import axios from 'axios';
 import CtrlZoom from './utils/CtrlZoom';
@@ -37,6 +37,12 @@ export default function MainMap() {
     }
   }, []);
 
+  const mapHeight = useMemo(() => {
+    let height = 800;
+    if (window.innerHeight < 1024) height = window.innerHeight - 136;
+    return height;
+  }, []);
+
   const handleInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && addrNm.current) {
       getGeoCode(addrNm.current.value);
@@ -46,9 +52,9 @@ export default function MainMap() {
   return (
     <MapDiv
       style={{
-        height: 600,
+        height: mapHeight,
       }}
-      className="mt-10"
+      className="mt-10 h-[calc(100vh-136px)]"
     >
       <div className="relative flex">
         <button
@@ -58,7 +64,7 @@ export default function MainMap() {
           이동
         </button>
         <input
-          className="w-[300px] m-2 p-2 rounded focus:outline outline-lime-200 outline-4"
+          className="m-2 p-2 rounded focus:outline outline-lime-200 outline-4"
           onKeyDown={e => handleInput(e)}
           ref={addrNm}
           placeholder="주소를 입력하세요"
