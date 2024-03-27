@@ -39,7 +39,9 @@ export default function MainMap() {
 
   const mapHeight = useMemo(() => {
     let height = 800;
-    if (window.innerHeight < 1024) height = window.innerHeight - 136;
+    if (typeof window !== 'undefined' && window.innerHeight < 1024)
+      height = window.innerHeight - 136;
+
     return height;
   }, []);
 
