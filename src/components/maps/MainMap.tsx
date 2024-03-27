@@ -3,7 +3,6 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
 import { Container as MapDiv, NaverMap, Marker } from 'react-naver-maps';
 import axios from 'axios';
-import CtrlZoom from './utils/CtrlZoom';
 import MarkerCluster from './utils/MarkerCluster';
 
 export default function MainMap() {
@@ -66,7 +65,7 @@ export default function MainMap() {
           이동
         </button>
         <input
-          className="m-2 p-2 rounded focus:outline outline-lime-200 outline-4"
+          className="w-[200px] m-2 p-2 rounded focus:outline outline-lime-200 outline-4"
           onKeyDown={e => handleInput(e)}
           ref={addrNm}
           placeholder="주소를 입력하세요"
