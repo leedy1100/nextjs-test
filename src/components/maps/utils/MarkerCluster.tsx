@@ -3,7 +3,6 @@
 import React, { use, useEffect, useMemo, useState } from 'react';
 import { Overlay, useMap, useNavermaps } from 'react-naver-maps';
 import { makeMarkerClustering } from '@/utils/marker-cluster';
-import accidentDeath from '@/utils/accidentdeath';
 import axios from 'axios';
 
 type Accident = {
