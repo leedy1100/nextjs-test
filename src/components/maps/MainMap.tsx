@@ -4,6 +4,7 @@ import React, { useCallback, useRef, useState } from 'react';
 import { Container as MapDiv, NaverMap, Marker } from 'react-naver-maps';
 import axios from 'axios';
 import CtrlZoom from './utils/CtrlZoom';
+import MarkerCluster from './utils/MarkerCluster';
 
 export default function MainMap() {
   const [coordinate, setCoordinate] = useState<{ lat: number; lng: number }>({
@@ -13,6 +14,10 @@ export default function MainMap() {
   const addrNm = useRef<HTMLInputElement>(null);
 
   const getGeoCode = useCallback(async (address: string) => {
+    if (!address) {
+      alert('주소를 입력하세요.');
+      return;
+    }
     const response = await axios.get('/api/maps/geocode', {
       params: {
         query: address,
@@ -41,12 +46,13 @@ export default function MainMap() {
   return (
     <MapDiv
       style={{
-        height: 400,
+        height: 600,
       }}
+      className="mt-10"
     >
       <div className="relative flex">
         <button
-          className="w-20 h-12 m-2 rounded-full bg-lime-200 active:bg-lime-400 text-lime-600 shadow-xl font-bold"
+          className="min-w-[80px] h-12 m-2 rounded-full bg-lime-200 active:bg-lime-400 text-lime-600 shadow-xl font-bold"
           onClick={() => getGeoCode(addrNm.current?.value || '')}
         >
           이동
@@ -58,9 +64,18 @@ export default function MainMap() {
           placeholder="주소를 입력하세요"
         />
       </div>
-      <NaverMap center={coordinate} zoom={17}>
-        <Marker position={coordinate} />
-        <CtrlZoom />
+      <NaverMap center={coordinate} zoom={16}>
+        <Marker
+          position={coordinate}
+          onClick={() => {
+            alert(`위도: ${coordinate.lat}, 경도: ${coordinate.lng}`);
+          }}
+        />
+        {/* <Marker position={{ lat: 37.5666103, lng: 126.9783882 }} />
+        <Marker position={{ lat: 37.483569, lng: 127.032598 }} />
+        <Marker position={{ lat: 37.532527, lng: 126.99049 }} /> */}
+        {/* <CtrlZoom /> */}
+        <MarkerCluster />
       </NaverMap>
     </MapDiv>
   );
