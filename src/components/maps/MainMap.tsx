@@ -55,7 +55,7 @@ export default function MainMap() {
       style={{
         height: mapHeight,
       }}
-      className="m-4 h-[calc(100vh-136px)]"
+      className="h-[calc(100vh-136px)]"
     >
       <div className="relative flex">
         <button

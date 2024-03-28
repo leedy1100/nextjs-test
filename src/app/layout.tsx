@@ -53,7 +53,7 @@ export default function RootLayout({
                   <Header />
                   <Sidebar />
                   <div className="mt-[72px] md:mt-[96px]">
-                    <main className="mb-16">{children}</main>
+                    <main className="m-4 mb-16">{children}</main>
                     <Footer />
                   </div>
                   <BottomNav />
