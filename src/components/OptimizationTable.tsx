@@ -11,7 +11,7 @@ export default function OptimizationTable() {
   const dummyData = Array(1000).fill(obj);
 
   return (
-    <section>
+    <section className="mb-24">
       <header className="flex gap-4">
         <h3>Name</h3>
         <h3>Age</h3>

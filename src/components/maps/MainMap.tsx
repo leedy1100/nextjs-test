@@ -38,7 +38,7 @@ export default function MainMap() {
 
   const mapHeight = useMemo(() => {
     let height = 800;
-    if (typeof window !== 'undefined' && window.innerHeight < 1024)
+    if (typeof window !== 'undefined' && window.innerHeight < 768)
       height = window.innerHeight - 136;
 
     return height;
@@ -55,7 +55,7 @@ export default function MainMap() {
       style={{
         height: mapHeight,
       }}
-      className="mt-10 h-[calc(100vh-136px)]"
+      className="m-4 h-[calc(100vh-136px)]"
     >
       <div className="relative flex">
         <button
