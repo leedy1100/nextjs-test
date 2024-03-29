@@ -5,6 +5,10 @@ import { Container as MapDiv, NaverMap, Marker } from 'react-naver-maps';
 import axios from 'axios';
 import MarkerCluster from './utils/MarkerCluster';
 
+const DEFAULT_MAP_HEIGHT = 800;
+const MIN_WIDTH = 768;
+const TOP_AND_BOTTOM_HEIGHT = 136;
+
 export default function MainMap() {
   const [coordinate, setCoordinate] = useState<{ lat: number; lng: number }>({
     lat: 37.5666103,
@@ -37,9 +41,9 @@ export default function MainMap() {
   }, []);
 
   const mapHeight = useMemo(() => {
-    let height = 800;
-    if (typeof window !== 'undefined' && window.innerHeight < 768)
-      height = window.innerHeight - 136;
+    let height = DEFAULT_MAP_HEIGHT;
+    if (typeof window !== 'undefined' && window.innerWidth < MIN_WIDTH)
+      height = window.innerHeight - TOP_AND_BOTTOM_HEIGHT;
 
     return height;
   }, []);
