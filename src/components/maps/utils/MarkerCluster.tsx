@@ -5,35 +5,6 @@ import { Overlay, useMap, useNavermaps } from 'react-naver-maps';
 import { makeMarkerClustering } from '@/utils/marker-cluster';
 import axios from 'axios';
 
-type Accident = {
-  year: string;
-  dt_006: string;
-  dt_006_lv8: string;
-  cd_008: string;
-  cd_007: string;
-  no_010: number;
-  injpsn_co: number;
-  no_011: number;
-  no_012: number;
-  no_013: number;
-  cd_003: string;
-  cd_014_lv1: string;
-  cd_014_lv2: string;
-  cd_014: string;
-  cd_027_1_lv1: string;
-  cd_027_1_lv2: string;
-  cd_043_lv1: string;
-  cd_043: string;
-  cd_036_1_lv1: string;
-  cd_036_1: string;
-  cd_036_1_lv2: string;
-  cd_036_2: string;
-  x_coord: string;
-  y_coord: string;
-  grd_lo: string;
-  grd_la: string;
-}[];
-
 type RandomCoordinate = {
   lat: number;
   lng: number;
@@ -113,7 +84,6 @@ export default function MarkerCluster() {
       icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
       indexGenerator: [10, 20, 50, 100, 200],
       stylingFunction(clusterMarker: any, count: number) {
-        // without jquery $(clusterMarker.getElement()).find('div:first-child').text(count)
         clusterMarker.getElement().querySelector('div:first-child').innerText =
           count;
       },
