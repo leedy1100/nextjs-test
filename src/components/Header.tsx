@@ -78,7 +78,7 @@ export default function Header() {
           <div className="">
             {session && `${session?.user?.email?.split('@')[0]}님`}
           </div>
-          <LogoutTimer />
+          {/* <LogoutTimer /> */}
           {session && (
             <button
               className="min-w-[72px] h-8 bg-neutral-400 text-white rounded-md"
