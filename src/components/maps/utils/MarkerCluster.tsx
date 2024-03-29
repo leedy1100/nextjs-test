@@ -52,23 +52,24 @@ export default function MarkerCluster() {
     anchor: new navermaps.Point(20, 20),
   };
 
-  const accident = async () => {
-    const response = await axios.get('/api/accident');
-    if (response.status === 200) {
-      setData(response.data.data);
+  const fetchAccidentData = async () => {
+    try {
+      const response = await axios.get('/api/accident');
+      if (response.status === 200) {
+        setData(response.data.data);
+      }
+    } catch (error) {
+      console.error('사고 데이터 조회 중 오류 발생: ', error);
     }
   };
 
   const cluster = useMemo(() => {
     const markers: naver.maps.Marker[] = [];
     data.forEach(crdnt => {
-      const latlng = new naver.maps.LatLng(
-        Number(crdnt.lat),
-        Number(crdnt.lng),
-      );
-      const marker = new naver.maps.Marker({
+      const latlng = new navermaps.LatLng(Number(crdnt.lat), Number(crdnt.lng));
+      const marker = new navermaps.Marker({
         position: latlng,
-        draggable: true,
+        draggable: false,
       });
 
       markers.push(marker);
@@ -92,7 +93,7 @@ export default function MarkerCluster() {
   }, [data]);
 
   useEffect(() => {
-    accident();
+    fetchAccidentData();
   }, []);
 
   type MapElementType = {
