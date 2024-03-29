@@ -1,6 +1,4 @@
 import i18n from 'i18next';
-import Backend from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
 import translationEN from '../locales/en/translation.json';
 import translationKO from '../locales/ko/translation.json';
@@ -20,8 +18,6 @@ export const getLanguageFromStorage = (): LanguageType | null => {
 };
 
 i18n
-  .use(Backend)
-  .use(LanguageDetector)
   .use(initReactI18next) // i18next에 react-i18next 바인딩을 추가합니다.
   .init({
     resources: {
