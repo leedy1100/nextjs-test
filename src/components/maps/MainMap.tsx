@@ -84,10 +84,6 @@ export default function MainMap() {
             alert(`위도: ${coordinate.lat}, 경도: ${coordinate.lng}`);
           }}
         />
-        {/* <Marker position={{ lat: 37.5666103, lng: 126.9783882 }} />
-        <Marker position={{ lat: 37.483569, lng: 127.032598 }} />
-        <Marker position={{ lat: 37.532527, lng: 126.99049 }} /> */}
-        {/* <CtrlZoom /> */}
         <MarkerCluster />
       </NaverMap>
     </MapDiv>
