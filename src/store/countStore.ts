@@ -8,9 +8,7 @@ type CountState = {
 };
 
 type CountActions = {
-  // actions: {
-  // };
-  openAlert: () => void;
+  openAlert: (message?: string) => void;
   increaseCount: () => void;
   resetCount: () => void;
   getStorage: () => void;
@@ -20,7 +18,7 @@ const countStorageKey = 'count-store';
 
 const initialCount = {
   count: 0,
-  storage: '',
+  storage: null,
 };
 
 const useCountStoreBase = create<CountState & CountActions>()(
@@ -28,11 +26,11 @@ const useCountStoreBase = create<CountState & CountActions>()(
     persist(
       immer(set => ({
         ...initialCount,
-        openAlert: () => {
-          alert('test');
+        openAlert: (message = '테스트 입니다.') => {
+          alert(message);
         },
         increaseCount: () =>
-          set((state: { count: number }) => {
+          set(state => {
             state.count += 1;
           }),
         resetCount: () => set(initialCount),
