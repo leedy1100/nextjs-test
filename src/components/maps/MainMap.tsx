@@ -16,29 +16,31 @@ export default function MainMap() {
   });
   const addrNm = useRef<HTMLInputElement>(null);
 
-  const getGeoCode = useCallback(async (address: string) => {
-    if (!address) {
-      alert('주소를 입력하세요.');
-      return;
-    }
-    const response = await axios.get('/api/maps/geocode', {
-      params: {
-        query: address,
-      },
-    });
-    if (response.status === 200) {
-      if (response.data.addresses.length === 0) {
-        alert('검색 결과가 없습니다.');
+  const getGeoCode = useCallback(
+    async (address: string) => {
+      if (!address) {
+        alert('주소를 입력하세요.');
         return;
       }
-
-      const { x, y } = response.data.addresses[0];
-
-      setCoordinate({ lat: y, lng: x });
-    } else {
-      console.error('지오코딩 오류:', response.data.message);
-    }
-  }, []);
+      try {
+        const response = await axios.get('/api/maps/geocode', {
+          params: {
+            query: address,
+          },
+        });
+        if (response.status === 200 && response.data.addresses.length > 0) {
+          const { x, y } = response.data.addresses[0];
+          setCoordinate({ lat: y, lng: x });
+        } else {
+          alert('검색 결과가 없습니다.');
+        }
+      } catch (error) {
+        console.error('지오코딩 오류: ', error);
+        alert('지오코딩 과정에서 오류가 발생했습니다. 다시 시도해주세요.');
+      }
+    },
+    [setCoordinate],
+  );
 
   const mapHeight = useMemo(() => {
     let height = DEFAULT_MAP_HEIGHT;
