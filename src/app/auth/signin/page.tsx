@@ -1,4 +1,5 @@
 import authOptions from '@/app/api/auth/[...nextauth]/authOptions';
+import PageWrapper from '@/components/common/PageWrapper';
 import Signin from '@/components/signin/Signin';
 import { getServerSession } from 'next-auth';
 import { getProviders } from 'next-auth/react';
@@ -18,11 +19,13 @@ export default async function page({ searchParams: { callbackUrl } }: Props) {
 
   const providers = (await getProviders()) ?? {};
   return (
-    <section className="flex flex-col justify-center items-center h-[calc(100vh-180px)]">
-      <Signin providers={providers} callbackUrl={callbackUrl ?? '/'} />
-      <div className="mt-16 text-sm text-slate-500 dark:text-slate-300">
-        © 2023 dooy. All rights reserved.
-      </div>
-    </section>
+    <PageWrapper>
+      <section className="flex flex-col justify-center items-center h-[calc(100vh-180px)]">
+        <Signin providers={providers} callbackUrl={callbackUrl ?? '/'} />
+        <div className="mt-16 text-sm text-slate-500 dark:text-slate-300">
+          © 2023 dooy. All rights reserved.
+        </div>
+      </section>
+    </PageWrapper>
   );
 }

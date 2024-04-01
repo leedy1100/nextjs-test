@@ -23,9 +23,8 @@ export default function Signin({ providers, callbackUrl }: Props) {
                       alt="naver"
                       width={37}
                       height={37}
-                      className="mr-2"
                     />
-                    <p className="text-white">네이버로 계속하기</p>
+                    <p className="text-white ml-2">네이버로 계속하기</p>
                   </div>
                 )}
                 {name === 'Kakao' && (
@@ -35,9 +34,8 @@ export default function Signin({ providers, callbackUrl }: Props) {
                       alt="kakao"
                       width={18}
                       height={18}
-                      className="mr-3"
                     />
-                    <p className="text-black">카카오로 계속하기</p>
+                    <p className="text-black ml-3">카카오로 계속하기</p>
                   </div>
                 )}
               </button>
@@ -49,7 +47,7 @@ export default function Signin({ providers, callbackUrl }: Props) {
               src="/assets/images/login/Apple_black.png"
               alt="apple"
               width={320}
-              height={30}
+              height={39}
             />
           </div>
         </button>
