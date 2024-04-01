@@ -17,25 +17,25 @@ export default function Signin({ providers, callbackUrl }: Props) {
             id !== 'credentials' && (
               <button key={id} onClick={() => signIn(id, { callbackUrl })}>
                 {name === 'Naver' && (
-                  <div className="flex justify-center items-center bg-[#03C75A] rounded-full w-[300px] h-[40px]">
+                  <div className="flex justify-center items-center bg-[#03C75A] rounded-full w-[320px] h-[39px]">
                     <Image
                       src="/assets/images/login/naverLogo.png"
                       alt="naver"
-                      width={27}
-                      height={27}
-                      className="mr-1"
+                      width={37}
+                      height={37}
+                      className="mr-2"
                     />
                     <p className="text-white">네이버로 계속하기</p>
                   </div>
                 )}
                 {name === 'Kakao' && (
-                  <div className="flex justify-center items-center bg-[#FEE500] rounded-full w-[300px] h-[40px]">
+                  <div className="flex justify-center items-center bg-[#FEE500] rounded-full w-[320px] h-[39px]">
                     <Image
                       src="/assets/images/login/kakaoLogo.svg"
                       alt="kakao"
-                      width={13}
-                      height={13}
-                      className="mr-2"
+                      width={18}
+                      height={18}
+                      className="mr-3"
                     />
                     <p className="text-black">카카오로 계속하기</p>
                   </div>
@@ -44,12 +44,12 @@ export default function Signin({ providers, callbackUrl }: Props) {
             ),
         )}
         <button>
-          <div className="w-[300px] h-[40px]">
+          <div className="w-[320px] h-[39px]">
             <Image
-              src="/assets/images/login/AppleLogo.png"
+              src="/assets/images/login/Apple.png"
               alt="apple"
-              width={300}
-              height={40}
+              width={320}
+              height={30}
             />
           </div>
         </button>
