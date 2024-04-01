@@ -15,7 +15,7 @@ import {
 
 export default function BottomNav() {
   const { data: session } = useSession();
-  const { toggleSidebar, resetSidebar } = useSideBarStore.use.actions();
+  const { toggleSidebar } = useSideBarStore.use.actions();
   const pathname = usePathname();
 
   if (!session) return null;

@@ -43,16 +43,6 @@ export default function Signin({ providers, callbackUrl }: Props) {
               </button>
             ),
         )}
-        {/* <button>
-          <div className="w-[320px] h-[39px]">
-            <Image
-              src="/assets/images/login/Apple.png"
-              alt="apple"
-              width={320}
-              height={30}
-            />
-          </div>
-        </button> */}
         <button>
           <div className="w-[320px] h-[39px]">
             <Image
