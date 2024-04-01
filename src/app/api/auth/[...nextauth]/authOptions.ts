@@ -2,6 +2,7 @@ import NextAuth, { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import NaverProvider from 'next-auth/providers/naver';
 import KakaoProvider from 'next-auth/providers/kakao';
+import AppleProvider from 'next-auth/providers/apple';
 
 const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
