@@ -17,38 +17,39 @@ export default function Signin({ providers, callbackUrl }: Props) {
             id !== 'credentials' && (
               <button key={id} onClick={() => signIn(id, { callbackUrl })}>
                 {name === 'Naver' && (
-                  <div className="flex justify-center items-center bg-[#03C75A] rounded-full w-[320px] h-[39px]">
+                  <div className="flex justify-center items-center bg-[#03C75A] rounded-full w-[320px] h-[50px]">
                     <Image
-                      src="/assets/images/login/naverLogo.png"
+                      src="/assets/images/login/naverLogo2.png"
                       alt="naver"
-                      width={37}
-                      height={37}
+                      width={45}
+                      height={45}
                     />
-                    <p className="text-white ml-2">네이버로 계속하기</p>
+                    <p className="text-white">네이버로 계속하기</p>
                   </div>
                 )}
                 {name === 'Kakao' && (
-                  <div className="flex justify-center items-center bg-[#FEE500] rounded-full w-[320px] h-[39px]">
+                  <div className="flex justify-center items-center bg-[#FEE500] rounded-full w-[320px] h-[50px]">
                     <Image
                       src="/assets/images/login/kakaoLogo.svg"
                       alt="kakao"
-                      width={18}
-                      height={18}
+                      width={24}
+                      height={24}
                     />
-                    <p className="text-black ml-3">카카오로 계속하기</p>
+                    <p className="text-black ml-2">카카오로 계속하기</p>
                   </div>
                 )}
               </button>
             ),
         )}
         <button>
-          <div className="w-[320px] h-[39px]">
+          <div className="flex justify-center items-center bg-black rounded-full w-[320px] h-[50px]">
             <Image
-              src="/assets/images/login/Apple_black.png"
-              alt="apple"
-              width={320}
-              height={39}
+              src="/assets/images/login/AppleLogo.png"
+              alt="naver"
+              width={20}
+              height={20}
             />
+            <p className="text-white ml-4">Apple로 계속하기</p>
           </div>
         </button>
       </div>
