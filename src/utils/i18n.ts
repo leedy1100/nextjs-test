@@ -31,7 +31,6 @@ i18n
           ...translationKO,
         },
       },
-      // 다른 언어도 마찬가지로 추가합니다.
     },
     lng: getLanguageFromStorage() ?? 'en', // 기본 언어 설정
     fallbackLng: 'en', // 찾을 수 없는 언어에 대한 대체 언어 설정

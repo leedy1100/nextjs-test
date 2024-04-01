@@ -11,37 +11,48 @@ type Props = {
 export default function Signin({ providers, callbackUrl }: Props) {
   return (
     <div className="w-full">
-      <div className="flex flex-col m-4 gap-4">
+      <div className="flex flex-col items-center m-4 gap-4">
         {Object.values(providers).map(
           ({ name, id }) =>
             id !== 'credentials' && (
               <button key={id} onClick={() => signIn(id, { callbackUrl })}>
                 {name === 'Naver' && (
-                  <div className="flex justify-center items-center bg-[#03C75A] rounded-full min-h-[50px]">
+                  <div className="flex justify-center items-center bg-[#03C75A] rounded-full w-[350px] h-[40px]">
                     <Image
                       src="/assets/images/login/naverLogo.png"
                       alt="naver"
-                      width={50}
-                      height={50}
+                      width={27}
+                      height={27}
+                      className="mr-1"
                     />
-                    <p className="text-white">네이버로 계속하기</p>
+                    <p className="text-white font-semibold">
+                      네이버로 계속하기
+                    </p>
                   </div>
                 )}
                 {name === 'Kakao' && (
-                  <div className="flex justify-center items-center bg-[#FEE500] rounded-full min-h-[50px]">
+                  <div className="flex justify-center items-center bg-[#FEE500] rounded-full w-[350px] h-[40px]">
                     <Image
                       src="/assets/images/login/kakaoLogo.svg"
                       alt="kakao"
-                      width={25}
-                      height={25}
-                      className="m-3"
+                      width={13}
+                      height={13}
+                      className="mr-2"
                     />
-                    <p className="text-black">카카오로 계속하기</p>
+                    <p className="text-black font-bold">카카오로 계속하기</p>
                   </div>
                 )}
               </button>
             ),
         )}
+        <button>
+          <Image
+            src="/assets/images/login/Apple.png"
+            alt="apple"
+            width={350}
+            height={50}
+          />
+        </button>
       </div>
     </div>
   );
