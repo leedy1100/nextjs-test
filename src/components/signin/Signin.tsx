@@ -25,9 +25,7 @@ export default function Signin({ providers, callbackUrl }: Props) {
                       height={27}
                       className="mr-1"
                     />
-                    <p className="text-white font-semibold">
-                      네이버로 계속하기
-                    </p>
+                    <p className="text-white">네이버로 계속하기</p>
                   </div>
                 )}
                 {name === 'Kakao' && (
@@ -39,7 +37,7 @@ export default function Signin({ providers, callbackUrl }: Props) {
                       height={13}
                       className="mr-2"
                     />
-                    <p className="text-black font-bold">카카오로 계속하기</p>
+                    <p className="text-black">카카오로 계속하기</p>
                   </div>
                 )}
               </button>
