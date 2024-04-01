@@ -17,7 +17,7 @@ export default function Signin({ providers, callbackUrl }: Props) {
             id !== 'credentials' && (
               <button key={id} onClick={() => signIn(id, { callbackUrl })}>
                 {name === 'Naver' && (
-                  <div className="flex justify-center items-center bg-[#03C75A] rounded-full w-[350px] h-[40px]">
+                  <div className="flex justify-center items-center bg-[#03C75A] rounded-full w-[300px] h-[40px]">
                     <Image
                       src="/assets/images/login/naverLogo.png"
                       alt="naver"
@@ -31,7 +31,7 @@ export default function Signin({ providers, callbackUrl }: Props) {
                   </div>
                 )}
                 {name === 'Kakao' && (
-                  <div className="flex justify-center items-center bg-[#FEE500] rounded-full w-[350px] h-[40px]">
+                  <div className="flex justify-center items-center bg-[#FEE500] rounded-full w-[300px] h-[40px]">
                     <Image
                       src="/assets/images/login/kakaoLogo.svg"
                       alt="kakao"
@@ -46,12 +46,14 @@ export default function Signin({ providers, callbackUrl }: Props) {
             ),
         )}
         <button>
-          <Image
-            src="/assets/images/login/Apple.png"
-            alt="apple"
-            width={350}
-            height={50}
-          />
+          <div className="w-[300px] h-[40px]">
+            <Image
+              src="/assets/images/login/AppleLogo.png"
+              alt="apple"
+              width={300}
+              height={40}
+            />
+          </div>
         </button>
       </div>
     </div>
