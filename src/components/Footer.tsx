@@ -1,7 +1,13 @@
-import classNames from 'classnames';
+'use client';
+
+import { useSession } from 'next-auth/react';
 import React from 'react';
 
 export default function Footer() {
+  const { data: session } = useSession();
+
+  if (!session) return null;
+
   return (
     <footer className="h-[200px] border-t-2 bg-white dark:bg-black hidden md:block">
       <div className="m-4">
