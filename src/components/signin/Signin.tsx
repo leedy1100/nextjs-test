@@ -9,6 +9,9 @@ type Props = {
 };
 
 export default function Signin({ providers, callbackUrl }: Props) {
+  const alertMessage = (message: string) => {
+    alert(message);
+  };
   return (
     <div className="w-full">
       <div className="flex flex-col items-center m-4 gap-4">
@@ -52,7 +55,7 @@ export default function Signin({ providers, callbackUrl }: Props) {
               </button>
             ),
         )}
-        <button>
+        <button onClick={() => alertMessage('서비스 준비중이에요')}>
           <div className="flex justify-center items-center bg-black rounded-full w-[320px] h-[50px]">
             <Image
               src="/assets/images/login/AppleLogo.png"
