@@ -21,8 +21,8 @@ export default function Signin({ providers, callbackUrl }: Props) {
                     <Image
                       src="/assets/images/login/naverLogo2.png"
                       alt="naver"
-                      width={45}
-                      height={45}
+                      width={48}
+                      height={48}
                     />
                     <p className="text-white">네이버로 계속하기</p>
                   </div>
@@ -36,6 +36,17 @@ export default function Signin({ providers, callbackUrl }: Props) {
                       height={24}
                     />
                     <p className="text-black ml-2">카카오로 계속하기</p>
+                  </div>
+                )}
+                {name === 'Google' && (
+                  <div className="flex justify-center items-center bg-white rounded-full w-[320px] h-[50px] border border-gray-400">
+                    <Image
+                      src="/assets/images/login/GoogleLogo.png"
+                      alt="naver"
+                      width={30}
+                      height={30}
+                    />
+                    <p className="ml-2">Google로 계속하기</p>
                   </div>
                 )}
               </button>

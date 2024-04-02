@@ -3,6 +3,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 import NaverProvider from 'next-auth/providers/naver';
 import KakaoProvider from 'next-auth/providers/kakao';
 import AppleProvider from 'next-auth/providers/apple';
+import GoogleProvider from 'next-auth/providers/google';
 
 const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
@@ -14,6 +15,10 @@ const authOptions: NextAuthOptions = {
     KakaoProvider({
       clientId: process.env.KAKAO_LOGIN_CLIENT_ID!,
       clientSecret: process.env.KAKAO_LOGIN_CLIENT_SECRET!,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_LOGIN_CLIENT_ID!,
+      clientSecret: process.env.GOOGLE_LOGIN_CLIENT_SECRET!,
     }),
     CredentialsProvider({
       // The name to display on the sign in form (e.g. 'Sign in with...')
