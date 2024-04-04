@@ -11,7 +11,6 @@ import { usePathname } from 'next/navigation';
 import { HiBell } from 'react-icons/hi2';
 import { signIn, signOut, useSession } from 'next-auth/react';
 import ThemeSwitcher from './ThemeSwitcher';
-import LogoutTimer from './common/LogoutTimer';
 
 export default function Header() {
   const { data: session } = useSession();
@@ -35,6 +34,7 @@ export default function Header() {
     return () => {
       // cleanup
       window.removeEventListener('resize', handleResize);
+      handleResize.clear();
     };
   }, [handleResize]);
 
@@ -78,7 +78,6 @@ export default function Header() {
           <div className="">
             {session && `${session?.user?.email?.split('@')[0]}님`}
           </div>
-          {/* <LogoutTimer /> */}
           {session && (
             <button
               className="min-w-[72px] h-8 bg-neutral-400 text-white rounded-md"
