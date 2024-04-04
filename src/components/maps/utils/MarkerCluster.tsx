@@ -81,7 +81,7 @@ export default function MarkerCluster() {
       map,
       markers,
       disableClickZoom: false, // 클러스터를 클릭했을 때 줌인하는 기능을 비활성화할지 여부입니다.
-      gridSize: 80, // 클러스터링 계산 시 사용되는 그리드의 크기(픽셀 단위)입니다. 이 값이 크면 클러스터가 더 크게 그룹화됩니다.
+      gridSize: 120, // 클러스터링 계산 시 사용되는 그리드의 크기(픽셀 단위)입니다. 이 값이 크면 클러스터가 더 크게 그룹화됩니다.
       icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
       indexGenerator: [10, 20, 50, 100, 200],
       stylingFunction(clusterMarker: any, count: number) {
