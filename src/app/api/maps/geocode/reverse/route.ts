@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const handler = async (req: NextRequest) => {
   const searchParams = req.url.slice(req.url.indexOf('?') + 1);
-  const url = `https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?request=coordsToaddr&sourcecrs=epsg:4326&output=json&orders=addr,admcode,roadaddr&${searchParams}`;
+  const url = `https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?request=coordsToaddr&sourcecrs=epsg:4326&output=json&orders=roadaddr&${searchParams}`;
 
   const naverResponse = await fetch(url, {
     method: 'GET',
@@ -12,12 +12,8 @@ const handler = async (req: NextRequest) => {
     },
   });
 
-  if (!naverResponse.ok) {
-    throw new Error(`Naver API 요청 오류: ${naverResponse.statusText}`);
-  }
-
-  const data = await naverResponse.json(); // Naver API 응답 받기
-  return NextResponse.json(data); // 클라이언트에 응답 보내기
+  const data = await naverResponse.json();
+  return NextResponse.json(data);
 };
 
 export { handler as GET, handler as POST };
