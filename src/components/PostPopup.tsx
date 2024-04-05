@@ -32,6 +32,22 @@ export default function PostPopup({ addr }: Props) {
     setOpen(false);
   };
 
+  const checkUserAgent = () => {
+    const agent = navigator.userAgent;
+    console.log(agent);
+    if (agent.includes('iPhone')) {
+      console.log('iPhone 환경');
+    }
+
+    if (agent.includes('Android')) {
+      console.log('Android 환경');
+    }
+
+    if (agent.includes('Chrome')) {
+      console.log('chrome 환경');
+    }
+  };
+
   return (
     <div>
       <button

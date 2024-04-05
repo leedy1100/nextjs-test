@@ -18,31 +18,63 @@ export default function MainMap() {
   });
   const [searchAddr, setSearchAddr] = useState('');
 
-  const getGeoCode = useCallback(
-    async (address: string) => {
-      if (!address) {
-        alert('주소를 입력하세요.');
-        return;
+  const getGeoCode = useCallback(async (address: string) => {
+    if (!address) {
+      alert('주소를 입력하세요.');
+      return;
+    }
+    try {
+      const response = await axios.get('/api/maps/geocode', {
+        params: {
+          query: address,
+        },
+      });
+      if (response.status === 200 && response.data.addresses.length > 0) {
+        const { x, y } = response.data.addresses[0];
+        setCoordinate({ lat: y, lng: x });
+      } else {
+        alert('검색 결과가 없습니다.');
       }
-      try {
-        const response = await axios.get('/api/maps/geocode', {
-          params: {
-            query: address,
-          },
-        });
-        if (response.status === 200 && response.data.addresses.length > 0) {
-          const { x, y } = response.data.addresses[0];
-          setCoordinate({ lat: y, lng: x });
-        } else {
-          alert('검색 결과가 없습니다.');
-        }
-      } catch (error) {
-        console.error('지오코딩 오류: ', error);
-        alert('지오코딩 과정에서 오류가 발생했습니다. 다시 시도해주세요.');
+    } catch (error) {
+      console.error('지오코딩 오류: ', error);
+      alert('지오코딩 과정에서 오류가 발생했습니다. 다시 시도해주세요.');
+    }
+  }, []);
+
+  const getReverseGeoCode = useCallback(async (lat: number, lng: number) => {
+    if (!lat || !lng) {
+      alert('좌표를 불러오는데 실패했어요.');
+      return;
+    }
+    try {
+      const response = await axios.get('/api/maps/geocode/reverse', {
+        params: {
+          coords: `${lng},${lat}`,
+        },
+      });
+      if (response.status === 200) {
+        console.log(response.data);
+        const regionInfo = response.data.results[0].region;
+        const landInfo = response.data.results[2].land;
+        console.log({ regionInfo, landInfo });
+        let fullAddress = `${regionInfo.area1.alias} ${regionInfo.area2.name} ${landInfo.name} ${landInfo.number1} ${landInfo.number2}`;
+        if (regionInfo.area3.name) fullAddress += `(${regionInfo.area3.name}`;
+        if (regionInfo.area4.name) fullAddress += ` ${regionInfo.area4.name}`;
+        if (landInfo.addition0.value)
+          fullAddress += `, ${landInfo.addition0.value}`;
+        fullAddress += ')';
+        //  ${landInfo.number2} (${regionInfo.area3.name} ${regionInfo.area4.name}, ${landInfo.addition0.value})
+        console.log(fullAddress);
+        setSearchAddr(fullAddress);
+        setCoordinate({ lat, lng });
+      } else {
+        alert('검색 결과가 없습니다.');
       }
-    },
-    [setCoordinate],
-  );
+    } catch (error) {
+      console.error('지오코딩 오류: ', error);
+      alert('지오코딩 과정에서 오류가 발생했습니다. 다시 시도해주세요.');
+    }
+  }, []);
 
   const mapHeight = useMemo(() => {
     let height = DEFAULT_MAP_HEIGHT;
@@ -100,14 +132,18 @@ export default function MainMap() {
       <NaverMap defaultCenter={coordinate} zoom={16}>
         <Marker
           position={coordinate}
+          draggable
           onClick={() => {
             alert(`위도: ${coordinate.lat}, 경도: ${coordinate.lng}`);
           }}
           icon={{
-            url: '/assets/images/maps/surprise_cat.gif',
+            url: '/assets/images/maps/marker/red_marker3.png',
             size: { width: 40, height: 40 },
             scaledSize: { width: 40, height: 40 },
             anchor: { x: 25, y: 25 },
+          }}
+          onDragend={e => {
+            getReverseGeoCode(e.coord.y, e.coord.x);
           }}
         />
         <MoveCenter lat={coordinate.lat} lng={coordinate.lng} />
