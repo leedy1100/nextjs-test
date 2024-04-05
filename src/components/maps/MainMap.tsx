@@ -37,7 +37,7 @@ export default function MainMap() {
       }
     } catch (error) {
       console.error('지오코딩 오류: ', error);
-      alert('지오코딩 과정에서 오류가 발생했습니다. 다시 시도해주세요.');
+      alert('불러오는 과정에서 오류가 발생했습니다. 다시 시도해주세요.');
     }
   }, []);
 
@@ -53,22 +53,31 @@ export default function MainMap() {
         },
       });
       if (response.status === 200) {
-        const regionInfo = response.data.results[0].region;
-        const landInfo = response.data.results[2].land;
-        let fullAddress = `${regionInfo.area1.alias} ${regionInfo.area2.name} ${landInfo.name} ${landInfo.number1} ${landInfo.number2}`;
-        if (regionInfo.area3.name) fullAddress += `(${regionInfo.area3.name}`;
-        if (regionInfo.area4.name) fullAddress += ` ${regionInfo.area4.name}`;
-        if (landInfo.addition0.value)
-          fullAddress += `, ${landInfo.addition0.value}`;
-        fullAddress += ')';
-        setSearchAddr(fullAddress);
-        setCoordinate({ lat, lng });
-      } else {
-        alert('검색 결과가 없습니다.');
+        if (response.data.status.code === 0) {
+          const address = response.data.results[0];
+          const { land, region } = address;
+          let fullAddress = `${region.area1.alias} ${region.area2.name} ${land.name} ${land.number1} ${land.number2}`;
+          const extraAddress = [region.area3.name, land.addition0.value]
+            .filter(item => item !== '')
+            .join(', ');
+
+          fullAddress += extraAddress !== '' ? ` (${extraAddress})` : '';
+          setSearchAddr(fullAddress);
+          setCoordinate({ lat, lng });
+        }
+        if (response.data.status.code === 3) {
+          alert('해당 위치의 정확한 주소를 모르겠어요. 😥');
+        }
+        if (response.data.status.code === 100) {
+          alert('요청 정보를 다시 확인해주세요. ☹️');
+        }
+        if (response.data.status.code === 900) {
+          alert('알 수 없는 오류가 발생했어요.😳');
+        }
       }
     } catch (error) {
       console.error('지오코딩 오류: ', error);
-      alert('지오코딩 과정에서 오류가 발생했습니다. 다시 시도해주세요.');
+      alert('주소 정보를 불러오는데 실패했어요. 😳');
     }
   }, []);
 
@@ -83,6 +92,12 @@ export default function MainMap() {
   const handleInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter' && searchAddr) {
       getGeoCode(searchAddr);
+    }
+  };
+
+  const confirmReverseGeoCode = (lat: number, lng: number) => {
+    if (window.confirm('선택한 위치의 주소를 불러올까요?')) {
+      getReverseGeoCode(lat, lng);
     }
   };
 
@@ -139,7 +154,7 @@ export default function MainMap() {
             anchor: { x: 25, y: 25 },
           }}
           onDragend={e => {
-            getReverseGeoCode(e.coord.y, e.coord.x);
+            confirmReverseGeoCode(e.coord.y, e.coord.x);
           }}
         />
         <MoveCenter lat={coordinate.lat} lng={coordinate.lng} />
