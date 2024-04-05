@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 
 const handler = async (req: NextRequest) => {
   const searchParams = req.url.slice(req.url.indexOf('?') + 1);
-  const url = `https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?request=coordsToaddr&sourcecrs=epsg:4326&output=json&orders=addr,admcode,roadaddr,admcode&${searchParams}`;
-  console.log(url);
+  const url = `https://naveropenapi.apigw.ntruss.com/map-reversegeocode/v2/gc?request=coordsToaddr&sourcecrs=epsg:4326&output=json&orders=addr,admcode,roadaddr&${searchParams}`;
+
   const naverResponse = await fetch(url, {
     method: 'GET',
     headers: {

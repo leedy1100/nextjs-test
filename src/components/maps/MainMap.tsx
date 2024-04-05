@@ -53,18 +53,14 @@ export default function MainMap() {
         },
       });
       if (response.status === 200) {
-        console.log(response.data);
         const regionInfo = response.data.results[0].region;
         const landInfo = response.data.results[2].land;
-        console.log({ regionInfo, landInfo });
         let fullAddress = `${regionInfo.area1.alias} ${regionInfo.area2.name} ${landInfo.name} ${landInfo.number1} ${landInfo.number2}`;
         if (regionInfo.area3.name) fullAddress += `(${regionInfo.area3.name}`;
         if (regionInfo.area4.name) fullAddress += ` ${regionInfo.area4.name}`;
         if (landInfo.addition0.value)
           fullAddress += `, ${landInfo.addition0.value}`;
         fullAddress += ')';
-        //  ${landInfo.number2} (${regionInfo.area3.name} ${regionInfo.area4.name}, ${landInfo.addition0.value})
-        console.log(fullAddress);
         setSearchAddr(fullAddress);
         setCoordinate({ lat, lng });
       } else {
