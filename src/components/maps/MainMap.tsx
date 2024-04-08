@@ -72,7 +72,7 @@ export default function MainMap() {
           alert('요청 정보를 다시 확인해주세요. ☹️');
         }
         if (response.data.status.code === 900) {
-          alert('알 수 없는 오류가 발생했어요.😳');
+          alert('알 수 없는 오류가 발생했어요. 😳');
         }
       }
     } catch (error) {
