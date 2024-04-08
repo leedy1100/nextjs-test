@@ -12,8 +12,6 @@ type RandomCoordinate = {
 
 export default function MarkerCluster() {
   const [data, setData] = useState<RandomCoordinate>([]);
-  // https://github.com/navermaps/marker-tools.js/blob/master/marker-clustering/src/MarkerClustering.js
-  // 예제에서 제공된 코드를 그대로 사용하되 naver 객체를 주입 받도록 간단히 makeMarkerClustering로 Wrapping 합니다.
 
   const navermaps = useNavermaps();
   const map = useMap();
@@ -23,31 +21,31 @@ export default function MarkerCluster() {
 
   const htmlMarker1 = {
     content:
-      '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-1.png);background-size:contain;"></div>',
+      '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:#82c91e;text-align:center;font-weight:bold;background:url(/assets/images/maps/marker/marker_cluster1.png);background-size:contain;"></div>',
     size: new navermaps.Size(40, 40),
     anchor: new navermaps.Point(20, 20),
   };
   const htmlMarker2 = {
     content:
-      '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-2.png);background-size:contain;"></div>',
+      '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:#82c91e;text-align:center;font-weight:bold;background:url(/assets/images/maps/marker/marker_cluster1.png);background-size:contain;"></div>',
     size: new navermaps.Size(40, 40),
     anchor: new navermaps.Point(20, 20),
   };
   const htmlMarker3 = {
     content:
-      '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-3.png);background-size:contain;"></div>',
+      '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:#82c91e;text-align:center;font-weight:bold;background:url(/assets/images/maps/marker/marker_cluster1.png);background-size:contain;"></div>',
     size: new navermaps.Size(40, 40),
     anchor: new navermaps.Point(20, 20),
   };
   const htmlMarker4 = {
     content:
-      '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-4.png);background-size:contain;"></div>',
+      '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:#82c91e;text-align:center;font-weight:bold;background:url(/assets/images/maps/marker/marker_cluster1.png);background-size:contain;"></div>',
     size: new navermaps.Size(40, 40),
     anchor: new navermaps.Point(20, 20),
   };
   const htmlMarker5 = {
     content:
-      '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:white;text-align:center;font-weight:bold;background:url(https://navermaps.github.io/maps.js.ncp/docs/img/cluster-marker-5.png);background-size:contain;"></div>',
+      '<div style="cursor:pointer;width:40px;height:40px;line-height:42px;font-size:10px;color:#343a40;text-align:center;font-weight:bold;background:url(/assets/images/maps/marker/marker_cluster2.png);background-size:contain;"></div>',
     size: new navermaps.Size(40, 40),
     anchor: new navermaps.Point(20, 20),
   };
@@ -85,8 +83,7 @@ export default function MarkerCluster() {
       icons: [htmlMarker1, htmlMarker2, htmlMarker3, htmlMarker4, htmlMarker5],
       indexGenerator: [10, 20, 50, 100, 200],
       stylingFunction(clusterMarker: any, count: number) {
-        clusterMarker.getElement().querySelector('div:first-child').innerText =
-          count;
+        clusterMarker.getElement().querySelector('div:first-child').innerText = count;
       },
     });
     return clustering;

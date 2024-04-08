@@ -4,16 +4,7 @@
   "trailingComma": "all",
   "useTabs": false,
   "tabWidth": 2,
-  "printWidth": 80,
+  "printWidth": 120,
   "arrowParens": "avoid",
-  "jsxBracketSameLine": false,
-  "quoteProps": "as-needed",
-  "proseWrap": "preserve",
-  "endOfLine": "lf",
-  "bracketSpacing": true,
-  "htmlWhitespaceSensitivity": "css",
-  "insertPragma": false,
-  "vueIndentScriptAndStyle":true,
-  "embeddedLanguageFormatting": "auto",
-  "requirePragma": false
+  "endOfLine": "lf"
 }
