@@ -20,7 +20,7 @@ export default function page() {
           <LanguageButton />
           <PresenceComponent />
           <div>
-            <h1 className="mb-2">Pretendard Font Weight</h1>
+            <h1 className="mb-2">Pretendard Font Weight 샘플</h1>
             <p className="font-thin">
               Pretendard font-thin 안녕하세요. 프리텐다드 무료 폰트입니다.
             </p>
