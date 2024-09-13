@@ -19,9 +19,6 @@ export async function middleware(req: NextRequest) {
 export const config = {
   matcher: [
     '/',
-    '/etc',
-    '/flex',
-    '/grid',
     '/noti',
     '/state/:path*',
     '/subscribe',
