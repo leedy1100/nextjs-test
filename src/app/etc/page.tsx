@@ -9,7 +9,7 @@ export default function page() {
   return (
     <PageWrapper>
       <div>
-        <h1>Etc!</h1>
+        <h1>Etc!!</h1>
         <div className="flex flex-wrap justify-start items-center gap-4 m-4">
           <AnimatedButton animationType="bounce" text="bounce" />
           <AnimatedButton animationType="float" text="float" />
