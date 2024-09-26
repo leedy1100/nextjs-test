@@ -7,14 +7,10 @@ export default function page() {
   return (
     <PageWrapper>
       <div>
+        <div>branch: ldy-1 test5</div>
         <div className="flex justify-center items-center gap-4">
           <p className="text-center text-neutral-400">내 지갑 루팡 목록</p>
-          <Image
-            src={'/assets/images/surprise_cat.gif' ?? ''}
-            alt=""
-            width={60}
-            height={60}
-          />
+          <Image src={'/assets/images/surprise_cat.gif' ?? ''} alt="" width={60} height={60} />
         </div>
         <div>
           <div className="w-full">
