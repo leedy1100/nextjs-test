@@ -9,6 +9,7 @@ export default function page() {
         <h1>zustand 상태관리 라이브러리</h1>
         <div>branch: ldy-3 test1</div>
         <div>branch: ldy-3 test2</div>
+        <div>branch: ldy-3 test3</div>
         <CtrlState />
       </div>
     </PageWrapper>
