@@ -9,6 +9,7 @@ export default function page() {
         <h1 className="font-bold">Notification</h1>
         <div>branch: ldy-2 test1</div>
         <div>branch: ldy-2 test2</div>
+        <div>branch: ldy-2 test3</div>
         <NotificationButton />
       </div>
       <div>
