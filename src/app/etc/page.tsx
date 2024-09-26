@@ -10,7 +10,8 @@ export default function page() {
     <PageWrapper>
       <div>
         <h1>Etc!!!!</h1>
-        <div>branch: ldy-1 test</div>
+        <div>branch: ldy-1 test1</div>
+        <div>branch: ldy-1 test2</div>
         <div className="flex flex-wrap justify-start items-center gap-4 m-4">
           <AnimatedButton animationType="bounce" text="bounce" />
           <AnimatedButton animationType="float" text="float" />
