@@ -10,6 +10,7 @@ export default function page() {
         <div>branch: ldy-2 test1</div>
         <div>branch: ldy-2 test2</div>
         <div>branch: ldy-2 test3</div>
+        <div>branch: ldy-2 test4</div>
         <NotificationButton />
       </div>
       <div>
