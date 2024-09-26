@@ -7,7 +7,8 @@ export default function page() {
     <div className="flex flex-col gap-4">
       <div>
         <h1 className="font-bold">Notification</h1>
-        <div>branch: ldy-2 test</div>
+        <div>branch: ldy-2 test1</div>
+        <div>branch: ldy-2 test2</div>
         <NotificationButton />
       </div>
       <div>
