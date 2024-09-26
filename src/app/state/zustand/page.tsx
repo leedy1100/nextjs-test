@@ -10,6 +10,7 @@ export default function page() {
         <div>branch: ldy-3 test1</div>
         <div>branch: ldy-3 test2</div>
         <div>branch: ldy-3 test3</div>
+        <div>branch: ldy-3 test4</div>
         <CtrlState />
       </div>
     </PageWrapper>
